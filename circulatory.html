@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circulatory System & Heart — BioLume</title>
+  <meta name="description" content="Interactive 4-chamber human heart diagram, real-time 60 FPS blood circulation, ECG, and trilingual biology textbook." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="lab-grid-bg">
+  <!-- TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="btn-back">
+          <span aria-hidden="true">←</span>
+          <span data-i18n="nav.backToBody">Full Body View</span>
+        </a>
+
+        <a href="index.html" class="brand-btn">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span class="brand-dot"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-row">
+              <strong data-i18n="brand">BioLume</strong>
+              <span class="chapter-badge" data-i18n="nav.chapterBadge">Chapter 01 • Live Simulation</span>
+            </span>
+            <span class="brand-tagline" data-i18n="tagline">Living Human Biology Atlas</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-group" role="group" aria-label="Language Selector">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="hi">हिं</button>
+          <button class="lang-btn" type="button" data-lang-btn="bn">বাং</button>
+        </div>
+
+        <button id="btn-bilingual" class="pill-btn" type="button" aria-pressed="true">
+          <span aria-hidden="true">🌐</span>
+          <span class="hide-xs" data-i18n="nav.bilingual">EN Terms</span>
+        </button>
+
+        <button id="btn-theme" class="pill-btn" type="button">
+          <span id="theme-icon" aria-hidden="true">☀️</span>
+          <span id="theme-label" class="hide-sm">Atlas Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ORGAN DEEP-DIVE WORKSPACE -->
+  <main class="heart-view">
+    <div class="heart-header">
+      <div>
+        <h1 class="heart-title" data-i18n="heartLab.title">Human Heart — Live Cross-Section</h1>
+        <p class="heart-subtitle" data-i18n="heartLab.subtitle">Tap any chamber, vessel, or node to inspect real-time physiology</p>
+      </div>
+
+      <div class="heart-toggles">
+        <button id="btn-pause" class="pill-btn" type="button">⏸ <span id="pause-label">Pause</span></button>
+        <button id="btn-electric" class="pill-btn active-electric" type="button" aria-pressed="true">
+          <span>⚡</span>
+          <span data-i18n="heartLab.toggles.electrical">SA/AV Electrical Wave</span>
+        </button>
+        <button id="btn-pins" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span>📍</span>
+          <span data-i18n="heartLab.toggles.labels">Hotspot Pins</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="heart-grid">
+      <!-- Left: 60 FPS Heart Cross-Section + Metrics + BPM Controls -->
+      <div class="heart-left">
+        <div id="heart-canvas-box" class="heart-stage glass-panel">
+          <canvas id="heart-canvas" class="heart-canvas"></canvas>
+          <div id="hotspot-pins-layer" class="pins-layer"></div>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="glass-panel metric-card">
+            <span class="metric-label" data-i18n="heartLab.metrics.bpm">Heart Rate</span>
+            <div class="metric-val arterial"><span id="metric-bpm">72</span> <small>BPM</small></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span class="metric-label" data-i18n="heartLab.metrics.output">Cardiac Output</span>
+            <div class="metric-val accent"><span id="metric-output">5.0</span> <small data-i18n="heartLab.metrics.litersMin">L/min</small></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span class="metric-label" data-i18n="heartLab.metrics.stroke">Stroke Volume</span>
+            <div class="metric-val"><span id="metric-stroke">70</span> <small data-i18n="heartLab.metrics.mlBeat">mL/beat</small></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span class="metric-label" data-i18n="heartLab.metrics.phase">Cardiac Phase</span>
+            <div id="metric-phase" class="metric-phase">Ventricular Diastole</div>
+          </div>
+        </div>
+
+        <div class="glass-panel control-card">
+          <div class="control-head">
+            <span class="control-title" data-i18n="heartLab.bpmControl">Heart Rate (BPM)</span>
+            <span id="bpm-pill" class="arterial-pill">72 BPM</span>
+          </div>
+          <input id="bpm-slider" class="lab-slider lab-slider-arterial" type="range" min="45" max="180" value="72" />
+          <div class="preset-grid">
+            <button class="preset-btn" type="button" data-bpm="65" data-i18n="heartLab.presets.rest">Resting (65)</button>
+            <button class="preset-btn active" type="button" data-bpm="72" data-i18n="heartLab.presets.normal">Normal (72)</button>
+            <button class="preset-btn" type="button" data-bpm="110" data-i18n="heartLab.presets.walk">Brisk Walk (110)</button>
+            <button class="preset-btn" type="button" data-bpm="160" data-i18n="heartLab.presets.sprint">Sprint (160)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Anatomy Inspector / Living Textbook / Quick Check -->
+      <div class="glass-panel reader-panel">
+        <div class="reader-tabs" role="tablist">
+          <button class="tab-btn active" type="button" data-tab="inspect" data-i18n="heartLab.tabs.inspect">Anatomy Inspector</button>
+          <button class="tab-btn" type="button" data-tab="chapter" data-i18n="heartLab.tabs.chapter">Living Textbook</button>
+          <button class="tab-btn" type="button" data-tab="quiz" data-i18n="heartLab.tabs.quiz">Quick Check</button>
+        </div>
+        <div id="reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="lang.js"></script>
+  <script src="heart.js"></script>
+</body>
+</html>

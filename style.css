@@ -979,7 +979,7 @@ button {
 }
 
 /* =========================================
-   ORGAN DEEP-DIVE PAGES (CIRCULATORY / RESPIRATORY)
+   ORGAN DEEP-DIVE PAGES (CIRCULATORY / RESPIRATORY / NERVOUS)
    ========================================= */
 .heart-view {
   max-width: 1400px;
@@ -1344,6 +1344,84 @@ button {
   color: var(--arterial);
 }
 
+/* =========================================
+   3D FLIPPABLE NEURON <-> SYNAPSE CARD SYSTEM
+   ========================================= */
+.flip-scene {
+  perspective: 1600px;
+  width: 100%;
+}
+
+.flip-card {
+  display: grid;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 26px;
+  padding: 18px;
+  border-color: var(--border-strong);
+}
+
+.flip-front {
+  transform: rotateY(0deg);
+  pointer-events: auto;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+
+.flip-card.is-flipped .flip-front {
+  pointer-events: none;
+}
+
+.flip-card.is-flipped .flip-back {
+  pointer-events: auto;
+}
+
+.flip-face-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.flip-inner-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.flip-canvas-col,
+.flip-info-col {
+  min-width: 0;
+}
+
+.flip-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 460 / 300;
+  border-radius: 20px;
+  overflow: hidden;
+  border-color: var(--border-strong);
+}
+
 /* Scrollbar & Subtle Motion Keyframes */
 .atlas-scroll::-webkit-scrollbar { width: 6px; }
 .atlas-scroll::-webkit-scrollbar-thumb {
@@ -1374,6 +1452,9 @@ button {
 @media (prefers-reduced-motion: reduce) {
   .brand-icon, .dock-icon, .hotspot-ring, .live-dot {
     animation: none;
+  }
+  .flip-card {
+    transition: none;
   }
 }
 
@@ -1408,6 +1489,13 @@ button {
   }
   .dock-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .flip-inner-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 22px;
   }
 }
 

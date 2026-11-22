@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nervous System, Brain Lobes, Neuron &amp; Synapse — BioLume</title>
+  <meta name="description" content="Class 9-10 interactive human nervous system: live brain lobes, reflex arc, 3D flippable Neuron and Synapse mechanism lab, and trilingual lesson plan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="lab-grid-bg">
+  <!-- TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="btn-back">
+          <span aria-hidden="true">←</span>
+          <span data-i18n="nav.backToBody">Full Body View</span>
+        </a>
+
+        <a href="index.html" class="brand-btn">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span class="brand-dot"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-row">
+              <strong data-i18n="brand">BioLume</strong>
+              <span id="nerv-chapter-badge" class="chapter-badge">Chapter 03 • Class 9–10 Lab</span>
+            </span>
+            <span class="brand-tagline" data-i18n="tagline">Living Human Biology Atlas</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-group" role="group" aria-label="Language Selector">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="hi">हिं</button>
+          <button class="lang-btn" type="button" data-lang-btn="bn">বাং</button>
+        </div>
+
+        <button id="btn-bilingual" class="pill-btn" type="button" aria-pressed="true">
+          <span aria-hidden="true">🌐</span>
+          <span class="hide-xs" data-i18n="nav.bilingual">EN Terms</span>
+        </button>
+
+        <button id="btn-theme" class="pill-btn" type="button">
+          <span id="theme-icon" aria-hidden="true">☀️</span>
+          <span id="theme-label" class="hide-sm">Atlas Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: BRAIN, LOBES & REFLEX ARC LAB -->
+  <main class="heart-view">
+    <div class="heart-header">
+      <div>
+        <h1 id="nerv-title" class="heart-title">Human Brain &amp; Nervous System — Live Lab</h1>
+        <p id="nerv-subtitle" class="heart-subtitle">Tap any brain lobe to inspect its functions, or switch to the live Reflex Arc pathway</p>
+      </div>
+
+      <div class="heart-toggles">
+        <button id="btn-view-brain" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">🧠</span>
+          <span id="lbl-view-brain">Brain &amp; Lobes</span>
+        </button>
+        <button id="btn-view-reflex" class="pill-btn" type="button" aria-pressed="false">
+          <span aria-hidden="true">⚡</span>
+          <span id="lbl-view-reflex">Reflex Arc Live</span>
+        </button>
+        <button id="btn-nerv-pause" class="pill-btn" type="button">⏸ <span>Pause</span></button>
+        <button id="btn-nerv-pins" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">📍</span>
+          <span id="lbl-nerv-pins">Hotspot Pins</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="heart-grid">
+      <!-- LEFT: 60 FPS Brain Lobes / Reflex Arc Canvas + Telemetry + Signal Intensity -->
+      <div class="heart-left">
+        <div id="brain-canvas-box" class="heart-stage glass-panel">
+          <canvas id="brain-canvas" class="heart-canvas" aria-label="Interactive Brain Lobes and Reflex Arc Simulation"></canvas>
+          <div id="brain-pins-layer" class="pins-layer"></div>
+        </div>
+
+        <!-- Live Neural Telemetry -->
+        <div class="metrics-grid">
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-speed" class="metric-label">Impulse Speed</span>
+            <div class="metric-val accent"><span id="metric-speed">120</span> <small>m/s</small></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-freq" class="metric-label">Brain Wave</span>
+            <div class="metric-val"><span id="metric-freq">18</span> <small>Hz</small></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-mode" class="metric-label">Control Center</span>
+            <div id="metric-mode" class="metric-phase">Forebrain</div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-lobe" class="metric-label">Active Region</span>
+            <div id="metric-lobe" class="metric-phase systole">Frontal Lobe</div>
+          </div>
+        </div>
+
+        <!-- Neural Activity / Stimulus Control -->
+        <div class="glass-panel control-card">
+          <div class="control-head">
+            <span id="lbl-freq-control" class="control-title">Neural Activity &amp; Impulse Rate</span>
+            <span id="freq-pill" class="accent-pill">Focus • 18 Hz</span>
+          </div>
+          <input id="freq-slider" class="lab-slider" type="range" min="1" max="4" step="1" value="2" aria-label="Neural Activity Level" />
+          <div class="preset-grid">
+            <button class="preset-btn" type="button" data-freq="1" id="preset-sleep">Deep Sleep</button>
+            <button class="preset-btn active" type="button" data-freq="2" id="preset-focus">Study Focus</button>
+            <button class="preset-btn" type="button" data-freq="3" id="preset-alert">High Alert</button>
+            <button class="preset-btn" type="button" data-freq="4" id="preset-reflex">Reflex Burst</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Brain Lobes Inspector / Class 9–10 Lesson Plan / Quick Check -->
+      <div id="brain-reader-panel" class="glass-panel reader-panel">
+        <div class="reader-tabs" role="tablist">
+          <button id="tab-brain-inspect" class="tab-btn active" type="button" data-brain-tab="inspect">Brain &amp; Lobes</button>
+          <button id="tab-brain-lesson" class="tab-btn" type="button" data-brain-tab="lesson">Class 9–10 Lesson</button>
+          <button id="tab-brain-quiz" class="tab-btn" type="button" data-brain-tab="quiz">Quick Check</button>
+        </div>
+        <div id="brain-reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 2: 3D FLIPPABLE NEURON <-> SYNAPSE MECHANISM LAB           -->
+    <!-- ================================================================== -->
+    <section id="neuron-synapse-section" style="margin-top:42px;padding-top:32px;border-top:1px solid var(--border);" aria-label="Flippable Neuron and Synapse Interactive Lab">
+      <div class="heart-header">
+        <div>
+          <h2 id="neuron-sec-title" class="heart-title">Neuron &amp; Synapse — 3D Flippable Lab</h2>
+          <p id="neuron-sec-subtitle" class="heart-subtitle">Front side: Neuron parts &amp; electrical impulse • Flip the card to see the chemical Synapse mechanism</p>
+        </div>
+
+        <div class="heart-toggles">
+          <button id="btn-flip-main" class="pill-btn active-electric" type="button" aria-pressed="false">
+            <span aria-hidden="true">🔄</span>
+            <span id="lbl-flip-main">Flip Card: Neuron ↔ Synapse</span>
+          </button>
+          <button id="btn-neuron-pause" class="pill-btn" type="button">⏸ <span>Pause</span></button>
+        </div>
+      </div>
+
+      <!-- 3D FLIPPABLE CARD SCENE -->
+      <div class="flip-scene">
+        <div id="neuron-flip-card" class="flip-card">
+          <!-- FRONT FACE: NEURON STRUCTURE & ELECTRICAL IMPULSE -->
+          <div class="flip-face flip-front glass-panel">
+            <div class="flip-face-bar">
+              <span id="lbl-front-badge" class="accent-pill">FRONT • NEURON STRUCTURE &amp; IMPULSE</span>
+              <button id="btn-flip-to-synapse" class="pill-btn active-electric" type="button">
+                <span id="lbl-flip-to-synapse">Flip to Synapse Mechanism</span>
+                <span aria-hidden="true">↻</span>
+              </button>
+            </div>
+
+            <div class="flip-inner-grid">
+              <!-- Left: Live 60 FPS Neuron Canvas + Fire Impulse Trigger -->
+              <div class="flip-canvas-col">
+                <div id="neuron-canvas-box" class="flip-stage glass-panel">
+                  <canvas id="neuron-canvas" class="heart-canvas" aria-label="Live 60 FPS Neuron Electrical Impulse Animation"></canvas>
+                </div>
+                <button id="btn-fire-impulse" class="primary-cta" type="button" style="margin-top:12px;">
+                  <span aria-hidden="true">⚡</span>
+                  <span id="lbl-fire-impulse">Fire Nerve Impulse (Send Signal!)</span>
+                </button>
+              </div>
+
+              <!-- Right: Interactive Neuron Parts Selector & Easy Analogy Card -->
+              <div class="flip-info-col">
+                <p id="lbl-neuron-prompt" class="heart-subtitle">Tap any neuron part below to highlight it on the animation and learn its role:</p>
+                <div id="neuron-parts-chips" class="part-pills"></div>
+                <div id="neuron-part-detail" class="detail-box"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BACK FACE: SYNAPSE CHEMICAL BRIDGE MECHANISM -->
+          <div class="flip-face flip-back glass-panel">
+            <div class="flip-face-bar">
+              <span id="lbl-back-badge" class="arterial-pill">BACK • SYNAPSE MECHANISM (CHEMICAL BRIDGE)</span>
+              <button id="btn-flip-to-neuron" class="pill-btn active-accent" type="button">
+                <span aria-hidden="true">↺</span>
+                <span id="lbl-flip-to-neuron">Flip Back to Neuron Parts</span>
+              </button>
+            </div>
+
+            <div class="flip-inner-grid">
+              <!-- Left: Live 60 FPS Synapse Zoom Canvas + Trigger -->
+              <div class="flip-canvas-col">
+                <div id="synapse-canvas-box" class="flip-stage glass-panel">
+                  <canvas id="synapse-canvas" class="heart-canvas" aria-label="Live 60 FPS Synapse Neurotransmitter Animation"></canvas>
+                </div>
+                <button id="btn-fire-synapse" class="primary-cta" type="button" style="margin-top:12px;">
+                  <span aria-hidden="true">🧪</span>
+                  <span id="lbl-fire-synapse">Trigger Synaptic Signal (Release Chemicals!)</span>
+                </button>
+              </div>
+
+              <!-- Right: Step-by-Step Synapse Mechanism Breakdown -->
+              <div class="flip-info-col">
+                <p id="lbl-synapse-prompt" class="heart-subtitle">Follow the 4 easy steps of how a signal crosses the microscopic gap between two neurons:</p>
+                <div id="synapse-steps-chips" class="part-pills"></div>
+                <div id="synapse-step-detail" class="detail-box"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEURON & SYNAPSE CLASS 9–10 MASTER LESSON + QUIZ -->
+      <div id="ns-reader-panel" class="glass-panel reader-panel" style="margin-top:22px;">
+        <div class="reader-tabs" role="tablist" style="grid-template-columns: repeat(2, 1fr);">
+          <button id="tab-ns-lesson" class="tab-btn active" type="button" data-ns-tab="lesson">Neuron &amp; Synapse Lesson (Class 9–10)</button>
+          <button id="tab-ns-quiz" class="tab-btn" type="button" data-ns-tab="quiz">Neuron &amp; Synapse Quiz</button>
+        </div>
+        <div id="ns-reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="lang.js"></script>
+  <script src="nervous.js"></script>
+</body>
+</html>

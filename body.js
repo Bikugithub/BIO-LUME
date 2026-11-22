@@ -214,7 +214,22 @@
       liveTag.textContent = hasPage ? d.dock.liveTag : d.dock.soonTag;
       liveTag.className = hasPage ? "live-tag" : "dock-badge-soon";
     }
-    if (circBox) circBox.classList.toggle("hidden", !hasPage);
+    if (circBox) {
+      circBox.classList.toggle("hidden", !hasPage);
+      const legend = circBox.querySelector(".legend-grid");
+      if (legend) legend.classList.toggle("hidden", st.system !== "circulatory");
+      const cta = circBox.querySelector(".primary-cta");
+      if (cta && hasPage) {
+        cta.setAttribute("href", BL.ORGAN_PAGES[st.system]);
+        const span = cta.querySelector("span");
+        if (span) {
+          span.textContent =
+            st.system === "respiratory"
+              ? d.stage.openRespiratory
+              : d.stage.openDeepDive;
+        }
+      }
+    }
     if (soonBox) soonBox.classList.toggle("hidden", hasPage);
     if (hintEl) {
       hintEl.textContent = hasPage
@@ -432,7 +447,6 @@
           const ripplePhase = (elapsed * 0.75 + idx * 0.16) % 1;
           const ringR = baseR + ripplePhase * 15;
 
-          // Expanding hormone signal ring
           ctx.strokeStyle = endoColor;
           ctx.lineWidth = 1.6;
           ctx.globalAlpha = (1 - ripplePhase) * 0.85;
@@ -440,7 +454,6 @@
           ctx.arc(gx, gy, ringR, 0, Math.PI * 2);
           ctx.stroke();
 
-          // Soft glowing gland core
           const eg = ctx.createRadialGradient(gx, gy, 1, gx, gy, baseR + 7);
           eg.addColorStop(0, isLight ? "rgba(124,58,237,0.75)" : "rgba(167,139,250,0.85)");
           eg.addColorStop(1, "rgba(167,139,250,0)");
@@ -454,7 +467,6 @@
         const pulse = (Math.sin(elapsed * 2.4) + 1) / 2;
 
         if (st.sex === "female") {
-          // Connecting fallopian curves
           ctx.strokeStyle = reproColor;
           ctx.lineWidth = 2;
           ctx.globalAlpha = 0.65;
@@ -465,7 +477,6 @@
           ctx.quadraticCurveTo(191, 324, 200, 332);
           ctx.stroke();
 
-          // Uterus + Left/Right Ovaries
           const femaleNodes = [
             [180, 338, 16],
             [160, 332, 9],
@@ -482,7 +493,6 @@
             ctx.fill();
           });
         } else {
-          // Male pelvic/prostate & testes highlights
           ctx.strokeStyle = reproColor;
           ctx.lineWidth = 1.8;
           ctx.globalAlpha = 0.55;

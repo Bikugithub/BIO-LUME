@@ -13,29 +13,126 @@
   const FEMALE_PELVIS =
     "M 136 328 Q 180 360 224 328 Q 218 368 180 370 Q 142 368 136 328 Z";
 
-  const ARTERIAL_PATHS = [
+  // Sex-accurate Arterial Paths (Female arms tucked strictly inside narrower silhouette)
+  const MALE_ARTERIAL_PATHS = [
     [[186, 194], [184, 152], [180, 114], [175, 76], [180, 44]],
-    [[184, 178], [152, 138], [122, 146], [104, 214], [92, 286], [82, 346]],
-    [[188, 178], [214, 138], [240, 148], [256, 214], [268, 286], [278, 346]],
-    [[186, 206], [182, 266], [176, 336], [156, 404], [150, 486], [146, 594]],
-    [[186, 206], [184, 266], [186, 336], [204, 404], [210, 486], [214, 594]],
+    [[184, 178], [152, 138], [122, 146], [104, 214], [92, 286], [83, 338]],
+    [[188, 178], [214, 138], [238, 146], [256, 214], [268, 286], [277, 338]],
+    [[186, 206], [182, 266], [176, 336], [156, 404], [152, 486], [150, 594]],
+    [[186, 206], [184, 266], [186, 336], [204, 404], [208, 486], [210, 594]],
     [[184, 196], [158, 184], [148, 206], [164, 214], [188, 200]],
   ];
 
-  const VENOUS_PATHS = [
-    [[184, 48], [188, 82], [186, 122], [178, 162], [180, 194]],
-    [[88, 348], [98, 288], [110, 216], [128, 154], [158, 148], [178, 188]],
-    [[272, 348], [262, 288], [250, 216], [232, 154], [206, 150], [182, 188]],
-    [[152, 594], [156, 486], [164, 404], [174, 336], [175, 262], [178, 202]],
-    [[208, 594], [204, 486], [196, 404], [184, 336], [177, 262], [178, 202]],
+  const FEMALE_ARTERIAL_PATHS = [
+    [[186, 194], [184, 152], [180, 114], [175, 76], [180, 44]],
+    [[184, 178], [154, 140], [126, 148], [110, 214], [99, 282], [90, 334]],
+    [[188, 178], [208, 140], [234, 148], [250, 214], [261, 282], [270, 334]],
+    [[186, 206], [182, 266], [176, 336], [156, 404], [153, 486], [151, 594]],
+    [[186, 206], [184, 266], [186, 336], [204, 404], [207, 486], [209, 594]],
+    [[184, 196], [158, 184], [148, 206], [164, 214], [188, 200]],
   ];
 
-  const NERVE_PATHS = [
-    [[180, 50], [180, 110], [180, 210], [180, 326]],
-    [[180, 126], [130, 146], [104, 224], [84, 342]],
-    [[180, 126], [230, 146], [256, 224], [276, 342]],
-    [[180, 326], [158, 408], [150, 500], [146, 592]],
-    [[180, 326], [202, 408], [210, 500], [214, 592]],
+  // Sex-accurate Venous Paths
+  const MALE_VENOUS_PATHS = [
+    [[184, 48], [188, 82], [186, 122], [178, 162], [180, 194]],
+    [[88, 338], [97, 286], [109, 216], [126, 154], [156, 148], [178, 188]],
+    [[272, 338], [263, 286], [251, 216], [234, 154], [204, 150], [182, 188]],
+    [[154, 594], [156, 486], [162, 404], [174, 336], [175, 262], [178, 202]],
+    [[206, 594], [204, 486], [198, 404], [184, 336], [177, 262], [178, 202]],
+  ];
+
+  const FEMALE_VENOUS_PATHS = [
+    [[184, 48], [188, 82], [186, 122], [178, 162], [180, 194]],
+    [[94, 334], [103, 282], [114, 216], [130, 154], [158, 148], [178, 188]],
+    [[266, 334], [257, 282], [246, 216], [230, 154], [202, 150], [182, 188]],
+    [[155, 594], [157, 486], [162, 404], [174, 336], [175, 262], [178, 202]],
+    [[205, 594], [203, 486], [198, 404], [184, 336], [177, 262], [178, 202]],
+  ];
+
+  // Sex-accurate Main Nerve Trunks + Branching Intercostal / Limb Nerves
+  const MALE_NERVE_PATHS = [
+    [[180, 50], [180, 114], [180, 212], [180, 328]],
+    [[180, 124], [148, 134], [120, 146], [104, 218], [92, 282], [84, 336]],
+    [[180, 124], [212, 134], [240, 146], [256, 218], [268, 282], [276, 336]],
+    [[180, 324], [160, 368], [154, 444], [152, 520], [151, 594]],
+    [[180, 324], [200, 368], [206, 444], [208, 520], [209, 594]],
+  ];
+
+  const FEMALE_NERVE_PATHS = [
+    [[180, 50], [180, 114], [180, 212], [180, 328]],
+    [[180, 126], [152, 136], [126, 146], [110, 218], [100, 280], [91, 332]],
+    [[180, 126], [208, 136], [234, 146], [250, 218], [260, 280], [269, 332]],
+    [[180, 324], [160, 368], [155, 444], [154, 520], [153, 594]],
+    [[180, 324], [200, 368], [205, 444], [206, 520], [207, 594]],
+  ];
+
+  const NERVE_BRANCHES_BASE = [
+    // Intercostal / Thoracic torso nerve branches
+    [[180, 154], [160, 160], [144, 168]],
+    [[180, 154], [200, 160], [216, 168]],
+    [[180, 184], [160, 190], [146, 198]],
+    [[180, 184], [200, 190], [214, 198]],
+    [[180, 216], [162, 224], [148, 232]],
+    [[180, 216], [198, 224], [212, 232]],
+    [[180, 250], [164, 258], [152, 268]],
+    [[180, 250], [196, 258], [208, 268]],
+    [[180, 286], [166, 296], [156, 306]],
+    [[180, 286], [194, 296], [204, 306]],
+    // Leg femoral & tibial sub-branches
+    [[156, 408], [144, 434]],
+    [[156, 408], [165, 438]],
+    [[204, 408], [216, 434]],
+    [[204, 408], [195, 438]],
+    [[153, 514], [144, 546]],
+    [[207, 514], [216, 546]],
+  ];
+
+  const MALE_ARM_BRANCHES = [
+    [[106, 206], [96, 228]],
+    [[96, 264], [86, 288]],
+    [[254, 206], [264, 228]],
+    [[264, 264], [274, 288]],
+  ];
+
+  const FEMALE_ARM_BRANCHES = [
+    [[112, 206], [104, 226]],
+    [[102, 264], [94, 286]],
+    [[248, 206], [256, 226]],
+    [[258, 264], [266, 286]],
+  ];
+
+  // Digestive Peristalsis Path (Esophagus -> Stomach -> Small Intestine -> Large Intestine)
+  const DIGESTIVE_PATH = [
+    [180, 118],
+    [180, 174],
+    [181, 226],
+    [196, 240],
+    [192, 258],
+    [176, 262],
+    [190, 280],
+    [168, 292],
+    [190, 304],
+    [166, 314],
+    [154, 306],
+    [154, 272],
+    [180, 268],
+    [206, 272],
+    [206, 314],
+    [182, 324],
+  ];
+
+  // Urinary Ureter Flow Paths (Kidneys -> Bladder)
+  const URETER_LEFT = [
+    [162, 268],
+    [165, 292],
+    [169, 318],
+    [174, 342],
+  ];
+  const URETER_RIGHT = [
+    [198, 262],
+    [195, 290],
+    [191, 318],
+    [186, 342],
   ];
 
   function samplePolyline(points, t) {
@@ -145,7 +242,18 @@
     if (stop2) stop2.setAttribute("stop-color", isFemale ? "#a84e7c" : "#2b7eb3");
     if (pelvis) pelvis.setAttribute("d", isFemale ? FEMALE_PELVIS : MALE_PELVIS);
 
-    // X-Ray layers
+    // Swap Male/Female Arm Bones & Arm Muscles so nothing clips outside Female arms
+    const skelM = document.getElementById("skel-arms-male");
+    const skelF = document.getElementById("skel-arms-female");
+    if (skelM) skelM.classList.toggle("hidden", isFemale);
+    if (skelF) skelF.classList.toggle("hidden", !isFemale);
+
+    const muscM = document.getElementById("musc-arms-male");
+    const muscF = document.getElementById("musc-arms-female");
+    if (muscM) muscM.classList.toggle("hidden", isFemale);
+    if (muscF) muscF.classList.toggle("hidden", !isFemale);
+
+    // X-Ray & Active-System Layer Visibility
     const muscleLayer = document.getElementById("layer-muscular");
     const skeletonLayer = document.getElementById("layer-skeletal");
     const organsLayer = document.getElementById("layer-organs");
@@ -153,9 +261,9 @@
       muscleLayer.setAttribute(
         "opacity",
         st.system === "muscular"
-          ? "0.82"
+          ? "0.95"
           : st.xray > 15
-          ? String(Math.min(0.42, ((st.xray - 15) / 50) * 0.42))
+          ? String(Math.min(0.36, ((st.xray - 15) / 50) * 0.36))
           : "0"
       );
     }
@@ -163,15 +271,32 @@
       skeletonLayer.setAttribute(
         "opacity",
         st.system === "skeletal"
-          ? "0.92"
+          ? "0.96"
           : st.xray > 35
-          ? String(Math.min(0.45, ((st.xray - 35) / 65) * 0.45))
+          ? String(Math.min(0.40, ((st.xray - 35) / 65) * 0.40))
           : "0.08"
       );
     }
     if (organsLayer) {
-      organsLayer.setAttribute("opacity", String(Math.max(0.24, st.xray / 100)));
+      const dimOrgans = st.system === "skeletal" || st.system === "muscular";
+      organsLayer.setAttribute(
+        "opacity",
+        dimOrgans ? "0.24" : String(Math.max(0.32, st.xray / 100))
+      );
     }
+
+    // Emphasize the specifically selected organ group on the body diagram
+    const organMap = {
+      nervous: "org-brain",
+      respiratory: "org-lungs",
+      digestive: "org-digestive",
+      urinary: "org-urinary",
+    };
+    Object.entries(organMap).forEach(([sysId, elId]) => {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      el.setAttribute("opacity", st.system === sysId ? "1" : "0.68");
+    });
 
     const layerIdx = Math.min(3, Math.floor((st.xray / 101) * 4));
     const xrayBadge = document.getElementById("xray-badge");
@@ -264,7 +389,7 @@
     ro.observe(container);
 
     const artParticles = [];
-    ARTERIAL_PATHS.forEach((p, idx) => {
+    MALE_ARTERIAL_PATHS.forEach((p, idx) => {
       const n = idx === 5 ? 8 : 13;
       for (let i = 0; i < n; i++) {
         artParticles.push({ pathIdx: idx, t: i / n, speed: 0.22 + (i % 4) * 0.025, r: idx === 5 ? 2.1 : 2.5 });
@@ -272,18 +397,23 @@
     });
 
     const venParticles = [];
-    VENOUS_PATHS.forEach((p, idx) => {
+    MALE_VENOUS_PATHS.forEach((p, idx) => {
       for (let i = 0; i < 11; i++) {
         venParticles.push({ pathIdx: idx, t: i / 11, speed: 0.17 + (i % 3) * 0.02, r: 2.2 });
       }
     });
 
     const nerveParticles = [];
-    NERVE_PATHS.forEach((p, idx) => {
+    MALE_NERVE_PATHS.forEach((p, idx) => {
       for (let i = 0; i < 6; i++) {
         nerveParticles.push({ pathIdx: idx, t: i / 6, speed: 0.55 + (i % 3) * 0.08 });
       }
     });
+
+    const branchParticles = [];
+    for (let i = 0; i < 20; i++) {
+      branchParticles.push({ branchIdx: i, t: (i * 0.23) % 1, speed: 0.85 + (i % 3) * 0.15 });
+    }
 
     const fpsEl = document.getElementById("fps-readout");
     let lastTime = performance.now();
@@ -305,12 +435,17 @@
       }
 
       const st = BL.getState();
+      const isFemale = st.sex === "female";
       const isLight = st.theme === "light";
       const artColor = isLight ? "#c24b65" : "#e0637d";
       const venColor = isLight ? "#2c88a8" : "#52bed6";
-      const elecColor = isLight ? "#b58428" : "#dfb052";
+      const elecColor = isLight ? "#b58428" : "#fbbf24";
       const endoColor = isLight ? "#7c3aed" : "#a78bfa";
       const reproColor = isLight ? "#b55a88" : "#d47ca8";
+
+      const artPaths = isFemale ? FEMALE_ARTERIAL_PATHS : MALE_ARTERIAL_PATHS;
+      const venPaths = isFemale ? FEMALE_VENOUS_PATHS : MALE_VENOUS_PATHS;
+      const nervePaths = isFemale ? FEMALE_NERVE_PATHS : MALE_NERVE_PATHS;
 
       const beatPhase = (elapsed * (st.bpm / 60)) % 1;
       const systole = beatPhase < 0.25 ? Math.sin((beatPhase / 0.25) * Math.PI) : 0;
@@ -325,61 +460,63 @@
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
 
-      // Venous & Arterial Vessels
+      // Venous & Arterial Vessels (Sex-Fitted)
       ctx.strokeStyle = venColor;
-      ctx.globalAlpha = (isCirc ? 0.55 : 0.1) * vis;
-      ctx.lineWidth = isCirc ? 2.4 : 1.4;
-      VENOUS_PATHS.forEach((pts) => {
+      ctx.globalAlpha = (isCirc ? 0.55 : 0.08) * vis;
+      ctx.lineWidth = isCirc ? 2.4 : 1.3;
+      venPaths.forEach((pts) => {
         drawSmoothPolyline(ctx, pts);
         ctx.stroke();
       });
 
       ctx.strokeStyle = artColor;
-      ctx.globalAlpha = (isCirc ? 0.68 + systole * 0.24 : 0.12) * vis;
-      ctx.lineWidth = isCirc ? 2.8 + systole * 0.6 : 1.5;
-      ARTERIAL_PATHS.forEach((pts) => {
+      ctx.globalAlpha = (isCirc ? 0.68 + systole * 0.24 : 0.09) * vis;
+      ctx.lineWidth = isCirc ? 2.8 + systole * 0.6 : 1.4;
+      artPaths.forEach((pts) => {
         drawSmoothPolyline(ctx, pts);
         ctx.stroke();
       });
 
       // Flowing Blood Cells
-      if (isCirc || st.xray > 55) {
+      if (isCirc || st.xray > 65) {
         ctx.fillStyle = venColor;
-        ctx.globalAlpha = isCirc ? 0.92 : 0.22;
+        ctx.globalAlpha = isCirc ? 0.92 : 0.16;
         venParticles.forEach((p) => {
           p.t = (p.t + p.speed * dt * (st.bpm / 72)) % 1;
-          const [x, y] = samplePolyline(VENOUS_PATHS[p.pathIdx], p.t);
+          const [x, y] = samplePolyline(venPaths[p.pathIdx], p.t);
           ctx.beginPath();
-          ctx.arc(x, y, isCirc ? p.r : 1.5, 0, Math.PI * 2);
+          ctx.arc(x, y, isCirc ? p.r : 1.4, 0, Math.PI * 2);
           ctx.fill();
         });
 
         ctx.fillStyle = artColor;
         ctx.shadowColor = artColor;
         ctx.shadowBlur = isCirc && !isLight ? 8 : 0;
-        ctx.globalAlpha = isCirc ? 0.98 : 0.26;
+        ctx.globalAlpha = isCirc ? 0.98 : 0.18;
         artParticles.forEach((p) => {
           p.t = (p.t + p.speed * dt * (st.bpm / 72) * (1 + systole * 0.7)) % 1;
-          const [x, y] = samplePolyline(ARTERIAL_PATHS[p.pathIdx], p.t);
+          const [x, y] = samplePolyline(artPaths[p.pathIdx], p.t);
           ctx.beginPath();
-          ctx.arc(x, y, isCirc ? p.r + systole * 0.5 : 1.6, 0, Math.PI * 2);
+          ctx.arc(x, y, isCirc ? p.r + systole * 0.5 : 1.5, 0, Math.PI * 2);
           ctx.fill();
         });
         ctx.shadowBlur = 0;
       }
 
       // Heart Bioluminescent Pulse
-      const pulseR = (isCirc ? 23 : 13) + systole * 11;
+      const pulseR = (isCirc ? 23 : 12) + systole * 11;
       const g = ctx.createRadialGradient(188, 196, 2, 188, 196, pulseR);
       g.addColorStop(0, isLight ? "rgba(194,75,101,0.58)" : "rgba(224,99,125,0.78)");
       g.addColorStop(1, "rgba(224,99,125,0)");
-      ctx.globalAlpha = isCirc ? 1 : 0.28;
+      ctx.globalAlpha = isCirc ? 1 : 0.24;
       ctx.fillStyle = g;
       ctx.beginPath();
       ctx.arc(188, 196, pulseR, 0, Math.PI * 2);
       ctx.fill();
 
-      // Organ-specific live animations when selected
+      // =========================================================
+      // ORGAN-SPECIFIC 60 FPS REAL-TIME PHYSIOLOGY ANIMATIONS
+      // =========================================================
       if (st.system === "respiratory") {
         const breath = (Math.sin(elapsed * 1.45) + 1) / 2;
         ctx.globalAlpha = 0.85;
@@ -393,53 +530,182 @@
           ctx.fill();
         });
       } else if (st.system === "nervous") {
+        // 1. Actively Blinking Dual-Hemisphere Brain + Synaptic Sparks
+        const brainPulse = (Math.sin(elapsed * 4.5) + 1) / 2;
+        const bg = ctx.createRadialGradient(180, 48, 2, 180, 48, 20 + brainPulse * 8);
+        bg.addColorStop(0, isLight ? "rgba(217,119,6,0.72)" : "rgba(251,191,36,0.88)");
+        bg.addColorStop(1, "rgba(251,191,36,0)");
+        ctx.globalAlpha = 0.92;
+        ctx.fillStyle = bg;
+        ctx.beginPath();
+        ctx.ellipse(180, 48, 18 + brainPulse * 4, 15 + brainPulse * 4, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        const sparkCoords = [
+          [172, 44], [188, 44], [174, 54], [186, 54], [180, 40], [180, 52],
+        ];
+        sparkCoords.forEach(([sx, sy], idx) => {
+          const blink = Math.sin(elapsed * 9 + idx * 1.9);
+          if (blink > 0.25) {
+            ctx.fillStyle = "#fef9c3";
+            ctx.globalAlpha = blink;
+            ctx.beginPath();
+            ctx.arc(sx, sy, 2.2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+
+        // 2. Main Spinal & Limb Nerve Trunks (Sex-Fitted)
         ctx.strokeStyle = elecColor;
-        ctx.lineWidth = 1.8;
-        ctx.globalAlpha = 0.45;
-        NERVE_PATHS.forEach((pts) => {
+        ctx.lineWidth = 1.9;
+        ctx.globalAlpha = 0.58;
+        nervePaths.forEach((pts) => {
           drawSmoothPolyline(ctx, pts);
           ctx.stroke();
         });
+
+        // 3. Branching Thoracic, Arm & Leg Nerves
+        const allBranches = [
+          ...NERVE_BRANCHES_BASE,
+          ...(isFemale ? FEMALE_ARM_BRANCHES : MALE_ARM_BRANCHES),
+        ];
+        ctx.lineWidth = 1.15;
+        ctx.globalAlpha = 0.48;
+        allBranches.forEach((pts) => {
+          drawSmoothPolyline(ctx, pts);
+          ctx.stroke();
+        });
+
+        // 4. Firing Golden Nerve Impulses on Trunks & Branches
         ctx.fillStyle = elecColor;
-        ctx.globalAlpha = 0.95;
+        ctx.shadowColor = elecColor;
+        ctx.shadowBlur = isLight ? 0 : 7;
+        ctx.globalAlpha = 0.96;
         nerveParticles.forEach((p) => {
           p.t = (p.t + p.speed * dt) % 1;
-          const [x, y] = samplePolyline(NERVE_PATHS[p.pathIdx], p.t);
+          const [x, y] = samplePolyline(nervePaths[p.pathIdx], p.t);
           ctx.beginPath();
-          ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+          ctx.arc(x, y, 2.6, 0, Math.PI * 2);
           ctx.fill();
         });
+
+        branchParticles.forEach((bp) => {
+          const bPts = allBranches[bp.branchIdx % allBranches.length];
+          bp.t = (bp.t + bp.speed * dt) % 1;
+          const [x, y] = samplePolyline(bPts, bp.t);
+          ctx.beginPath();
+          ctx.arc(x, y, 1.8, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        ctx.shadowBlur = 0;
       } else if (st.system === "digestive") {
-        const wave = (Math.sin(elapsed * 2.5) + 1) / 2;
-        const dg = ctx.createRadialGradient(186, 250, 4, 186, 250, 32 + wave * 6);
-        dg.addColorStop(0, "rgba(251,146,60,0.62)");
-        dg.addColorStop(1, "rgba(251,146,60,0)");
-        ctx.fillStyle = dg;
-        ctx.globalAlpha = 0.85;
+        // Sequential Peristalsis Wave (Esophagus -> Stomach -> Small & Large Intestine) + Liver Glow
+        const liverPulse = (Math.sin(elapsed * 2.2) + 1) / 2;
+        const lg = ctx.createRadialGradient(164, 232, 3, 164, 232, 22 + liverPulse * 5);
+        lg.addColorStop(0, "rgba(234,88,12,0.52)");
+        lg.addColorStop(1, "rgba(234,88,12,0)");
+        ctx.globalAlpha = 0.9;
+        ctx.fillStyle = lg;
         ctx.beginPath();
-        ctx.arc(186, 250, 36, 0, Math.PI * 2);
+        ctx.arc(164, 232, 26, 0, Math.PI * 2);
         ctx.fill();
+
+        for (let i = 0; i < 5; i++) {
+          const t = (elapsed * 0.18 + i * 0.2) % 1;
+          const [dx, dy] = samplePolyline(DIGESTIVE_PATH, t);
+          const dg = ctx.createRadialGradient(dx, dy, 1, dx, dy, 9);
+          dg.addColorStop(0, "rgba(253,186,116,0.95)");
+          dg.addColorStop(1, "rgba(249,115,22,0)");
+          ctx.fillStyle = dg;
+          ctx.beginPath();
+          ctx.arc(dx, dy, 9, 0, Math.PI * 2);
+          ctx.fill();
+        }
       } else if (st.system === "urinary") {
+        // Kidney Filtration Glow + Filtrate Droplets Flowing Down Ureters -> Pulsing Bladder
         const pulse = (Math.sin(elapsed * 3) + 1) / 2;
-        [158, 202].forEach((kx) => {
-          const kg = ctx.createRadialGradient(kx, 264, 2, kx, 264, 15 + pulse * 5);
-          kg.addColorStop(0, "rgba(82,190,214,0.72)");
-          kg.addColorStop(1, "rgba(82,190,214,0)");
+        [
+          [158, 266],
+          [202, 260],
+        ].forEach(([kx, ky]) => {
+          const kg = ctx.createRadialGradient(kx, ky, 2, kx, ky, 14 + pulse * 5);
+          kg.addColorStop(0, "rgba(34,211,238,0.75)");
+          kg.addColorStop(1, "rgba(34,211,238,0)");
           ctx.fillStyle = kg;
+          ctx.globalAlpha = 0.9;
+          ctx.beginPath();
+          ctx.arc(kx, ky, 19, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // Glowing droplets traveling down both ureters
+        ctx.fillStyle = "#67e8f9";
+        ctx.globalAlpha = 0.95;
+        for (let i = 0; i < 4; i++) {
+          const t = (elapsed * 0.45 + i * 0.25) % 1;
+          const [lx, ly] = samplePolyline(URETER_LEFT, t);
+          const [rx, ry] = samplePolyline(URETER_RIGHT, (t + 0.12) % 1);
+          ctx.beginPath();
+          ctx.arc(lx, ly, 2.3, 0, Math.PI * 2);
+          ctx.arc(rx, ry, 2.3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Pulsing Bladder Glow
+        const blg = ctx.createRadialGradient(180, 350, 2, 180, 350, 16 + pulse * 5);
+        blg.addColorStop(0, "rgba(34,211,238,0.82)");
+        blg.addColorStop(1, "rgba(34,211,238,0)");
+        ctx.fillStyle = blg;
+        ctx.beginPath();
+        ctx.arc(180, 350, 21, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (st.system === "skeletal") {
+        // Luminous Joint Highlights (Shoulders, Elbows, Hips, Knees, Ankles)
+        const jPulse = (Math.sin(elapsed * 2.6) + 1) / 2;
+        const joints = isFemale
+          ? [[126, 142], [234, 142], [106, 234], [254, 234], [154, 364], [206, 364], [154, 492], [206, 492]]
+          : [[122, 138], [238, 138], [99, 234], [261, 234], [154, 364], [206, 364], [154, 492], [206, 492]];
+        joints.forEach(([jx, jy]) => {
+          const jg = ctx.createRadialGradient(jx, jy, 1, jx, jy, 8 + jPulse * 4);
+          jg.addColorStop(0, isLight ? "rgba(71,85,105,0.55)" : "rgba(226,232,240,0.75)");
+          jg.addColorStop(1, "rgba(226,232,240,0)");
+          ctx.fillStyle = jg;
           ctx.globalAlpha = 0.85;
           ctx.beginPath();
-          ctx.arc(kx, 264, 20, 0, Math.PI * 2);
+          ctx.arc(jx, jy, 12, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      } else if (st.system === "muscular") {
+        // Rhythmic Muscle-Fiber Tension Waves Across Major Muscle Groups
+        const mPulse = (Math.sin(elapsed * 2.4) + 1) / 2;
+        const muscleCenters = [
+          [158, 152, 22],
+          [202, 152, 22],
+          [180, 228, 26],
+          [154, 418, 24],
+          [206, 418, 24],
+          [153, 542, 16],
+          [207, 542, 16],
+        ];
+        muscleCenters.forEach(([mx, my, rad], idx) => {
+          const wave = (Math.sin(elapsed * 2.4 - idx * 0.5) + 1) / 2;
+          const mg = ctx.createRadialGradient(mx, my, 2, mx, my, rad + wave * 5);
+          mg.addColorStop(0, isLight ? "rgba(219,39,119,0.28)" : "rgba(244,114,182,0.42)");
+          mg.addColorStop(1, "rgba(244,114,182,0)");
+          ctx.fillStyle = mg;
+          ctx.globalAlpha = 0.8 + mPulse * 0.15;
+          ctx.beginPath();
+          ctx.arc(mx, my, rad + 6, 0, Math.PI * 2);
           ctx.fill();
         });
       } else if (st.system === "endocrine") {
-        // Pituitary, Thyroid, Pancreas, Adrenals & Gonads with hormone-signaling ripples
         const glands = [
-          [180, 52, 5.5],   // Pituitary
-          [180, 108, 6.5],  // Thyroid
-          [184, 244, 6.0],  // Pancreas
-          [158, 250, 5.0],  // Left Adrenal
-          [202, 250, 5.0],  // Right Adrenal
-          ...(st.sex === "female"
+          [180, 52, 5.5],
+          [180, 108, 6.5],
+          [184, 244, 6.0],
+          [158, 250, 5.0],
+          [202, 250, 5.0],
+          ...(isFemale
             ? [[162, 334, 4.8], [198, 334, 4.8]]
             : [[174, 372, 4.8], [186, 372, 4.8]]),
         ];
@@ -466,7 +732,7 @@
       } else if (st.system === "reproductive") {
         const pulse = (Math.sin(elapsed * 2.4) + 1) / 2;
 
-        if (st.sex === "female") {
+        if (isFemale) {
           ctx.strokeStyle = reproColor;
           ctx.lineWidth = 2;
           ctx.globalAlpha = 0.65;
@@ -477,12 +743,11 @@
           ctx.quadraticCurveTo(191, 324, 200, 332);
           ctx.stroke();
 
-          const femaleNodes = [
+          [
             [180, 338, 16],
             [160, 332, 9],
             [200, 332, 9],
-          ];
-          femaleNodes.forEach(([rx, ry, rad]) => {
+          ].forEach(([rx, ry, rad]) => {
             const rg = ctx.createRadialGradient(rx, ry, 2, rx, ry, rad + pulse * 5);
             rg.addColorStop(0, isLight ? "rgba(181,90,136,0.72)" : "rgba(212,124,168,0.82)");
             rg.addColorStop(1, "rgba(212,124,168,0)");
@@ -503,12 +768,11 @@
           ctx.lineTo(187, 370);
           ctx.stroke();
 
-          const maleNodes = [
+          [
             [180, 352, 13],
             [173, 372, 9],
             [187, 372, 9],
-          ];
-          maleNodes.forEach(([rx, ry, rad]) => {
+          ].forEach(([rx, ry, rad]) => {
             const rg = ctx.createRadialGradient(rx, ry, 2, rx, ry, rad + pulse * 5);
             rg.addColorStop(0, isLight ? "rgba(181,90,136,0.72)" : "rgba(212,124,168,0.82)");
             rg.addColorStop(1, "rgba(212,124,168,0)");

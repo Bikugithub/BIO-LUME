@@ -27,6 +27,7 @@
   const ORGAN_PAGES = {
     circulatory: "circulatory.html",
     respiratory: "respiratory.html",
+    nervous: "nervous.html",
   };
 
   const DICT = {
@@ -47,9 +48,10 @@
         layers: ["Surface", "Muscular", "Skeletal", "Internal"],
         fpsBadge: "LIVE",
         activeSystem: "Active System",
-        diveHint: "Tap the Heart or Lungs to open their live deep-dive pages",
+        diveHint: "Tap the Heart, Lungs, or Brain to open their live deep-dive pages",
         openDeepDive: "Open Heart & Blood Cells Page",
         openRespiratory: "Open Respiratory & Gas Exchange Page",
+        openNervous: "Open Brain, Neuron & Synapse Page",
         comingSoonTitle: "Dedicated Organ Page Coming Next",
         comingSoonDesc:
           "This organ is illuminated on the live body stage. Its dedicated deep-dive page with detailed diagrams and real-time physiology animation will be added in the next update.",
@@ -78,12 +80,12 @@
         nervous: {
           name: "Nervous System",
           en: "Nervous System",
-          shortDesc: "Brain, spinal cord & real-time electrical nerve impulses",
+          shortDesc: "Brain lobes, reflex arc, flippable Neuron & Synapse lab",
         },
         digestive: {
           name: "Digestive System",
           en: "Digestive System",
-          shortDesc: "Stomach, intestines & digestive wave motion",
+          shortDesc: "Stomach, liver, intestines & digestive wave motion",
         },
         skeletal: {
           name: "Skeletal System",
@@ -98,7 +100,7 @@
         urinary: {
           name: "Urinary System",
           en: "Urinary System",
-          shortDesc: "Kidneys & continuous filtration pulses",
+          shortDesc: "Kidneys, ureters, bladder & continuous filtration",
         },
         endocrine: {
           name: "Endocrine System",
@@ -256,9 +258,6 @@
         },
       },
 
-      // =========================================================
-      // BLOOD & BLOOD CELLS LAB (BELOW HEART FUNCTIONALITIES)
-      // =========================================================
       bloodLab: {
         title: "Blood & Blood Cells — Live Microscope Lab",
         subtitle:
@@ -437,9 +436,10 @@
         layers: ["बाहरी", "पेशी", "कंकाल", "आंतरिक"],
         fpsBadge: "लाइव",
         activeSystem: "सक्रिय तंत्र",
-        diveHint: "विस्तृत लाइव लैब पेज खोलने के लिए हृदय या फेफड़ों पर टैप करें",
+        diveHint: "विस्तृत लाइव लैब पेज खोलने के लिए हृदय, फेफड़े या मस्तिष्क पर टैप करें",
         openDeepDive: "हृदय और रक्त कोशिका पेज खोलें",
         openRespiratory: "श्वसन और गैस विनिमय पेज खोलें",
+        openNervous: "मस्तिष्क, न्यूरॉन व सिनैप्स पेज खोलें",
         comingSoonTitle: "अगला अंग पेज शीघ्र आ रहा है",
         comingSoonDesc:
           "यह अंग शरीर मानचित्र पर सक्रिय दिख रहा है। विस्तृत चित्र और लाइव एनीमेशन वाला इसका अलग पेज अगले अपडेट में जोड़ा जाएगा।",
@@ -468,12 +468,12 @@
         nervous: {
           name: "तंत्रिका तंत्र",
           en: "Nervous System",
-          shortDesc: "मस्तिष्क, मेरुरज्जु और विद्युत तंत्रिका संकेत",
+          shortDesc: "मस्तिष्क खंड, प्रतिवर्ती चाप, 3D न्यूरॉन व सिनैप्स लैब",
         },
         digestive: {
           name: "पाचन तंत्र",
           en: "Digestive System",
-          shortDesc: "आमाशय, आँतें और पाचन तरंग गति",
+          shortDesc: "आमाशय, यकृत, आँतें और पाचन तरंग गति",
         },
         skeletal: {
           name: "कंकाल तंत्र",
@@ -488,7 +488,7 @@
         urinary: {
           name: "मूत्र तंत्र",
           en: "Urinary System",
-          shortDesc: "वृक्क (किडनी) और निरंतर रक्त शोधन",
+          shortDesc: "वृक्क (किडनी), मूत्रवाहिनी, मूत्राशय व शोधन",
         },
         endocrine: {
           name: "अंतःस्रावी तंत्र",
@@ -812,9 +812,10 @@
         layers: ["বাহ্যিক", "পেশী", "কঙ্কাল", "অভ্যন্তরীণ"],
         fpsBadge: "লাইভ",
         activeSystem: "সক্রিয় তন্ত্র",
-        diveHint: "লাইভ ল্যাব পেজ খুলতে হৃৎপিণ্ড বা ফুসফুসে ট্যাপ করুন",
+        diveHint: "লাইভ ল্যাব পেজ খুলতে হৃৎপিণ্ড, ফুসফুস বা মস্তিষ্কে ট্যাপ করুন",
         openDeepDive: "হৃৎপিণ্ড ও রক্তকণিকা পেজ খুলুন",
         openRespiratory: "শ্বসন ও গ্যাসীয় বিনিময় পেজ খুলুন",
+        openNervous: "মস্তিষ্ক, নিউরন ও সাইন্যাপস পেজ খুলুন",
         comingSoonTitle: "আলাদা অঙ্গ পেজ শীঘ্রই আসছে",
         comingSoonDesc:
           "এই অঙ্গটি দেহ মানচিত্রে সক্রিয়ভাবে দেখানো হচ্ছে। বিস্তারিত চিত্র ও লাইভ অ্যানিমেশনসহ এর আলাদা পেজ পরবর্তী আপডেটে যুক্ত হবে।",
@@ -843,12 +844,12 @@
         nervous: {
           name: "স্নায়ুতন্ত্র",
           en: "Nervous System",
-          shortDesc: "মস্তিষ্ক, সুষুম্নাকাণ্ড ও বৈদ্যুতিক স্নায়ুসংকেত",
+          shortDesc: "মস্তিষ্কের লোব, প্রতিবর্ত চাপ, 3D নিউরন ও সাইন্যাপস ল্যাব",
         },
         digestive: {
           name: "পরিপাক তন্ত্র",
           en: "Digestive System",
-          shortDesc: "পাকস্থলী, অন্ত্র ও পরিপাক তরঙ্গ গতি",
+          shortDesc: "পাকস্থলী, যকৃত, অন্ত্র ও পরিপাক তরঙ্গ গতি",
         },
         skeletal: {
           name: "কঙ্কাল তন্ত্র",
@@ -863,7 +864,7 @@
         urinary: {
           name: "রেচন তন্ত্র",
           en: "Urinary System",
-          shortDesc: "বৃক্ক (কিডনি) ও নিরবচ্ছিন্ন রক্ত পরিশোধন",
+          shortDesc: "বৃক্ক (কিডনি), গবিনী, মূত্রাশয় ও পরিশোধন",
         },
         endocrine: {
           name: "অন্তঃক্ষরা তন্ত্র",

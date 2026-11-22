@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Circulatory System & Heart — BioLume</title>
-  <meta name="description" content="Interactive 4-chamber human heart diagram, real-time 60 FPS blood circulation, ECG, and trilingual biology textbook." />
+  <title>Circulatory System, Heart &amp; Blood Cells — BioLume</title>
+  <meta name="description" content="Interactive 4-chamber human heart diagram, 60 FPS blood circulation, ECG, and complete Blood Cells (RBC, WBC divisions, Platelets) microscope lab and lesson plan." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -57,7 +57,7 @@
     </div>
   </header>
 
-  <!-- ORGAN DEEP-DIVE WORKSPACE -->
+  <!-- SECTION 1: HEART CROSS-SECTION & PUMPING LAB -->
   <main class="heart-view">
     <div class="heart-header">
       <div>
@@ -120,8 +120,8 @@
         </div>
       </div>
 
-      <!-- Right: Anatomy Inspector / Living Textbook / Quick Check -->
-      <div class="glass-panel reader-panel">
+      <!-- Right: Heart Anatomy Inspector / Living Textbook / Quick Check -->
+      <div id="heart-reader-panel" class="glass-panel reader-panel">
         <div class="reader-tabs" role="tablist">
           <button class="tab-btn active" type="button" data-tab="inspect" data-i18n="heartLab.tabs.inspect">Anatomy Inspector</button>
           <button class="tab-btn" type="button" data-tab="chapter" data-i18n="heartLab.tabs.chapter">Living Textbook</button>
@@ -130,6 +130,55 @@
         <div id="reader-body" class="reader-body atlas-scroll"></div>
       </div>
     </div>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 2: BLOOD & BLOOD CELLS LAB (DIRECTLY BELOW HEART SECTION) -->
+    <!-- ================================================================== -->
+    <section id="blood-cells-section" style="margin-top:40px;padding-top:30px;border-top:1px solid var(--border);" aria-label="Blood and Blood Cells Lab">
+      <div class="heart-header">
+        <div>
+          <h2 id="blood-title" class="heart-title" data-i18n="bloodLab.title">Blood &amp; Blood Cells — Live Microscope Lab</h2>
+          <p id="blood-subtitle" class="heart-subtitle" data-i18n="bloodLab.subtitle">Explore all blood cell names, shapes, characteristics, WBC divisions, real-time animations &amp; Class 9–10 lesson plan</p>
+        </div>
+
+        <div class="heart-toggles">
+          <button id="btn-blood-stream" class="pill-btn active-accent" type="button" data-blood-mode="stream" aria-pressed="true">🩸 <span data-i18n="bloodLab.modes.stream">Bloodstream</span></button>
+          <button id="btn-blood-rbc" class="pill-btn" type="button" data-blood-mode="rbc" aria-pressed="false">🔴 <span data-i18n="bloodLab.modes.rbc">RBC O₂ Flex</span></button>
+          <button id="btn-blood-wbc" class="pill-btn" type="button" data-blood-mode="wbc" aria-pressed="false">🛡️ <span data-i18n="bloodLab.modes.wbc">WBC 5 Types &amp; Defense</span></button>
+          <button id="btn-blood-platelet" class="pill-btn" type="button" data-blood-mode="platelet" aria-pressed="false">🩹 <span data-i18n="bloodLab.modes.platelet">Platelet Clotting</span></button>
+          <button id="btn-blood-pause" class="pill-btn" type="button">⏸ <span>Pause</span></button>
+        </div>
+      </div>
+
+      <!-- Blood Cell Names & Composition Banner (At the Start of Blood Cells Block) -->
+      <div class="glass-panel control-card" style="margin-bottom:18px;">
+        <div class="control-head">
+          <span class="micro-label" data-i18n="bloodLab.introTitle">The 3 Blood Cells (45% of Blood) Suspended in Plasma (55%)</span>
+          <span class="accent-pill">RBC • WBC • Platelets • Plasma</span>
+        </div>
+        <p id="blood-intro-summary" class="sys-desc" style="margin-top:2px;color:var(--text);" data-i18n="bloodLab.introSummary"></p>
+        <div id="blood-name-chips" class="part-pills" style="margin:12px 0 0;"></div>
+      </div>
+
+      <div class="heart-grid">
+        <!-- Left: 60 FPS Blood Cells Microscope Animation Canvas -->
+        <div class="heart-left">
+          <div id="blood-canvas-box" class="heart-stage glass-panel">
+            <canvas id="blood-canvas" class="heart-canvas" aria-label="Live 60 FPS Blood Cells Animation"></canvas>
+          </div>
+        </div>
+
+        <!-- Right: Blood Cell Atlas (Shape, Characteristics, Work, Divisions) / Class 9-10 Lesson / Quiz -->
+        <div id="blood-reader-panel" class="glass-panel reader-panel">
+          <div class="reader-tabs" role="tablist">
+            <button class="tab-btn active" type="button" data-blood-tab="inspect" data-i18n="bloodLab.tabs.inspect">Cell Atlas</button>
+            <button class="tab-btn" type="button" data-blood-tab="lesson" data-i18n="bloodLab.tabs.lesson">Class 9–10 Lesson</button>
+            <button class="tab-btn" type="button" data-blood-tab="quiz" data-i18n="bloodLab.tabs.quiz">Blood Quiz</button>
+          </div>
+          <div id="blood-reader-body" class="reader-body atlas-scroll"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="lang.js"></script>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BioLume — Living Human Biology Atlas</title>
-  <meta name="description" content="Interactive 60 FPS bioluminescent human biology book in English, Hindi, and Bengali." />
+  <meta name="description" content="Interactive 60 FPS bioluminescent human biology atlas in English, Hindi, and Bengali." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -15,12 +15,7 @@
   <header class="navbar">
     <div class="nav-inner">
       <div class="nav-left">
-        <button id="btn-back" class="btn-back hidden" type="button">
-          <span aria-hidden="true">←</span>
-          <span data-i18n="nav.backToBody">Full Body View</span>
-        </button>
-
-        <button id="btn-brand" class="brand-btn" type="button">
+        <a href="index.html" class="brand-btn">
           <span class="brand-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
@@ -34,7 +29,7 @@
             </span>
             <span class="brand-tagline" data-i18n="tagline">Living Human Biology Atlas</span>
           </span>
-        </button>
+        </a>
       </div>
 
       <div class="nav-right">
@@ -57,11 +52,12 @@
     </div>
   </header>
 
-  <!-- VIEW 1: FRONT PAGE — FULL BODY STAGE -->
-  <main id="view-body" class="body-view">
+  <!-- RESPONSIVE MULTI-DEVICE WORKSPACE (Mobile / Tablet / Laptop / Desktop) -->
+  <main class="atlas-workspace">
+    <!-- Top Control Strip: Male/Female Switch + Live Telemetry -->
     <div class="stage-top-bar">
       <div class="sex-toggle glass-panel" role="group" aria-label="Body Switch">
-        <button id="btn-male" class="sex-btn active" type="button" aria-pressed="true">
+        <button id="btn-male" class="sex-btn active-male" type="button" aria-pressed="true">
           <span aria-hidden="true">♂</span>
           <span data-i18n="stage.male">Male Body</span>
         </button>
@@ -74,28 +70,35 @@
       <div class="telemetry-badges">
         <span class="badge-pill glass-panel fps-badge">
           <span class="live-dot"></span>
-          <span id="fps-readout">60 FPS • 60 FPS LIVE</span>
+          <span id="fps-readout">60 FPS • LIVE</span>
         </span>
-        <span class="badge-pill glass-panel bpm-badge hide-xs">
-          <span>♥</span>
+        <span class="badge-pill glass-panel bpm-badge">
+          <span aria-hidden="true">♥</span>
           <span id="stage-bpm-readout">72 BPM</span>
         </span>
       </div>
     </div>
 
-    <div class="stage-grid">
-      <!-- Interactive Human Body Canvas + SVG -->
-      <div class="body-stage-wrap">
+    <!-- Responsive 3-Area Grid: Body Stage | Inspector Controls | Organ Systems Dock -->
+    <div class="workspace-grid">
+      <!-- AREA 1: FULL HUMAN BODY DIAGRAM + 60 FPS LIVE PHYSIOLOGY CANVAS -->
+      <section class="col-body" aria-label="Interactive Human Body">
         <div id="body-stage-box" class="body-stage glass-panel">
           <div class="pedestal-glow" aria-hidden="true"></div>
 
-          <svg id="body-svg" viewBox="0 0 360 640" class="body-svg" role="img" aria-label="Interactive Human Anatomy">
+          <svg id="body-svg" viewBox="0 0 360 640" class="body-svg" role="img" aria-label="Interactive Full Human Body Anatomy">
             <defs>
               <linearGradient id="bodySkinGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop id="skin-stop-1" offset="0%" stop-color="#38bdf8" stop-opacity="0.22" />
-                <stop id="skin-stop-2" offset="100%" stop-color="#0284c7" stop-opacity="0.08" />
+                <stop id="skin-stop-1" offset="0%" stop-color="#38bdf8" stop-opacity="0.34" />
+                <stop id="skin-stop-2" offset="100%" stop-color="#0284c7" stop-opacity="0.16" />
               </linearGradient>
-              <filter id="organGlow" x="-30%" y="-30%" width="160%" height="160%">
+
+              <radialGradient id="bodyInnerGlow" cx="50%" cy="34%" r="55%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.18" />
+                <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0" />
+              </radialGradient>
+
+              <filter id="organGlow" x="-35%" y="-35%" width="170%" height="170%">
                 <feGaussianBlur stdDeviation="3.5" result="blur" />
                 <feMerge>
                   <feMergeNode in="blur" />
@@ -104,19 +107,38 @@
               </filter>
             </defs>
 
-            <!-- Male / Female Silhouette -->
-            <path id="body-outline" fill="url(#bodySkinGrad)" stroke="#38bdf8" stroke-width="1.8" />
+            <!-- Subtle Anatomical Backing Aura -->
+            <ellipse cx="180" cy="310" rx="115" ry="265" fill="url(#bodyInnerGlow)" />
+
+            <!-- Always-Visible Full Human Body Silhouette (Male default, swaps to Female via body.js) -->
+            <path
+              id="body-outline"
+              d="M 180 26 C 196 26 206 38 206 56 C 206 72 198 83 192 88 L 193 108 C 212 114 242 120 254 136 C 266 154 274 226 286 336 C 288 352 276 358 269 346 C 258 282 248 228 238 186 L 231 244 C 228 272 224 294 226 326 C 228 362 226 426 220 492 L 218 598 C 218 614 230 622 224 628 C 212 630 198 624 198 606 L 194 494 L 186 386 C 184 374 176 374 174 386 L 166 494 L 162 606 C 162 624 148 630 136 628 C 130 622 142 614 142 598 L 140 492 C 134 426 132 362 134 326 C 136 294 132 272 129 244 L 122 186 C 112 228 102 282 91 346 C 84 358 72 352 74 336 C 86 226 94 154 106 136 C 118 120 148 114 167 108 L 168 88 C 162 83 154 72 154 56 C 154 38 164 26 180 26 Z"
+              fill="url(#bodySkinGrad)"
+              stroke="#38bdf8"
+              stroke-width="2.2"
+              stroke-linejoin="round"
+            />
+
+            <!-- Anatomical Surface Contour Lines (Neck, Chest, Midline, Knees) -->
+            <g id="layer-contours" stroke="#7dd3fc" stroke-opacity="0.32" stroke-width="1.1" fill="none" stroke-linecap="round">
+              <path d="M 168 106 Q 180 116 192 106" />
+              <path d="M 140 162 Q 160 170 176 162 M 220 162 Q 200 170 184 162" />
+              <line x1="180" y1="168" x2="180" y2="302" stroke-dasharray="3 5" stroke-opacity="0.22" />
+              <path d="M 146 488 Q 156 496 164 488 M 196 488 Q 204 496 214 488" />
+            </g>
 
             <!-- Muscular Layer -->
-            <g id="layer-muscular" stroke="#f472b6" stroke-width="1.2" fill="none" opacity="0.35">
-              <path d="M 142 152 Q 162 164 176 154 M 218 152 Q 198 164 184 154" />
-              <path d="M 156 220 L 158 292 M 204 220 L 202 292" />
-              <path d="M 148 390 Q 156 440 150 486 M 212 390 Q 204 440 210 486" />
+            <g id="layer-muscular" stroke="#f472b6" stroke-width="1.3" fill="none" opacity="0.32" stroke-linecap="round">
+              <path d="M 136 146 Q 158 160 176 150 M 224 146 Q 202 160 184 150" />
+              <path d="M 156 222 L 158 294 M 204 222 L 202 294" />
+              <path d="M 114 186 Q 106 230 98 276 M 246 186 Q 254 230 262 276" />
+              <path d="M 148 392 Q 156 442 150 486 M 212 392 Q 204 442 210 486" />
             </g>
 
             <!-- Skeletal Layer -->
-            <g id="layer-skeletal" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.35">
-              <ellipse cx="180" cy="54" rx="18" ry="22" stroke-opacity="0.65" />
+            <g id="layer-skeletal" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.36">
+              <ellipse cx="180" cy="54" rx="17" ry="21" stroke-opacity="0.65" />
               <line x1="180" y1="88" x2="180" y2="332" stroke-dasharray="4 4" />
               <path d="M 134 134 Q 158 126 180 132 Q 202 126 226 134" />
               <path d="M 142 152 Q 180 142 218 152" />
@@ -127,34 +149,53 @@
               <path id="pelvis-path" d="M 144 328 Q 180 356 216 328 Q 210 362 180 366 Q 150 362 144 328 Z" />
             </g>
 
-            <!-- Reference Organs -->
-            <g id="layer-organs" opacity="0.85">
-              <ellipse id="org-brain" cx="180" cy="49" rx="14" ry="12" fill="#38bdf8" fill-opacity="0.14" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.45" />
-              <path id="org-lung-l" d="M 174 156 C 154 156 142 178 144 212 C 145 224 162 226 173 216 Z" fill="#38bdf8" fill-opacity="0.1" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.3" />
-              <path id="org-lung-r" d="M 186 156 C 206 156 218 178 216 212 C 215 224 198 226 187 216 Z" fill="#38bdf8" fill-opacity="0.1" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.3" />
-              <path id="org-stomach" d="M 182 232 C 198 232 206 246 198 260 C 190 272 172 268 172 254" fill="#fb923c" fill-opacity="0.08" stroke="#fb923c" stroke-width="1.2" stroke-opacity="0.22" />
-              <ellipse id="org-kidney-l" cx="160" cy="268" rx="7" ry="11" fill="#22d3ee" fill-opacity="0.08" />
-              <ellipse id="org-kidney-r" cx="200" cy="268" rx="7" ry="11" fill="#22d3ee" fill-opacity="0.08" />
+            <!-- Detailed Clickable Organ Diagrams -->
+            <g id="layer-organs">
+              <!-- Brain (Nervous System) -->
+              <g id="org-brain" class="organ-clickable" data-organ="nervous" role="button" tabindex="0" aria-label="Nervous System — Brain">
+                <path d="M 180 35 C 168 35 163 44 165 53 C 166 60 173 63 180 61 C 187 63 194 60 195 53 C 197 44 192 35 180 35 Z" fill="#fbbf24" fill-opacity="0.34" stroke="#fbbf24" stroke-width="1.4" />
+                <path d="M 180 37 L 180 60 M 170 46 Q 175 49 171 54 M 190 46 Q 185 49 189 54" stroke="#fef3c7" stroke-width="0.9" stroke-opacity="0.7" fill="none" />
+              </g>
+
+              <!-- Trachea & Lungs (Respiratory System) -->
+              <g id="org-lungs" class="organ-clickable" data-organ="respiratory" role="button" tabindex="0" aria-label="Respiratory System — Lungs">
+                <path d="M 180 112 L 180 158 M 180 156 L 166 170 M 180 156 L 194 170" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.75" />
+                <path id="org-lung-l" d="M 175 154 C 154 154 140 178 142 214 C 143 226 161 228 174 218 Z" fill="#38bdf8" fill-opacity="0.28" stroke="#38bdf8" stroke-width="1.5" />
+                <path id="org-lung-r" d="M 185 154 C 206 154 220 178 218 214 C 217 226 199 228 186 218 Z" fill="#38bdf8" fill-opacity="0.28" stroke="#38bdf8" stroke-width="1.5" />
+              </g>
+
+              <!-- Stomach & Intestines (Digestive System) -->
+              <g id="org-digestive" class="organ-clickable" data-organ="digestive" role="button" tabindex="0" aria-label="Digestive System — Stomach & Intestines">
+                <path id="org-stomach" d="M 182 230 C 199 230 207 245 199 259 C 191 271 171 268 171 253 C 171 244 177 238 182 230 Z" fill="#fb923c" fill-opacity="0.32" stroke="#fb923c" stroke-width="1.4" />
+                <path d="M 156 278 C 156 270 204 270 204 278 L 202 312 C 202 322 158 322 158 312 Z" fill="#fb923c" fill-opacity="0.16" stroke="#fb923c" stroke-width="1.2" stroke-dasharray="4 3" />
+              </g>
+
+              <!-- Kidneys (Urinary System) -->
+              <g id="org-urinary" class="organ-clickable" data-organ="urinary" role="button" tabindex="0" aria-label="Urinary System — Kidneys">
+                <ellipse id="org-kidney-l" cx="158" cy="264" rx="7.5" ry="12" fill="#22d3ee" fill-opacity="0.32" stroke="#22d3ee" stroke-width="1.3" />
+                <ellipse id="org-kidney-r" cx="202" cy="264" rx="7.5" ry="12" fill="#22d3ee" fill-opacity="0.32" stroke="#22d3ee" stroke-width="1.3" />
+              </g>
             </g>
 
-            <!-- Clickable Glowing Heart -->
-            <g id="heart-hotspot" class="heart-clickable" role="button" tabindex="0" aria-label="Enter Heart Cross-Section" filter="url(#organGlow)">
-              <circle id="heart-ring" cx="188" cy="198" r="21" fill="none" stroke="var(--arterial)" stroke-width="1.6" class="hotspot-ring" />
-              <path id="heart-shape" d="M 188 184 C 182 176 170 180 172 192 C 174 203 184 212 190 216 C 197 211 206 201 206 190 C 206 180 194 176 188 184 Z" fill="var(--arterial)" fill-opacity="0.94" stroke="#ffe4e6" stroke-width="1.4" />
+            <!-- Flagship Clickable Heart -> Opens circulatory.html -->
+            <g id="heart-hotspot" class="organ-clickable" data-organ="circulatory" role="button" tabindex="0" aria-label="Open Heart & Circulatory System Page" filter="url(#organGlow)">
+              <circle id="heart-ring" cx="188" cy="196" r="22" fill="none" stroke="var(--arterial)" stroke-width="1.7" class="hotspot-ring" />
+              <path d="M 184 180 C 184 170 194 170 195 178" fill="none" stroke="#ff3b6b" stroke-width="3" stroke-linecap="round" />
+              <path id="heart-shape" d="M 188 182 C 182 174 170 179 172 191 C 174 202 184 212 190 216 C 197 211 206 200 206 189 C 206 179 194 174 188 182 Z" fill="var(--arterial)" fill-opacity="0.96" stroke="#ffe4e6" stroke-width="1.5" />
             </g>
           </svg>
 
-          <!-- 60 FPS Physiology Canvas -->
+          <!-- 60 FPS Real-Time Physiology Canvas -->
           <canvas id="body-canvas" class="stage-canvas" aria-hidden="true"></canvas>
 
           <div class="stage-hint-wrap">
-            <div id="stage-hint" class="stage-hint">Tap the glowing heart to enter the 4-chamber live lab</div>
+            <div id="stage-hint" class="stage-hint" data-i18n="stage.diveHint">Tap the glowing heart to open the 4-chamber live lab page</div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Right Controls: X-Ray Depth + Active System Card -->
-      <div class="stage-controls">
+      <!-- AREA 2: X-RAY DEPTH SLIDER + ACTIVE ORGAN DETAIL CARD -->
+      <section class="col-inspector" aria-label="System Controls and Details">
         <div class="glass-panel control-card">
           <div class="control-head">
             <span class="control-title" data-i18n="stage.xrayLabel">Anatomical Depth</span>
@@ -184,112 +225,44 @@
                 <span data-i18n="stage.deoxygenated">Deoxygenated (Venous)</span>
               </div>
             </div>
-            <button id="btn-enter-heart" class="primary-cta" type="button">
-              <span data-i18n="stage.openDeepDive">Enter Heart Cross-Section</span>
+            <a href="circulatory.html" class="primary-cta">
+              <span data-i18n="stage.openDeepDive">Open Heart &amp; Circulation Page</span>
               <span aria-hidden="true">↗</span>
-            </button>
+            </a>
           </div>
 
           <!-- Shown when another system is selected -->
           <div id="coming-soon-box" class="soon-box hidden">
-            <div class="soon-title" data-i18n="stage.comingSoonTitle">System Atlas Coming Next</div>
+            <div class="soon-title" data-i18n="stage.comingSoonTitle">Dedicated Organ Page Coming Next</div>
             <p class="soon-desc" data-i18n="stage.comingSoonDesc"></p>
-            <button id="btn-jump-circulatory" class="secondary-cta" type="button">
-              <span data-i18n="stage.switchCirculatory">Explore Circulatory Deep Dive</span>
+            <a href="circulatory.html" class="secondary-cta">
+              <span data-i18n="stage.switchCirculatory">Go to Circulatory System Page</span>
               <span aria-hidden="true">↗</span>
-            </button>
+            </a>
           </div>
         </div>
-      </div>
+      </section>
+
+      <!-- AREA 3: ORGAN SYSTEMS DOCK (Sticky Right Sidebar on Laptop/Desktop, Clean Grid on Mobile/Tablet) -->
+      <aside id="organ-dock" class="col-dock" aria-label="Organ Systems">
+        <div class="glass-panel dock-card">
+          <button id="btn-dock-toggle" class="dock-header" type="button" aria-expanded="true">
+            <span class="dock-head-left">
+              <span class="dock-icon" aria-hidden="true">🧬</span>
+              <span class="dock-titles">
+                <strong data-i18n="dock.title">Organ Systems</strong>
+                <span id="dock-subtitle" data-i18n="dock.subtitle">Click an organ or system</span>
+              </span>
+            </span>
+            <span id="dock-chevron" class="dock-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div id="dock-list" class="dock-list atlas-scroll"></div>
+        </div>
+      </aside>
     </div>
   </main>
 
-  <!-- RIGHT-CORNER FLOATING ORGAN SYSTEM DOCK -->
-  <aside id="organ-dock" class="organ-dock" aria-label="Organ Systems">
-    <div class="glass-panel dock-card">
-      <button id="btn-dock-toggle" class="dock-header" type="button" aria-expanded="true">
-        <span class="dock-head-left">
-          <span class="dock-icon">🧬</span>
-          <span class="dock-titles">
-            <strong data-i18n="dock.title">Organ Systems</strong>
-            <span id="dock-subtitle" data-i18n="dock.subtitle">Select a system to illuminate</span>
-          </span>
-        </span>
-        <span id="dock-chevron" class="dock-chevron">▾</span>
-      </button>
-      <div id="dock-list" class="dock-list atlas-scroll"></div>
-    </div>
-  </aside>
-
-  <!-- VIEW 2: 60 FPS HEART DEEP-DIVE LAB -->
-  <section id="view-heart" class="heart-view hidden">
-    <div class="heart-header">
-      <div>
-        <h1 class="heart-title" data-i18n="heartLab.title">Human Heart — Live Cross-Section</h1>
-        <p class="heart-subtitle" data-i18n="heartLab.subtitle">Click any chamber, vessel, or node to inspect live physiology</p>
-      </div>
-
-      <div class="heart-toggles">
-        <button id="btn-pause" class="pill-btn" type="button">⏸ Pause</button>
-        <button id="btn-electric" class="pill-btn active-electric" type="button" aria-pressed="true">⚡ <span data-i18n="heartLab.toggles.electrical">SA/AV Electrical Wave</span></button>
-        <button id="btn-pins" class="pill-btn active-accent" type="button" aria-pressed="true">📍 <span data-i18n="heartLab.toggles.labels">Hotspot Pins</span></button>
-      </div>
-    </div>
-
-    <div class="heart-grid">
-      <!-- Left: 60 FPS Heart Cross-Section + Metrics + BPM Slider -->
-      <div class="heart-left">
-        <div id="heart-canvas-box" class="heart-stage glass-panel">
-          <canvas id="heart-canvas" class="heart-canvas"></canvas>
-          <div id="hotspot-pins-layer" class="pins-layer"></div>
-        </div>
-
-        <div class="metrics-grid">
-          <div class="glass-panel metric-card">
-            <span class="metric-label" data-i18n="heartLab.metrics.bpm">Heart Rate</span>
-            <div class="metric-val arterial"><span id="metric-bpm">72</span> <small>BPM</small></div>
-          </div>
-          <div class="glass-panel metric-card">
-            <span class="metric-label" data-i18n="heartLab.metrics.output">Cardiac Output</span>
-            <div class="metric-val accent"><span id="metric-output">5.0</span> <small data-i18n="heartLab.metrics.litersMin">L/min</small></div>
-          </div>
-          <div class="glass-panel metric-card">
-            <span class="metric-label" data-i18n="heartLab.metrics.stroke">Stroke Volume</span>
-            <div class="metric-val"><span id="metric-stroke">70</span> <small data-i18n="heartLab.metrics.mlBeat">mL/beat</small></div>
-          </div>
-          <div class="glass-panel metric-card">
-            <span class="metric-label" data-i18n="heartLab.metrics.phase">Cardiac Phase</span>
-            <div id="metric-phase" class="metric-phase">Ventricular Diastole</div>
-          </div>
-        </div>
-
-        <div class="glass-panel control-card">
-          <div class="control-head">
-            <span class="control-title" data-i18n="heartLab.bpmControl">Heart Rate (BPM)</span>
-            <span id="bpm-pill" class="arterial-pill">72 BPM</span>
-          </div>
-          <input id="bpm-slider" class="lab-slider lab-slider-arterial" type="range" min="45" max="180" value="72" />
-          <div class="preset-grid">
-            <button class="preset-btn" type="button" data-bpm="65" data-i18n="heartLab.presets.rest">Resting (65)</button>
-            <button class="preset-btn active" type="button" data-bpm="72" data-i18n="heartLab.presets.normal">Normal (72)</button>
-            <button class="preset-btn" type="button" data-bpm="110" data-i18n="heartLab.presets.walk">Brisk Walk (110)</button>
-            <button class="preset-btn" type="button" data-bpm="160" data-i18n="heartLab.presets.sprint">Sprint (160)</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: Anatomy Inspector / Living Textbook / Active Recall Quiz -->
-      <div class="glass-panel reader-panel">
-        <div class="reader-tabs" role="tablist">
-          <button class="tab-btn active" type="button" data-tab="inspect" data-i18n="heartLab.tabs.inspect">Anatomy Inspector</button>
-          <button class="tab-btn" type="button" data-tab="chapter" data-i18n="heartLab.tabs.chapter">Living Textbook</button>
-          <button class="tab-btn" type="button" data-tab="quiz" data-i18n="heartLab.tabs.quiz">Quick Check</button>
-        </div>
-        <div id="reader-body" class="reader-body atlas-scroll"></div>
-      </div>
-    </div>
-  </section>
-
-  <script src="script.js"></script>
+  <script src="lang.js"></script>
+  <script src="body.js"></script>
 </body>
 </html>

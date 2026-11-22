@@ -137,12 +137,12 @@
 
     if (outline) {
       outline.setAttribute("d", isFemale ? FEMALE_PATH : MALE_PATH);
-      outline.setAttribute("stroke", isFemale ? "#f472b6" : "#38bdf8");
-      outline.setAttribute("stroke-opacity", String(Math.max(0.38, 0.95 - (st.xray / 100) * 0.72)));
-      outline.setAttribute("fill-opacity", String(Math.max(0.18, 0.95 - (st.xray / 100) * 0.72)));
+      outline.setAttribute("stroke", isFemale ? "#d47ca8" : "#68b8e6");
+      outline.setAttribute("stroke-opacity", String(Math.max(0.45, 0.95 - (st.xray / 100) * 0.55)));
+      outline.setAttribute("fill-opacity", String(Math.max(0.22, 0.95 - (st.xray / 100) * 0.68)));
     }
-    if (stop1) stop1.setAttribute("stop-color", isFemale ? "#f472b6" : "#38bdf8");
-    if (stop2) stop2.setAttribute("stop-color", isFemale ? "#db2777" : "#0284c7");
+    if (stop1) stop1.setAttribute("stop-color", isFemale ? "#d47ca8" : "#68b8e6");
+    if (stop2) stop2.setAttribute("stop-color", isFemale ? "#a84e7c" : "#2b7eb3");
     if (pelvis) pelvis.setAttribute("d", isFemale ? FEMALE_PELVIS : MALE_PELVIS);
 
     // X-Ray layers
@@ -153,7 +153,7 @@
       muscleLayer.setAttribute(
         "opacity",
         st.system === "muscular"
-          ? "0.8"
+          ? "0.82"
           : st.xray > 15
           ? String(Math.min(0.42, ((st.xray - 15) / 50) * 0.42))
           : "0"
@@ -170,7 +170,7 @@
       );
     }
     if (organsLayer) {
-      organsLayer.setAttribute("opacity", String(Math.max(0.22, st.xray / 100)));
+      organsLayer.setAttribute("opacity", String(Math.max(0.24, st.xray / 100)));
     }
 
     const layerIdx = Math.min(3, Math.floor((st.xray / 101) * 4));
@@ -201,7 +201,12 @@
     const bpmReadout = document.getElementById("stage-bpm-readout");
 
     if (titleEl) titleEl.textContent = BL.term(sysData);
-    if (descEl) descEl.textContent = sysData.shortDesc;
+    if (descEl) {
+      descEl.textContent =
+        st.system === "reproductive"
+          ? `${sysData.shortDesc} • ${isFemale ? d.stage.female : d.stage.male}`
+          : sysData.shortDesc;
+    }
     if (bpmReadout) bpmReadout.textContent = `${st.bpm} BPM`;
 
     const hasPage = Boolean(BL.ORGAN_PAGES[st.system]);
@@ -286,9 +291,11 @@
 
       const st = BL.getState();
       const isLight = st.theme === "light";
-      const artColor = isLight ? "#dc2626" : "#ff3b6b";
-      const venColor = isLight ? "#0284c7" : "#22d3ee";
-      const elecColor = isLight ? "#d97706" : "#fbbf24";
+      const artColor = isLight ? "#c24b65" : "#e0637d";
+      const venColor = isLight ? "#2c88a8" : "#52bed6";
+      const elecColor = isLight ? "#b58428" : "#dfb052";
+      const endoColor = isLight ? "#7c3aed" : "#a78bfa";
+      const reproColor = isLight ? "#b55a88" : "#d47ca8";
 
       const beatPhase = (elapsed * (st.bpm / 60)) % 1;
       const systole = beatPhase < 0.25 ? Math.sin((beatPhase / 0.25) * Math.PI) : 0;
@@ -348,13 +355,13 @@
 
       // Heart Bioluminescent Pulse
       const pulseR = (isCirc ? 23 : 13) + systole * 11;
-      const g = ctx.createRadialGradient(188, 198, 2, 188, 198, pulseR);
-      g.addColorStop(0, isLight ? "rgba(220,38,38,0.62)" : "rgba(255,59,107,0.82)");
-      g.addColorStop(1, "rgba(255,59,107,0)");
-      ctx.globalAlpha = isCirc ? 1 : 0.3;
+      const g = ctx.createRadialGradient(188, 196, 2, 188, 196, pulseR);
+      g.addColorStop(0, isLight ? "rgba(194,75,101,0.58)" : "rgba(224,99,125,0.78)");
+      g.addColorStop(1, "rgba(224,99,125,0)");
+      ctx.globalAlpha = isCirc ? 1 : 0.28;
       ctx.fillStyle = g;
       ctx.beginPath();
-      ctx.arc(188, 198, pulseR, 0, Math.PI * 2);
+      ctx.arc(188, 196, pulseR, 0, Math.PI * 2);
       ctx.fill();
 
       // Organ-specific live animations when selected
@@ -363,8 +370,8 @@
         ctx.globalAlpha = 0.85;
         [156, 204].forEach((lx) => {
           const lg = ctx.createRadialGradient(lx, 192, 3, lx, 192, 24 + breath * 8);
-          lg.addColorStop(0, "rgba(56,189,248,0.62)");
-          lg.addColorStop(1, "rgba(56,189,248,0)");
+          lg.addColorStop(0, "rgba(104,184,230,0.58)");
+          lg.addColorStop(1, "rgba(104,184,230,0)");
           ctx.fillStyle = lg;
           ctx.beginPath();
           ctx.ellipse(lx, 192, 18 + breath * 5, 28 + breath * 8, 0, 0, Math.PI * 2);
@@ -390,7 +397,7 @@
       } else if (st.system === "digestive") {
         const wave = (Math.sin(elapsed * 2.5) + 1) / 2;
         const dg = ctx.createRadialGradient(186, 250, 4, 186, 250, 32 + wave * 6);
-        dg.addColorStop(0, "rgba(251,146,60,0.65)");
+        dg.addColorStop(0, "rgba(251,146,60,0.62)");
         dg.addColorStop(1, "rgba(251,146,60,0)");
         ctx.fillStyle = dg;
         ctx.globalAlpha = 0.85;
@@ -399,16 +406,109 @@
         ctx.fill();
       } else if (st.system === "urinary") {
         const pulse = (Math.sin(elapsed * 3) + 1) / 2;
-        [160, 200].forEach((kx) => {
-          const kg = ctx.createRadialGradient(kx, 268, 2, kx, 268, 15 + pulse * 5);
-          kg.addColorStop(0, "rgba(34,211,238,0.72)");
-          kg.addColorStop(1, "rgba(34,211,238,0)");
+        [158, 202].forEach((kx) => {
+          const kg = ctx.createRadialGradient(kx, 264, 2, kx, 264, 15 + pulse * 5);
+          kg.addColorStop(0, "rgba(82,190,214,0.72)");
+          kg.addColorStop(1, "rgba(82,190,214,0)");
           ctx.fillStyle = kg;
           ctx.globalAlpha = 0.85;
           ctx.beginPath();
-          ctx.arc(kx, 268, 20, 0, Math.PI * 2);
+          ctx.arc(kx, 264, 20, 0, Math.PI * 2);
           ctx.fill();
         });
+      } else if (st.system === "endocrine") {
+        // Pituitary, Thyroid, Pancreas, Adrenals & Gonads with hormone-signaling ripples
+        const glands = [
+          [180, 52, 5.5],   // Pituitary
+          [180, 108, 6.5],  // Thyroid
+          [184, 244, 6.0],  // Pancreas
+          [158, 250, 5.0],  // Left Adrenal
+          [202, 250, 5.0],  // Right Adrenal
+          ...(st.sex === "female"
+            ? [[162, 334, 4.8], [198, 334, 4.8]]
+            : [[174, 372, 4.8], [186, 372, 4.8]]),
+        ];
+        glands.forEach(([gx, gy, baseR], idx) => {
+          const ripplePhase = (elapsed * 0.75 + idx * 0.16) % 1;
+          const ringR = baseR + ripplePhase * 15;
+
+          // Expanding hormone signal ring
+          ctx.strokeStyle = endoColor;
+          ctx.lineWidth = 1.6;
+          ctx.globalAlpha = (1 - ripplePhase) * 0.85;
+          ctx.beginPath();
+          ctx.arc(gx, gy, ringR, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Soft glowing gland core
+          const eg = ctx.createRadialGradient(gx, gy, 1, gx, gy, baseR + 7);
+          eg.addColorStop(0, isLight ? "rgba(124,58,237,0.75)" : "rgba(167,139,250,0.85)");
+          eg.addColorStop(1, "rgba(167,139,250,0)");
+          ctx.globalAlpha = 0.92;
+          ctx.fillStyle = eg;
+          ctx.beginPath();
+          ctx.arc(gx, gy, baseR + 7, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      } else if (st.system === "reproductive") {
+        const pulse = (Math.sin(elapsed * 2.4) + 1) / 2;
+
+        if (st.sex === "female") {
+          // Connecting fallopian curves
+          ctx.strokeStyle = reproColor;
+          ctx.lineWidth = 2;
+          ctx.globalAlpha = 0.65;
+          ctx.beginPath();
+          ctx.moveTo(180, 336);
+          ctx.quadraticCurveTo(169, 324, 160, 332);
+          ctx.moveTo(180, 336);
+          ctx.quadraticCurveTo(191, 324, 200, 332);
+          ctx.stroke();
+
+          // Uterus + Left/Right Ovaries
+          const femaleNodes = [
+            [180, 338, 16],
+            [160, 332, 9],
+            [200, 332, 9],
+          ];
+          femaleNodes.forEach(([rx, ry, rad]) => {
+            const rg = ctx.createRadialGradient(rx, ry, 2, rx, ry, rad + pulse * 5);
+            rg.addColorStop(0, isLight ? "rgba(181,90,136,0.72)" : "rgba(212,124,168,0.82)");
+            rg.addColorStop(1, "rgba(212,124,168,0)");
+            ctx.globalAlpha = 0.92;
+            ctx.fillStyle = rg;
+            ctx.beginPath();
+            ctx.arc(rx, ry, rad + pulse * 5, 0, Math.PI * 2);
+            ctx.fill();
+          });
+        } else {
+          // Male pelvic/prostate & testes highlights
+          ctx.strokeStyle = reproColor;
+          ctx.lineWidth = 1.8;
+          ctx.globalAlpha = 0.55;
+          ctx.beginPath();
+          ctx.moveTo(180, 352);
+          ctx.lineTo(173, 370);
+          ctx.moveTo(180, 352);
+          ctx.lineTo(187, 370);
+          ctx.stroke();
+
+          const maleNodes = [
+            [180, 352, 13],
+            [173, 372, 9],
+            [187, 372, 9],
+          ];
+          maleNodes.forEach(([rx, ry, rad]) => {
+            const rg = ctx.createRadialGradient(rx, ry, 2, rx, ry, rad + pulse * 5);
+            rg.addColorStop(0, isLight ? "rgba(181,90,136,0.72)" : "rgba(212,124,168,0.82)");
+            rg.addColorStop(1, "rgba(212,124,168,0)");
+            ctx.globalAlpha = 0.92;
+            ctx.fillStyle = rg;
+            ctx.beginPath();
+            ctx.arc(rx, ry, rad + pulse * 5, 0, Math.PI * 2);
+            ctx.fill();
+          });
+        }
       }
 
       ctx.restore();
@@ -444,7 +544,7 @@
       });
     }
 
-    // Clicking any organ on the body diagram selects it — and clicking the Heart opens circulatory.html
+    // Clicking any organ on the body diagram selects it — and clicking a LIVE organ opens its dedicated page
     document.querySelectorAll("[data-organ]").forEach((el) => {
       const organId = el.getAttribute("data-organ");
       const activate = () => {

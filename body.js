@@ -253,9 +253,7 @@
     togglePair("endo-gonads-male", "endo-gonads-female");
     togglePair("repro-male", "repro-female");
 
-    // =========================================================
     // FOCUS ISOLATION MODE: Active System = 100%, All Others Faded
-    // =========================================================
     const xrayFactor = Math.max(0.25, st.xray / 100);
     const muscleLayer = document.getElementById("layer-muscular");
     const skeletonLayer = document.getElementById("layer-skeletal");
@@ -289,7 +287,6 @@
       organsLayer.setAttribute("opacity", String(xrayFactor));
     }
 
-    // Isolate individual organ SVG groups (1.0 for active, 0.11 ghost for inactive)
     const organMap = {
       nervous: "org-brain",
       respiratory: "org-lungs",
@@ -308,7 +305,6 @@
       else el.removeAttribute("filter");
     });
 
-    // Heart only glows & blinks when Circulatory System is selected
     const isCirc = st.system === "circulatory";
     if (heartGroup) {
       heartGroup.setAttribute("opacity", isCirc ? String(xrayFactor) : "0.12");
@@ -370,10 +366,9 @@
         cta.setAttribute("href", BL.ORGAN_PAGES[st.system]);
         const span = cta.querySelector("span");
         if (span) {
-          span.textContent =
-            st.system === "respiratory"
-              ? d.stage.openRespiratory
-              : d.stage.openDeepDive;
+          if (st.system === "respiratory") span.textContent = d.stage.openRespiratory;
+          else if (st.system === "nervous") span.textContent = d.stage.openNervous;
+          else span.textContent = d.stage.openDeepDive;
         }
       }
     }
@@ -481,11 +476,8 @@
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
 
-      // =========================================================
       // ISOLATED 60 FPS REAL-TIME ANIMATION PER ACTIVE SYSTEM
-      // =========================================================
       if (st.system === "circulatory") {
-        // Venous & Arterial Vessels + Flowing Blood Cells + Heart Pulse
         ctx.strokeStyle = venColor;
         ctx.globalAlpha = 0.56 * vis;
         ctx.lineWidth = 2.4;
@@ -525,7 +517,6 @@
         });
         ctx.shadowBlur = 0;
 
-        // Heart Bioluminescent Pulse (ONLY when Circulatory is active)
         const pulseR = 22 + systole * 11;
         const g = ctx.createRadialGradient(188, 196, 2, 188, 196, pulseR);
         g.addColorStop(0, isLight ? "rgba(194,75,101,0.58)" : "rgba(224,99,125,0.78)");
@@ -536,14 +527,12 @@
         ctx.arc(188, 196, pulseR, 0, Math.PI * 2);
         ctx.fill();
       } else if (st.system === "respiratory") {
-        // Whole Respiratory System in Live Blinking / Breathing Mode
         const breathPhase = (elapsed * 0.38) % 1;
         const isInhale = breathPhase < 0.48;
         const breath = isInhale
           ? Math.sin((breathPhase / 0.48) * (Math.PI / 2))
           : Math.cos(((breathPhase - 0.48) / 0.52) * (Math.PI / 2));
 
-        // 1. Pulsing Trachea & Bronchi Airway Glow
         ctx.strokeStyle = isLight ? "#0284c7" : "#7dd3fc";
         ctx.lineWidth = 4 + breath * 2;
         ctx.globalAlpha = 0.32 + breath * 0.48;
@@ -555,7 +544,6 @@
         ctx.lineTo(196, 170);
         ctx.stroke();
 
-        // 2. Blinking / Expanding Dual Lung Bioluminescent Glow
         [158, 202].forEach((lx) => {
           const lg = ctx.createRadialGradient(lx, 190, 2, lx, 190, 24 + breath * 10);
           lg.addColorStop(0, isLight ? `rgba(2,132,199,${0.32 + breath * 0.42})` : `rgba(125,211,252,${0.35 + breath * 0.52})`);
@@ -567,7 +555,6 @@
           ctx.fill();
         });
 
-        // 3. Animated Airflow Particles (Inhale ↓ Cyan / Exhale ↑ Warm Amber)
         ctx.fillStyle = isInhale ? "#bae6fd" : "#fde68a";
         ctx.globalAlpha = 0.95;
         for (let i = 0; i < 4; i++) {
@@ -581,7 +568,6 @@
           ctx.fill();
         }
 
-        // 4. Breathing Diaphragm Wave Glow
         ctx.strokeStyle = isLight ? "#0284c7" : "#7dd3fc";
         ctx.lineWidth = 3;
         ctx.globalAlpha = 0.45 + breath * 0.5;
@@ -590,7 +576,6 @@
         ctx.quadraticCurveTo(180, 212 + breath * 8, 218, 225);
         ctx.stroke();
       } else if (st.system === "nervous") {
-        // 1. Tightly Contained Blinking Brain Glow (Strictly Inside Cranium)
         const brainPulse = (Math.sin(elapsed * 4.8) + 1) / 2;
         const bg = ctx.createRadialGradient(180, 47, 1, 180, 47, 12 + brainPulse * 4);
         bg.addColorStop(0, isLight ? "rgba(217,119,6,0.75)" : "rgba(251,191,36,0.88)");
@@ -601,7 +586,6 @@
         ctx.ellipse(180, 47, 13, 10, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // Crisp Internal Synaptic Sparks (Bounded Inside Brain)
         const sparkCoords = [
           [172, 43], [188, 43], [173, 51], [187, 51], [180, 40], [180, 52],
         ];
@@ -616,7 +600,6 @@
           }
         });
 
-        // 2. Main Spinal & Limb Nerve Trunks (Sex-Fitted)
         ctx.strokeStyle = elecColor;
         ctx.lineWidth = 1.9;
         ctx.globalAlpha = 0.62;
@@ -625,7 +608,6 @@
           ctx.stroke();
         });
 
-        // 3. Branching Thoracic, Arm & Leg Nerves
         const allBranches = [
           ...NERVE_BRANCHES_BASE,
           ...(isFemale ? FEMALE_ARM_BRANCHES : MALE_ARM_BRANCHES),
@@ -637,7 +619,6 @@
           ctx.stroke();
         });
 
-        // 4. Firing Golden Nerve Impulses
         ctx.fillStyle = elecColor;
         ctx.shadowColor = elecColor;
         ctx.shadowBlur = isLight ? 0 : 7;
@@ -660,7 +641,6 @@
         });
         ctx.shadowBlur = 0;
       } else if (st.system === "digestive") {
-        // Liver Glow + Sequential Peristalsis Wave (Esophagus -> Stomach -> Intestines)
         const liverPulse = (Math.sin(elapsed * 2.2) + 1) / 2;
         const lg = ctx.createRadialGradient(164, 232, 3, 164, 232, 22 + liverPulse * 5);
         lg.addColorStop(0, "rgba(234,88,12,0.52)");
@@ -683,7 +663,6 @@
           ctx.fill();
         }
       } else if (st.system === "urinary") {
-        // Aligned Kidney Filtration Glow + Symmetrical Ureter Droplets + Pulsing Bladder
         const pulse = (Math.sin(elapsed * 3.0) + 1) / 2;
         [
           [158, 264],
@@ -719,7 +698,6 @@
         ctx.arc(180, 350, 22, 0, Math.PI * 2);
         ctx.fill();
       } else if (st.system === "skeletal") {
-        // Luminous Articulated Joint Highlights
         const jPulse = (Math.sin(elapsed * 2.6) + 1) / 2;
         const joints = isFemale
           ? [[126, 142], [234, 142], [106, 234], [254, 234], [154, 364], [206, 364], [154, 492], [206, 492]]
@@ -735,7 +713,6 @@
           ctx.fill();
         });
       } else if (st.system === "muscular") {
-        // Rhythmic Muscle-Fiber Tension Waves
         const mPulse = (Math.sin(elapsed * 2.4) + 1) / 2;
         const muscleCenters = [
           [158, 152, 22], [202, 152, 22], [180, 228, 26],
@@ -753,14 +730,13 @@
           ctx.fill();
         });
       } else if (st.system === "endocrine") {
-        // Hormone-Signaling Ripples Centered Directly on Each Shaped Gland
         const glands = [
-          [180, 56, 4.5],   // Pituitary
-          [180, 108, 7.0],  // Butterfly Thyroid
-          [180, 144, 5.5],  // Thymus
-          [182, 249, 6.5],  // Leaf Pancreas
-          [160, 248, 4.8],  // Left Adrenal
-          [200, 248, 4.8],  // Right Adrenal
+          [180, 56, 4.5],
+          [180, 108, 7.0],
+          [180, 144, 5.5],
+          [182, 249, 6.5],
+          [160, 248, 4.8],
+          [200, 248, 4.8],
           ...(isFemale
             ? [[160, 336, 5.0], [200, 336, 5.0]]
             : [[174, 372, 5.0], [186, 372, 5.0]]),
@@ -786,17 +762,15 @@
           ctx.fill();
         });
       } else if (st.system === "reproductive") {
-        // Crisp Synchronized Blinking Glow & Expanding Signal Rings (Male & Female)
         const blink = (Math.sin(elapsed * 3.4) + 1) / 2;
         const ripple = (elapsed * 0.65) % 1;
 
         if (isFemale) {
           const fNodes = [
-            [180, 344, 15], // Uterus
-            [158, 337, 8],  // Left Ovary
-            [202, 337, 8],  // Right Ovary
+            [180, 344, 15],
+            [158, 337, 8],
+            [202, 337, 8],
           ];
-          // Expanding ring around Uterus
           ctx.strokeStyle = reproColor;
           ctx.lineWidth = 1.6;
           ctx.globalAlpha = (1 - ripple) * 0.8;
@@ -816,11 +790,10 @@
           });
         } else {
           const mNodes = [
-            [180, 352, 12], // Prostate / Seminal base
-            [173, 372, 8],  // Left Testis
-            [187, 372, 8],  // Right Testis
+            [180, 352, 12],
+            [173, 372, 8],
+            [187, 372, 8],
           ];
-          // Expanding ring around Male Pelvic Tract
           ctx.strokeStyle = reproColor;
           ctx.lineWidth = 1.6;
           ctx.globalAlpha = (1 - ripple) * 0.8;

@@ -144,7 +144,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle immersive grid overlay with soft edge vignette */
 .lab-grid-bg::before {
   content: "";
   position: fixed;
@@ -326,7 +325,6 @@ button {
   color: var(--muted);
 }
 
-/* Gentle Segmented Language Switcher */
 .lang-group {
   display: flex;
   align-items: center;
@@ -356,7 +354,6 @@ button {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Gentle Floating Pill Buttons */
 .pill-btn {
   display: inline-flex;
   align-items: center;
@@ -476,7 +473,6 @@ button {
   animation: pulseDot 1.8s ease-in-out infinite;
 }
 
-/* Mobile-First Grid: Body -> Inspector -> Organ Systems Dock */
 .workspace-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -501,14 +497,14 @@ button {
   gap: 14px;
 }
 
-/* Full Human Body Stage */
+/* Full Human Body Stage — Zero padding so 360x640 SVG & Canvas align 1:1 */
 .body-stage {
   position: relative;
   width: 100%;
   max-width: 370px;
   aspect-ratio: 9 / 16;
   border-radius: 26px;
-  padding: 10px;
+  padding: 0;
   overflow: hidden;
   border-color: var(--border-strong);
 }
@@ -526,7 +522,8 @@ button {
 }
 
 .body-svg {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 10;
   width: 100%;
   height: 100%;
@@ -546,7 +543,7 @@ button {
 .organ-clickable {
   cursor: pointer;
   outline: none;
-  transition: filter 0.22s ease, opacity 0.22s ease;
+  transition: filter 0.22s ease, opacity 0.25s ease;
 }
 
 .organ-clickable:hover,
@@ -734,7 +731,6 @@ button {
 .arterial-dot { background: var(--arterial); box-shadow: 0 0 6px var(--arterial); }
 .venous-dot { background: var(--venous); box-shadow: 0 0 6px var(--venous); }
 
-/* Calm, Refined Themed Primary Button (No Harsh Neon Glare) */
 .primary-cta {
   margin-top: 14px;
   width: 100%;
@@ -795,7 +791,7 @@ button {
 }
 
 /* =========================================
-   ORGAN SYSTEMS DOCK (Grid on Mobile/Tablet, Sticky Sidebar on Laptop/Desktop)
+   ORGAN SYSTEMS DOCK
    ========================================= */
 .dock-card {
   border-radius: 22px;
@@ -983,7 +979,7 @@ button {
 }
 
 /* =========================================
-   ORGAN DEEP-DIVE PAGE (CIRCULATORY / HEART)
+   ORGAN DEEP-DIVE PAGES (CIRCULATORY / RESPIRATORY)
    ========================================= */
 .heart-view {
   max-width: 1400px;
@@ -1387,7 +1383,6 @@ button {
 .hide-xs { display: none; }
 .hide-sm { display: none; }
 
-/* Small Phone Wide & Up */
 @media (min-width: 480px) {
   .hide-xs { display: inline; }
   .brand-tagline { display: block; }
@@ -1398,7 +1393,6 @@ button {
   .preset-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-/* Tablet View (640px - 1023px): 2-Column Body + Inspector, 3-Column Organ Grid Below */
 @media (min-width: 640px) {
   .hide-sm { display: inline; }
   .atlas-workspace,
@@ -1417,7 +1411,6 @@ button {
   }
 }
 
-/* Laptop View (1024px - 1279px): 3-Column Lab Workspace with Sticky Sidebars */
 @media (min-width: 1024px) {
   .chapter-badge { display: inline-block; }
   .workspace-grid {
@@ -1445,7 +1438,6 @@ button {
     overflow-y: auto;
   }
 
-  /* Heart Deep-Dive 2-Column Sticky Layout */
   .heart-grid {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: 24px;
@@ -1457,7 +1449,6 @@ button {
   }
 }
 
-/* Large Desktop View (1280px+): Generous Lab Proportions */
 @media (min-width: 1280px) {
   .nav-inner { padding: 12px 28px; }
   .atlas-workspace,

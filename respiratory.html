@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Respiratory System &amp; Gas Exchange — BioLume</title>
+  <meta name="description" content="Class 9-10 interactive human respiratory system: live breathing mechanics, heart-lung blood loop, alveoli O2/CO2 diffusion, and trilingual lesson plan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="lab-grid-bg">
+  <!-- TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="btn-back">
+          <span aria-hidden="true">←</span>
+          <span data-i18n="nav.backToBody">Full Body View</span>
+        </a>
+
+        <a href="index.html" class="brand-btn">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span class="brand-dot"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-row">
+              <strong data-i18n="brand">BioLume</strong>
+              <span id="resp-chapter-badge" class="chapter-badge">Chapter 02 • Class 9–10 Lab</span>
+            </span>
+            <span class="brand-tagline" data-i18n="tagline">Living Human Biology Atlas</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-group" role="group" aria-label="Language Selector">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="hi">हिं</button>
+          <button class="lang-btn" type="button" data-lang-btn="bn">বাং</button>
+        </div>
+
+        <button id="btn-bilingual" class="pill-btn" type="button" aria-pressed="true">
+          <span aria-hidden="true">🌐</span>
+          <span class="hide-xs" data-i18n="nav.bilingual">EN Terms</span>
+        </button>
+
+        <button id="btn-theme" class="pill-btn" type="button">
+          <span id="theme-icon" aria-hidden="true">☀️</span>
+          <span id="theme-label" class="hide-sm">Atlas Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- RESPIRATORY DEEP-DIVE WORKSPACE -->
+  <main class="heart-view">
+    <div class="heart-header">
+      <div>
+        <h1 id="resp-title" class="heart-title">Human Respiratory System — Live Lab</h1>
+        <p id="resp-subtitle" class="heart-subtitle">Switch between Lungs + Heart Loop and Microscopic Alveoli O₂/CO₂ Gas Exchange</p>
+      </div>
+
+      <div class="heart-toggles">
+        <button id="btn-view-lungs" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">🫁</span>
+          <span id="lbl-view-lungs">Lungs &amp; Heart Loop</span>
+        </button>
+        <button id="btn-view-alveoli" class="pill-btn" type="button" aria-pressed="false">
+          <span aria-hidden="true">🔬</span>
+          <span id="lbl-view-alveoli">Alveoli O₂ / CO₂ Zoom</span>
+        </button>
+        <button id="btn-resp-pause" class="pill-btn" type="button">⏸ <span>Pause</span></button>
+        <button id="btn-resp-pins" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">📍</span>
+          <span id="lbl-resp-pins">Hotspot Pins</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="heart-grid">
+      <!-- LEFT: 60 FPS Dual-View Simulation + Live Respiratory Telemetry + Rate Control -->
+      <div class="heart-left">
+        <div id="resp-canvas-box" class="heart-stage glass-panel">
+          <canvas id="resp-canvas" class="heart-canvas" aria-label="Live Respiratory System and Gas Exchange Simulation"></canvas>
+          <div id="resp-pins-layer" class="pins-layer"></div>
+        </div>
+
+        <!-- Live Physiology Metrics -->
+        <div class="metrics-grid">
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-rate" class="metric-label">Breathing Rate</span>
+            <div class="metric-val accent"><span id="metric-brpm">16</span> <small id="lbl-unit-brpm">/min</small></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-tidal" class="metric-label">Tidal Volume</span>
+            <div class="metric-val"><span id="metric-tidal">500</span> <small>mL</small></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-vent" class="metric-label">Air / Minute</span>
+            <div class="metric-val arterial"><span id="metric-vent">8.0</span> <small id="lbl-unit-lmin">L/min</small></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-phase" class="metric-label">Breathing Phase</span>
+            <div id="metric-resp-phase" class="metric-phase">Inhalation (In)</div>
+          </div>
+        </div>
+
+        <!-- Breathing Rate Control Card -->
+        <div class="glass-panel control-card">
+          <div class="control-head">
+            <span id="lbl-brpm-control" class="control-title">Breathing Rate (Breaths / Min)</span>
+            <span id="brpm-pill" class="accent-pill">16 / min</span>
+          </div>
+          <input id="brpm-slider" class="lab-slider" type="range" min="10" max="40" value="16" aria-label="Breathing Rate Slider" />
+          <div class="preset-grid">
+            <button class="preset-btn" type="button" data-brpm="12" id="preset-yoga">Deep Rest (12)</button>
+            <button class="preset-btn active" type="button" data-brpm="16" id="preset-normal">Normal (16)</button>
+            <button class="preset-btn" type="button" data-brpm="24" id="preset-walk">Brisk Walk (24)</button>
+            <button class="preset-btn" type="button" data-brpm="36" id="preset-run">Sprint (36)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Anatomy Inspector / Class 9–10 Lesson Plan / Quick Check Quiz -->
+      <div class="glass-panel reader-panel">
+        <div class="reader-tabs" role="tablist">
+          <button id="tab-resp-inspect" class="tab-btn active" type="button" data-tab="inspect">Anatomy Inspector</button>
+          <button id="tab-resp-lesson" class="tab-btn" type="button" data-tab="lesson">Class 9–10 Lesson</button>
+          <button id="tab-resp-quiz" class="tab-btn" type="button" data-tab="quiz">Quick Check</button>
+        </div>
+        <div id="resp-reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="lang.js"></script>
+  <script src="respiratory.js"></script>
+</body>
+</html>

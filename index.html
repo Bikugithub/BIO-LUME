@@ -89,12 +89,12 @@
           <svg id="body-svg" viewBox="0 0 360 640" class="body-svg" role="img" aria-label="Interactive Full Human Body Anatomy">
             <defs>
               <linearGradient id="bodySkinGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop id="skin-stop-1" offset="0%" stop-color="#38bdf8" stop-opacity="0.34" />
-                <stop id="skin-stop-2" offset="100%" stop-color="#0284c7" stop-opacity="0.16" />
+                <stop id="skin-stop-1" offset="0%" stop-color="#68b8e6" stop-opacity="0.30" />
+                <stop id="skin-stop-2" offset="100%" stop-color="#2b7eb3" stop-opacity="0.14" />
               </linearGradient>
 
               <radialGradient id="bodyInnerGlow" cx="50%" cy="34%" r="55%">
-                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.18" />
+                <stop offset="0%" stop-color="#68b8e6" stop-opacity="0.16" />
                 <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0" />
               </radialGradient>
 
@@ -115,72 +115,187 @@
               id="body-outline"
               d="M 180 26 C 196 26 206 38 206 56 C 206 72 198 83 192 88 L 193 108 C 212 114 242 120 254 136 C 266 154 274 226 286 336 C 288 352 276 358 269 346 C 258 282 248 228 238 186 L 231 244 C 228 272 224 294 226 326 C 228 362 226 426 220 492 L 218 598 C 218 614 230 622 224 628 C 212 630 198 624 198 606 L 194 494 L 186 386 C 184 374 176 374 174 386 L 166 494 L 162 606 C 162 624 148 630 136 628 C 130 622 142 614 142 598 L 140 492 C 134 426 132 362 134 326 C 136 294 132 272 129 244 L 122 186 C 112 228 102 282 91 346 C 84 358 72 352 74 336 C 86 226 94 154 106 136 C 118 120 148 114 167 108 L 168 88 C 162 83 154 72 154 56 C 154 38 164 26 180 26 Z"
               fill="url(#bodySkinGrad)"
-              stroke="#38bdf8"
+              stroke="#68b8e6"
               stroke-width="2.2"
               stroke-linejoin="round"
             />
 
-            <!-- Anatomical Surface Contour Lines (Neck, Chest, Midline, Knees) -->
-            <g id="layer-contours" stroke="#7dd3fc" stroke-opacity="0.32" stroke-width="1.1" fill="none" stroke-linecap="round">
+            <!-- Anatomical Surface Contour Lines -->
+            <g id="layer-contours" stroke="#7dd3fc" stroke-opacity="0.28" stroke-width="1.1" fill="none" stroke-linecap="round">
               <path d="M 168 106 Q 180 116 192 106" />
-              <path d="M 140 162 Q 160 170 176 162 M 220 162 Q 200 170 184 162" />
-              <line x1="180" y1="168" x2="180" y2="302" stroke-dasharray="3 5" stroke-opacity="0.22" />
-              <path d="M 146 488 Q 156 496 164 488 M 196 488 Q 204 496 214 488" />
+              <line x1="180" y1="168" x2="180" y2="302" stroke-dasharray="3 5" stroke-opacity="0.20" />
             </g>
 
-            <!-- Muscular Layer -->
-            <g id="layer-muscular" stroke="#f472b6" stroke-width="1.3" fill="none" opacity="0.32" stroke-linecap="round">
-              <path d="M 136 146 Q 158 160 176 150 M 224 146 Q 202 160 184 150" />
-              <path d="M 156 222 L 158 294 M 204 222 L 202 294" />
-              <path d="M 114 186 Q 106 230 98 276 M 246 186 Q 254 230 262 276" />
-              <path d="M 148 392 Q 156 442 150 486 M 212 392 Q 204 442 210 486" />
+            <!-- CONNECTED ANATOMICAL MUSCULAR LAYER -->
+            <g id="layer-muscular" stroke="#f472b6" stroke-width="1.2" fill="#f472b6" fill-opacity="0.14" opacity="0.32" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Neck (Sternocleidomastoid) -->
+              <path d="M 171 89 L 178 114 L 172 114 Z M 189 89 L 182 114 L 188 114 Z" />
+              <!-- Pectorals (Connected to Sternum & Shoulders) -->
+              <path d="M 179 130 Q 156 126 134 140 Q 138 168 158 174 Q 174 176 179 166 Z" />
+              <path d="M 181 130 Q 204 126 226 140 Q 222 168 202 174 Q 186 176 181 166 Z" />
+              <!-- Pectoral Muscle Fiber Lines -->
+              <path d="M 176 142 Q 158 144 142 150 M 176 154 Q 158 158 146 162 M 184 142 Q 202 144 218 150 M 184 154 Q 202 158 214 162" fill="none" stroke-opacity="0.55" stroke-width="0.9" />
+              <!-- Rectus Abdominis (Connected 6-Pack Segments) -->
+              <path d="M 165 180 Q 172 178 178 182 L 178 206 Q 170 208 164 204 Z M 195 180 Q 188 178 182 182 L 182 206 Q 190 208 196 204 Z" />
+              <path d="M 164 210 Q 172 208 178 212 L 178 238 Q 170 240 164 236 Z M 196 210 Q 188 208 182 212 L 182 238 Q 190 240 196 236 Z" />
+              <path d="M 165 242 Q 172 240 178 244 L 178 276 Q 172 286 167 274 Z M 195 242 Q 188 240 182 244 L 182 276 Q 188 286 193 274 Z" />
+              <!-- Lateral Obliques (Connecting Ribcage to Pelvis) -->
+              <path d="M 138 184 Q 148 210 158 234 L 158 292 Q 142 278 136 242 Z" />
+              <path d="M 222 184 Q 212 210 202 234 L 202 292 Q 218 278 224 242 Z" />
+              <!-- Male Arm Muscles (Deltoids -> Biceps -> Forearms) -->
+              <g id="musc-arms-male">
+                <path d="M 136 124 Q 114 128 106 154 Q 116 176 130 166 Q 138 148 136 124 Z" />
+                <path d="M 106 160 Q 98 198 94 232 Q 108 236 114 202 Q 118 178 112 162 Z" />
+                <path d="M 94 238 Q 86 278 80 318 Q 88 320 96 284 Q 102 258 102 240 Z" />
+                <path d="M 224 124 Q 246 128 254 154 Q 244 176 230 166 Q 222 148 224 124 Z" />
+                <path d="M 254 160 Q 262 198 266 232 Q 252 236 246 202 Q 242 178 248 162 Z" />
+                <path d="M 266 238 Q 274 278 280 318 Q 272 320 264 284 Q 258 258 258 240 Z" />
+              </g>
+              <!-- Female Arm Muscles (Fitted strictly inside narrower Female arms) -->
+              <g id="musc-arms-female" class="hidden">
+                <path d="M 140 128 Q 120 132 114 156 Q 122 174 134 166 Q 140 148 140 128 Z" />
+                <path d="M 114 162 Q 106 198 102 230 Q 112 234 118 202 Q 122 180 118 164 Z" />
+                <path d="M 102 236 Q 94 276 88 316 Q 94 318 102 282 Q 108 256 108 238 Z" />
+                <path d="M 220 128 Q 240 132 246 156 Q 238 174 226 166 Q 220 148 220 128 Z" />
+                <path d="M 246 162 Q 254 198 258 230 Q 248 234 242 202 Q 238 180 242 164 Z" />
+                <path d="M 258 236 Q 266 276 272 316 Q 266 318 258 282 Q 252 256 252 238 Z" />
+              </g>
+              <!-- Connected Thighs (Quadriceps & Adductors) -->
+              <path d="M 142 350 Q 134 410 144 478 Q 154 486 164 476 Q 172 414 170 364 Z" />
+              <path d="M 218 350 Q 226 410 216 478 Q 206 486 196 476 Q 188 414 190 364 Z" />
+              <path d="M 154 374 L 154 466 M 206 374 L 206 466" fill="none" stroke-opacity="0.55" stroke-width="0.9" />
+              <!-- Calves (Gastrocnemius & Tibialis) -->
+              <path d="M 146 502 Q 138 542 146 588 Q 154 592 160 584 Q 166 540 160 502 Z" />
+              <path d="M 214 502 Q 222 542 214 588 Q 206 592 200 584 Q 194 540 200 502 Z" />
             </g>
 
-            <!-- Skeletal Layer -->
-            <g id="layer-skeletal" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.36">
-              <ellipse cx="180" cy="54" rx="17" ry="21" stroke-opacity="0.65" />
-              <line x1="180" y1="88" x2="180" y2="332" stroke-dasharray="4 4" />
-              <path d="M 134 134 Q 158 126 180 132 Q 202 126 226 134" />
-              <path d="M 142 152 Q 180 142 218 152" />
-              <path d="M 144 168 Q 180 158 216 168" />
-              <path d="M 146 184 Q 180 174 214 184" />
-              <path d="M 148 200 Q 180 190 212 200" />
-              <path d="M 150 216 Q 180 206 210 216" />
-              <path id="pelvis-path" d="M 144 328 Q 180 356 216 328 Q 210 362 180 366 Q 150 362 144 328 Z" />
+            <!-- FULL ARTICULATED HUMAN SKELETAL LAYER -->
+            <g id="layer-skeletal" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.38">
+              <!-- Cranium & Jaw -->
+              <path d="M 164 52 C 164 36 196 36 196 52 C 196 63 191 71 186 76 L 174 76 C 169 71 164 63 164 52 Z" fill="#cbd5e1" fill-opacity="0.08" />
+              <circle cx="174" cy="54" r="3" stroke-opacity="0.7" />
+              <circle cx="186" cy="54" r="3" stroke-opacity="0.7" />
+              <path d="M 176 68 L 184 68" stroke-opacity="0.65" />
+
+              <!-- Segmented Spine (Cervical, Thoracic, Lumbar) -->
+              <line x1="180" y1="80" x2="180" y2="334" stroke-width="2.2" stroke-opacity="0.7" />
+              <path d="M 176 92 L 184 92 M 176 102 L 184 102 M 175 112 L 185 112 M 175 234 L 185 234 M 174 248 L 186 248 M 174 262 L 186 262 M 174 276 L 186 276 M 174 290 L 186 290 M 174 304 L 186 304 M 175 318 L 185 318" stroke-width="1.4" />
+
+              <!-- Clavicles (Collarbones) & Sternum (Breastbone) -->
+              <path d="M 130 132 Q 156 122 180 128 Q 204 122 230 132" stroke-width="2.2" />
+              <path d="M 177 132 L 183 132 L 182 204 L 178 204 Z" fill="#cbd5e1" fill-opacity="0.22" stroke-width="1.4" />
+
+              <!-- Articulated Ribcage (7 Pairs) -->
+              <path d="M 177 142 Q 146 138 140 152 Q 144 162 177 154 M 183 142 Q 214 138 220 152 Q 216 162 183 154" />
+              <path d="M 177 156 Q 142 154 139 170 Q 144 180 177 170 M 183 156 Q 218 154 221 170 Q 216 180 183 170" />
+              <path d="M 177 172 Q 142 172 141 188 Q 146 198 177 186 M 183 172 Q 218 172 219 188 Q 214 198 183 186" />
+              <path d="M 177 188 Q 144 190 144 206 Q 150 214 177 202 M 183 188 Q 216 190 216 206 Q 210 214 183 202" />
+              <path d="M 177 204 Q 148 208 148 220 M 183 204 Q 212 208 212 220" />
+              <path d="M 177 218 Q 154 222 153 232 M 183 218 Q 206 222 207 232" />
+
+              <!-- Pelvis (Swaps width for Male/Female in body.js) -->
+              <path id="pelvis-path" d="M 144 328 Q 180 356 216 328 Q 210 362 180 366 Q 150 362 144 328 Z" fill="#cbd5e1" fill-opacity="0.12" stroke-width="2" />
+
+              <!-- Male Arm Bones (Humerus, Radius/Ulna, Hands) -->
+              <g id="skel-arms-male">
+                <circle cx="122" cy="138" r="4" fill="#cbd5e1" fill-opacity="0.25" />
+                <line x1="120" y1="142" x2="100" y2="230" stroke-width="2.6" />
+                <circle cx="99" cy="234" r="3.2" fill="#cbd5e1" fill-opacity="0.25" />
+                <line x1="97" y1="238" x2="82" y2="322" stroke-width="1.4" />
+                <line x1="101" y1="238" x2="87" y2="322" stroke-width="1.4" />
+                <path d="M 84 324 L 78 340 M 85 324 L 83 343 M 86 324 L 88 340" stroke-width="1.1" />
+
+                <circle cx="238" cy="138" r="4" fill="#cbd5e1" fill-opacity="0.25" />
+                <line x1="240" y1="142" x2="260" y2="230" stroke-width="2.6" />
+                <circle cx="261" cy="234" r="3.2" fill="#cbd5e1" fill-opacity="0.25" />
+                <line x1="263" y1="238" x2="278" y2="322" stroke-width="1.4" />
+                <line x1="259" y1="238" x2="273" y2="322" stroke-width="1.4" />
+                <path d="M 276 324 L 282 340 M 275 324 L 277 343 M 274 324 L 272 340" stroke-width="1.1" />
+              </g>
+
+              <!-- Female Arm Bones (Fitted strictly inside narrower Female arms) -->
+              <g id="skel-arms-female" class="hidden">
+                <circle cx="126" cy="142" r="3.6" fill="#cbd5e1" fill-opacity="0.25" />
+                <line x1="125" y1="146" x2="107" y2="230" stroke-width="2.3" />
+                <circle cx="106" cy="234" r="3" fill="#cbd5e1" fill-opacity="0.25" />
+                <line x1="104" y1="238" x2="90" y2="320" stroke-width="1.3" />
+                <line x1="108" y1="238" x2="94" y2="320" stroke-width="1.3" />
+                <path d="M 92 322 L 86 337 M 92 322 L 91 340 M 93 322 L 96 337" stroke-width="1.0" />
+
+                <circle cx="234" cy="142" r="3.6" fill="#cbd5e1" fill-opacity="0.25" />
+                <line x1="235" y1="146" x2="253" y2="230" stroke-width="2.3" />
+                <circle cx="254" cy="234" r="3" fill="#cbd5e1" fill-opacity="0.25" />
+                <line x1="256" y1="238" x2="270" y2="320" stroke-width="1.3" />
+                <line x1="252" y1="238" x2="266" y2="320" stroke-width="1.3" />
+                <path d="M 268 322 L 274 337 M 268 322 L 269 340 M 267 322 L 264 337" stroke-width="1.0" />
+              </g>
+
+              <!-- Leg Bones (Hips, Femurs, Patellae/Kneecaps, Tibia/Fibula, Feet) -->
+              <circle cx="154" cy="364" r="4.5" fill="#cbd5e1" fill-opacity="0.25" />
+              <line x1="154" y1="368" x2="154" y2="486" stroke-width="3.2" />
+              <ellipse cx="154" cy="492" rx="4.5" ry="5.5" fill="#cbd5e1" fill-opacity="0.3" />
+              <line x1="152" y1="498" x2="151" y2="600" stroke-width="2.3" />
+              <line x1="157" y1="500" x2="156" y2="598" stroke-width="1.2" />
+              <path d="M 152 602 L 140 618 M 153 602 L 149 620 M 154 602 L 157 618" stroke-width="1.4" />
+
+              <circle cx="206" cy="364" r="4.5" fill="#cbd5e1" fill-opacity="0.25" />
+              <line x1="206" y1="368" x2="206" y2="486" stroke-width="3.2" />
+              <ellipse cx="206" cy="492" rx="4.5" ry="5.5" fill="#cbd5e1" fill-opacity="0.3" />
+              <line x1="208" y1="498" x2="209" y2="600" stroke-width="2.3" />
+              <line x1="203" y1="500" x2="204" y2="598" stroke-width="1.2" />
+              <path d="M 208 602 L 220 618 M 207 602 L 211 620 M 206 602 L 203 618" stroke-width="1.4" />
             </g>
 
-            <!-- Detailed Clickable Organ Diagrams -->
+            <!-- DETAILED CLICKABLE ORGAN DIAGRAMS -->
             <g id="layer-organs">
               <!-- Brain (Nervous System) -->
               <g id="org-brain" class="organ-clickable" data-organ="nervous" role="button" tabindex="0" aria-label="Nervous System — Brain">
-                <path d="M 180 35 C 168 35 163 44 165 53 C 166 60 173 63 180 61 C 187 63 194 60 195 53 C 197 44 192 35 180 35 Z" fill="#fbbf24" fill-opacity="0.34" stroke="#fbbf24" stroke-width="1.4" />
-                <path d="M 180 37 L 180 60 M 170 46 Q 175 49 171 54 M 190 46 Q 185 49 189 54" stroke="#fef3c7" stroke-width="0.9" stroke-opacity="0.7" fill="none" />
+                <path d="M 180 34 C 167 34 162 44 164 53 C 166 61 173 64 180 61 C 187 64 194 61 196 53 C 198 44 193 34 180 34 Z" fill="#fbbf24" fill-opacity="0.34" stroke="#fbbf24" stroke-width="1.5" />
+                <path d="M 180 36 L 180 60 M 169 44 Q 175 48 170 54 M 191 44 Q 185 48 190 54 M 172 41 Q 176 43 178 40 M 188 41 Q 184 43 182 40" stroke="#fef3c7" stroke-width="0.95" stroke-opacity="0.78" fill="none" />
               </g>
 
-              <!-- Trachea & Lungs (Respiratory System) -->
-              <g id="org-lungs" class="organ-clickable" data-organ="respiratory" role="button" tabindex="0" aria-label="Respiratory System — Lungs">
+              <!-- Trachea & Lungs (Respiratory System -> Opens respiratory.html) -->
+              <g id="org-lungs" class="organ-clickable" data-organ="respiratory" role="button" tabindex="0" aria-label="Open Respiratory System Page">
                 <path d="M 180 112 L 180 158 M 180 156 L 166 170 M 180 156 L 194 170" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.75" />
                 <path id="org-lung-l" d="M 175 154 C 154 154 140 178 142 214 C 143 226 161 228 174 218 Z" fill="#38bdf8" fill-opacity="0.28" stroke="#38bdf8" stroke-width="1.5" />
                 <path id="org-lung-r" d="M 185 154 C 206 154 220 178 218 214 C 217 226 199 228 186 218 Z" fill="#38bdf8" fill-opacity="0.28" stroke="#38bdf8" stroke-width="1.5" />
               </g>
 
-              <!-- Stomach & Intestines (Digestive System) -->
-              <g id="org-digestive" class="organ-clickable" data-organ="digestive" role="button" tabindex="0" aria-label="Digestive System — Stomach & Intestines">
-                <path id="org-stomach" d="M 182 230 C 199 230 207 245 199 259 C 191 271 171 268 171 253 C 171 244 177 238 182 230 Z" fill="#fb923c" fill-opacity="0.32" stroke="#fb923c" stroke-width="1.4" />
-                <path d="M 156 278 C 156 270 204 270 204 278 L 202 312 C 202 322 158 322 158 312 Z" fill="#fb923c" fill-opacity="0.16" stroke="#fb923c" stroke-width="1.2" stroke-dasharray="4 3" />
+              <!-- Complete Digestive System (Esophagus, Liver, Gallbladder, Stomach, Large & Small Intestine) -->
+              <g id="org-digestive" class="organ-clickable" data-organ="digestive" role="button" tabindex="0" aria-label="Digestive System — Liver, Stomach & Intestines">
+                <!-- Esophagus -->
+                <line x1="180" y1="112" x2="181" y2="226" stroke="#fdba74" stroke-width="2.4" stroke-opacity="0.55" stroke-linecap="round" />
+                <!-- Liver (Anatomical Right / Viewer's Left) -->
+                <path d="M 150 222 C 162 215 178 218 188 224 C 176 234 166 244 152 246 C 146 240 146 228 150 222 Z" fill="#ea580c" fill-opacity="0.42" stroke="#fb923c" stroke-width="1.4" />
+                <!-- Gallbladder (Tucked under Liver) -->
+                <ellipse cx="163" cy="245" rx="3.4" ry="4.6" fill="#34d399" fill-opacity="0.65" stroke="#6ee7b7" stroke-width="0.9" />
+                <!-- J-Shaped Stomach (Anatomical Left / Viewer's Right) -->
+                <path id="org-stomach" d="M 181 226 C 198 224 210 238 205 254 C 200 267 182 269 175 258 C 172 252 177 244 181 236 Z" fill="#fb923c" fill-opacity="0.38" stroke="#fdba74" stroke-width="1.5" />
+                <!-- Large Intestine (Colon Frame: Ascending -> Transverse -> Descending -> Rectum) -->
+                <path d="M 154 316 L 154 276 Q 154 268 164 268 L 196 268 Q 206 268 206 276 L 206 312 Q 206 322 194 322 L 182 322 L 180 334" fill="none" stroke="#f97316" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.45" />
+                <path d="M 154 316 L 154 276 Q 154 268 164 268 L 196 268 Q 206 268 206 276 L 206 312 Q 206 322 194 322 L 182 322 L 180 334" fill="none" stroke="#fdba74" stroke-width="1.4" stroke-dasharray="4 3" stroke-linecap="round" />
+                <!-- Small Intestine (Coiled Loops Inside Colon Frame) -->
+                <path d="M 176 262 C 166 272 194 276 194 282 C 194 288 164 286 164 293 C 164 300 194 298 194 304 C 194 310 166 310 166 316 C 166 320 184 318 190 316" fill="none" stroke="#fbbf24" stroke-width="3.6" stroke-linecap="round" stroke-opacity="0.62" />
               </g>
 
-              <!-- Kidneys (Urinary System) -->
-              <g id="org-urinary" class="organ-clickable" data-organ="urinary" role="button" tabindex="0" aria-label="Urinary System — Kidneys">
-                <ellipse id="org-kidney-l" cx="158" cy="264" rx="7.5" ry="12" fill="#22d3ee" fill-opacity="0.32" stroke="#22d3ee" stroke-width="1.3" />
-                <ellipse id="org-kidney-r" cx="202" cy="264" rx="7.5" ry="12" fill="#22d3ee" fill-opacity="0.32" stroke="#22d3ee" stroke-width="1.3" />
+              <!-- Complete Urinary System (Kidneys -> Ureters -> Bladder -> Urethra) -->
+              <g id="org-urinary" class="organ-clickable" data-organ="urinary" role="button" tabindex="0" aria-label="Urinary System — Kidneys, Ureters & Bladder">
+                <!-- Kidneys (Anatomical Right slightly lower due to Liver) -->
+                <path id="org-kidney-l" d="M 161 254 C 151 254 148 278 161 278 C 166 278 166 271 163 266 C 166 261 166 254 161 254 Z" fill="#22d3ee" fill-opacity="0.42" stroke="#67e8f9" stroke-width="1.4" />
+                <path id="org-kidney-r" d="M 199 248 C 209 248 212 272 199 272 C 194 272 194 265 197 260 C 194 255 194 248 199 248 Z" fill="#22d3ee" fill-opacity="0.42" stroke="#67e8f9" stroke-width="1.4" />
+                <!-- Ureters connecting Kidneys to Bladder -->
+                <path d="M 163 268 Q 167 308 174 342" fill="none" stroke="#67e8f9" stroke-width="2.1" stroke-linecap="round" />
+                <path d="M 197 262 Q 193 308 186 342" fill="none" stroke="#67e8f9" stroke-width="2.1" stroke-linecap="round" />
+                <!-- Pelvic Urinary Bladder & Urethra -->
+                <path id="org-bladder" d="M 169 342 Q 180 335 191 342 Q 193 358 180 364 Q 167 358 169 342 Z" fill="#22d3ee" fill-opacity="0.45" stroke="#67e8f9" stroke-width="1.5" />
+                <line x1="180" y1="364" x2="180" y2="375" stroke="#67e8f9" stroke-width="2.1" stroke-linecap="round" />
               </g>
             </g>
 
             <!-- Flagship Clickable Heart -> Opens circulatory.html -->
             <g id="heart-hotspot" class="organ-clickable" data-organ="circulatory" role="button" tabindex="0" aria-label="Open Heart & Circulatory System Page" filter="url(#organGlow)">
               <circle id="heart-ring" cx="188" cy="196" r="22" fill="none" stroke="var(--arterial)" stroke-width="1.7" class="hotspot-ring" />
-              <path d="M 184 180 C 184 170 194 170 195 178" fill="none" stroke="#ff3b6b" stroke-width="3" stroke-linecap="round" />
+              <path d="M 184 180 C 184 170 194 170 195 178" fill="none" stroke="#e0637d" stroke-width="3" stroke-linecap="round" />
               <path id="heart-shape" d="M 188 182 C 182 174 170 179 172 191 C 174 202 184 212 190 216 C 197 211 206 200 206 189 C 206 179 194 174 188 182 Z" fill="var(--arterial)" fill-opacity="0.96" stroke="#ffe4e6" stroke-width="1.5" />
             </g>
           </svg>
@@ -189,7 +304,7 @@
           <canvas id="body-canvas" class="stage-canvas" aria-hidden="true"></canvas>
 
           <div class="stage-hint-wrap">
-            <div id="stage-hint" class="stage-hint" data-i18n="stage.diveHint">Tap the glowing heart to open the 4-chamber live lab page</div>
+            <div id="stage-hint" class="stage-hint" data-i18n="stage.diveHint">Tap the Heart or Lungs to open their live deep-dive pages</div>
           </div>
         </div>
       </section>
@@ -213,7 +328,7 @@
           <h1 id="active-sys-title" class="sys-title">Circulatory System</h1>
           <p id="active-sys-desc" class="sys-desc"></p>
 
-          <!-- Shown when Circulatory is selected -->
+          <!-- Shown when a LIVE organ page (Circulatory or Respiratory) is selected -->
           <div id="circulatory-actions">
             <div class="legend-grid">
               <div class="legend-item">
@@ -226,7 +341,7 @@
               </div>
             </div>
             <a href="circulatory.html" class="primary-cta">
-              <span data-i18n="stage.openDeepDive">Open Heart &amp; Circulation Page</span>
+              <span data-i18n="stage.openDeepDive">Open Heart &amp; Blood Cells Page</span>
               <span aria-hidden="true">↗</span>
             </a>
           </div>

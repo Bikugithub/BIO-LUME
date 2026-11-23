@@ -58,6 +58,10 @@
       },
       selectPrompt:
         "Tap any glowing pin on the diagram to inspect its exact anatomical connection and biological function.",
+      femaleCycleHud: {
+        ovulating: "♀ Ovulation: Egg swept by Fimbriae into Fallopian Tube",
+        inUterus: "♀ Egg resting in Uterus (Endometrium ready for implantation)",
+      },
       maleHotspots: {
         testis: {
           name: "Testes (Testicles) & Scrotum",
@@ -105,7 +109,7 @@
           en: "Common Passage",
           role: "Carries Urine or Semen (Never Together)",
           summary:
-            "A central tube running through the muscular Penis shaft. It serves as a shared exit passage for urine from the bladder and semen from the reproductive ducts (a valve prevents both from flowing at once).",
+            "A central tube running through the spongy erectile tissue (Corpus Cavernosum & Corpus Spongiosum) of the Penis shaft. It serves as a shared exit passage for urine from the bladder and semen from the reproductive ducts.",
           keyFact: "Delivers semen safely into the female vagina during reproduction.",
         },
         glans: {
@@ -113,7 +117,7 @@
           en: "Sensitive Tip of Penis",
           role: "Terminal Opening (Urethral Meatus)",
           summary:
-            "The smooth, rounded, nerve-rich tip at the end of the penis where the urethra opens externally to release urine or semen.",
+            "The smooth, dome-shaped, nerve-rich tip at the end of the penis bordered by the coronal ridge, where the urethra opens externally to release urine or semen.",
           keyFact: "Protected by a fold of skin (foreskin/prepuce) and rich in sensory nerve endings.",
         },
       },
@@ -123,16 +127,16 @@
           en: "Primary Female Sex Organs",
           role: "Ovum (Egg) & Estrogen/Progesterone",
           summary:
-            "Two almond-shaped organs located on either side of the lower abdomen. Each month from puberty, one ovary matures and releases a single Egg (Ovulation) while secreting Estrogen and Progesterone.",
+            "Two almond-shaped organs anchored to the uterus by ovarian ligaments and cupped closely by the Fallopian fimbriae. Each month from puberty, one ovary matures and releases a single Egg (Ovulation) while secreting Estrogen and Progesterone.",
           keyFact: "A baby girl is born with thousands of immature eggs already present in her ovaries.",
         },
         fimbriae: {
           name: "Fimbriae",
           en: "Finger-like Catchers",
-          role: "Sweeps Ovulated Egg Into Tube",
+          role: "Cups Ovary & Sweeps Egg Into Tube",
           summary:
-            "Delicate, finger-like fringes at the funnel-shaped open end of each Fallopian Tube that sweep gently over the ovary to guide the newly released egg inside.",
-          keyFact: "Ensures the non-motile egg enters the Fallopian Tube smoothly after ovulation.",
+            "Delicate, finger-like fringes on the flared funnel end (Infundibulum) of each Fallopian Tube that wrap closely over the ovary to guide the newly released egg smoothly inside.",
+          keyFact: "Ensures the non-motile egg enters the Fallopian Tube smoothly right after ovulation.",
         },
         fallopian: {
           name: "Fallopian Tube (Oviduct)",
@@ -147,7 +151,7 @@
           en: "Hollow Muscular Pear-Shaped Organ",
           role: "Site of Implantation & Foetus Growth",
           summary:
-            "A strong, elastic, inverted pear-shaped organ where the fertilized egg implants and grows for ~9 months into a full baby. Its muscular walls contract during childbirth.",
+            "A strong, elastic, inverted pear-shaped organ where the egg arrives and where a fertilized embryo implants and grows for ~9 months into a full baby. Its muscular walls contract during childbirth.",
           keyFact: "Can expand dramatically during pregnancy to house the growing foetus and amniotic fluid.",
         },
         endometrium: {
@@ -221,7 +225,7 @@
           {
             title: "2. Female Reproductive System (Vagina to Ovary)",
             html: `<p>• <strong>Ovaries:</strong> Produce 1 mature Egg (Ovum) every ~28 days + Estrogen &amp; Progesterone.<br/>
-            • <strong>Fallopian Tubes (Oviducts):</strong> Carry egg from ovary to uterus; <strong>exact site of Fertilization</strong>.<br/>
+            • <strong>Fallopian Tubes (Oviducts):</strong> Cup the ovaries with Fimbriae; <strong>exact site of Fertilization</strong>.<br/>
             • <strong>Uterus (Womb):</strong> Muscular organ with blood-rich <strong>Endometrium</strong> where the embryo implants and grows.<br/>
             • <strong>Cervix &amp; Vagina:</strong> Gateway into uterus and elastic birth canal.</p>`,
           },
@@ -304,15 +308,16 @@
         quizTab: "Fertilization & Foetus Quiz",
         analogyLabel: "Easy Analogy",
         fusionHud: [
-          "APPROACH: Motile Sperm (n=23) swims toward Egg (n=23) using its Flagellum",
-          "ENTRY: Acrosome enzymes open Zona Pellucida → Only 1 Sperm enters!",
-          "FUSION COMPLETE: 23 + 23 = 46 Chromosomes → Diploid ZYGOTE Formed!",
+          "1. APPROACH: Sperm (n=23) swims to Egg's Zona Pellucida",
+          "2. ENTRY & LOCK: Acrosome opens coat; Membrane locks out other sperm!",
+          "3. PRONUCLEI MERGE: ♂ Nucleus (23) glides to meet ♀ Nucleus (23)",
+          "4. FUSION COMPLETE: 23 + 23 = 46 Chromosomes → Diploid ZYGOTE!",
         ],
         foetusHud: [
           "STAGE 1 (Day 1): Single-cell Diploid Zygote (46 chromosomes) formed!",
-          "STAGE 2 (Days 2–7): Rapid Mitotic Cleavage → Ball of Cells (Blastocyst)",
+          "STAGE 2 (Days 2–7): Live Cleavage: 1 → 2 → 4 → 8 Morula → Blastocyst",
           "STAGE 3 (Weeks 2–8): Implantation in Uterus → Embryo + Placenta + Heartbeat",
-          "STAGE 4 (Weeks 9–38): Foetus in Amniotic Sac nourished via Umbilical Cord!",
+          "STAGE 4 (Weeks 9–38): Foetus in Amniotic Sac linked to Placenta via Umbilical Cord!",
         ],
       },
       fusionParts: {
@@ -346,7 +351,7 @@
           role: "Fertilization Complete",
           analogy: "Merging two half-blueprints into one complete, unique 46-chromosome instruction manual for a new human!",
           summary:
-            "As soon as the first sperm nucleus enters, the egg membrane hardens instantly (preventing extra sperm from entering). Both haploid nuclei fuse to form a single diploid cell: the Zygote.",
+            "As soon as the first sperm nucleus enters, the egg membrane hardens instantly (preventing extra sperm from entering). Both haploid pronuclei migrate together and fuse into one diploid Zygote nucleus.",
         },
       },
       foetusSteps: {
@@ -361,10 +366,10 @@
         stage2: {
           name: "2. Cleavage & Blastocyst",
           en: "Days 2–7 • Rapid Mitosis",
-          role: "1 → 2 → 4 → 8 → Ball of Cells",
+          role: "1 → 2 → 4 → 8 Morula → Blastocyst",
           analogy: "Like one building block rapidly copying itself into a neat hollow cluster while gliding down a conveyor belt.",
           summary:
-            "As cilia push it along the Fallopian Tube, the Zygote divides repeatedly by Mitosis into 2, 4, 8, 16, and ~100 cells, forming a hollow sphere called a Blastocyst.",
+            "As cilia push it along the Fallopian Tube, the Zygote divides repeatedly by Mitosis (2-cell → 4-cell → 8-cell Morula), forming a hollow sphere with an inner cell mass called a Blastocyst.",
         },
         stage3: {
           name: "3. Implantation & Embryo",
@@ -380,7 +385,7 @@
           role: "Full Organ Growth & Birth (~9 Months)",
           analogy: "A protected astronaut floating weightlessly in warm liquid cushion, receiving O₂ and food through a flexible lifeline.",
           summary:
-            "Once all major body parts (head, limbs, fingers, organs) are recognizable, the Embryo is called a Foetus. The disc-shaped Placenta and Umbilical Cord supply O₂ & Glucose from the mother's blood and remove CO₂ & wastes, while Amniotic Fluid cushions bumps until birth (~9 months / 280 days).",
+            "Once all major body parts (head, face, spine, limbs, organs) are recognizable, the Embryo is called a Foetus. The disc-shaped Placenta and twisted Umbilical Cord supply O₂ & Glucose from the mother's blood and remove CO₂ & wastes, while Amniotic Fluid cushions bumps until birth (~9 months / 280 days).",
         },
       },
       ffLesson: {
@@ -388,11 +393,11 @@
         sections: [
           {
             title: "1. Step-by-Step Formula: Gametes to Baby",
-            html: `<div class="detail-fact" style="margin-top:4px"><strong>Sperm (n = 23) + Egg (n = 23) ──(Fertilization in Fallopian Tube)──► Zygote (2n = 46) ──(Mitosis)──► Blastocyst ──(Implantation in Uterus)──► Embryo ──(Week 9+)──► Foetus (~9 Months Gestation)</strong></div>`,
+            html: `<div class="detail-fact" style="margin-top:4px"><strong>Sperm (n = 23) + Egg (n = 23) ──(Fertilization in Fallopian Tube)──► Zygote (2n = 46) ──(Mitosis)──► Morula → Blastocyst ──(Implantation in Uterus)──► Embryo ──(Week 9+)──► Foetus (~9 Months Gestation)</strong></div>`,
           },
           {
             title: "2. Role of the Placenta (High-Yield 3-Mark Board Question)",
-            html: `<p>The <strong>Placenta</strong> is a special disc-shaped tissue embedded in the uterine wall with tiny finger-like <strong>Villi</strong> on the embryo's side surrounded by mother's blood spaces. Connected to the baby by the <strong>Umbilical Cord</strong>, it performs 2 vital jobs:<br/>
+            html: `<p>The <strong>Placenta</strong> is a special disc-shaped tissue embedded in the uterine wall with tiny finger-like <strong>Villi</strong> on the embryo's side surrounded by mother's blood spaces. Connected to the baby's abdomen by the <strong>Umbilical Cord</strong>, it performs 2 vital jobs:<br/>
             1. <strong>Nutrition &amp; Oxygen:</strong> Passes Glucose, Amino Acids, and O₂ from mother's blood to the foetus.<br/>
             2. <strong>Waste Removal:</strong> Carries CO₂ and nitrogenous wastes from the foetus back into the mother's blood for excretion.</p>`,
           },
@@ -498,6 +503,10 @@
       },
       selectPrompt:
         "सटीक संरचनात्मक जुड़ाव और कार्य पढ़ने के लिए चित्र के किसी भी पिन पर टैप करें।",
+      femaleCycleHud: {
+        ovulating: "♀ अंडोत्सर्ग: झालर (Fimbriae) अंडाणु को फैलोपियन नलिका में ले जा रही हैं",
+        inUterus: "♀ अंडाणु गर्भाशय में ठहरा है (एंडोमेट्रियम रोपण हेतु तैयार)",
+      },
       maleHotspots: {
         testis: {
           name: "वृषण (Testes) और वृषणकोष",
@@ -546,7 +555,7 @@
           name: "शिश्न मुंड (Glans Penis)",
           en: "Glans Penis",
           role: "संवेदी अग्र सिरा",
-          summary: "शिश्न का चिकना, गोल और संवेदनशील अग्र सिरा जहाँ मूत्रमार्ग बाहर खुलता है।",
+          summary: "शिश्न का चिकना, गुंबद जैसा संवेदनशील अग्र सिरा जहाँ मूत्रमार्ग बाहर खुलता है।",
           keyFact: "यह संवेदी तंत्रिका सिरों से समृद्ध होता है।",
         },
       },
@@ -561,8 +570,8 @@
         fimbriae: {
           name: "झालर (Fimbriae)",
           en: "Fimbriae",
-          role: "अंडाणु पकड़ने वाले सिरे",
-          summary: "फैलोपियन नलिका के खुले सिरे पर उंगली जैसे प्रवर्ध जो अंडोत्सर्ग के बाद अंडाणु को नलिका के भीतर समेट लेते हैं।",
+          role: "अंडाशय को घेरकर अंडाणु पकड़ना",
+          summary: "फैलोपियन नलिका के कीपनुमा खुले सिरे पर उंगली जैसे प्रवर्ध जो अंडाशय को घेरकर अंडोत्सर्ग के बाद अंडाणु को नलिका के भीतर समेट लेते हैं।",
           keyFact: "अंडाणु को सुरक्षित रूप से अंडवाहिनी में प्रवेश कराते हैं।",
         },
         fallopian: {
@@ -706,13 +715,14 @@
         quizTab: "निषेचन व भ्रूण क्विज़",
         analogyLabel: "सरल उदाहरण",
         fusionHud: [
-          "चरण 1: गतिशील शुक्राणु (23) पूँछ से तैरकर अंडाणु (23) के पास आता है",
-          "चरण 2: एक्रोसोम एंजाइम परत खोलते हैं → केवल 1 शुक्राणु प्रवेश करता है!",
-          "निषेचन पूर्ण: 23 + 23 = 46 गुणसूत्र → द्विगुणित युग्मनज (ZYGOTE) बना!",
+          "1. आगमन: शुक्राणु (23) अंडाणु की परत के पास पहुँचता है",
+          "2. प्रवेश व लॉक: एक्रोसोम द्वार खोलता है; झिल्ली अन्य शुक्राणु रोकती है!",
+          "3. केंद्रक मिलन: ♂ केंद्रक (23) व ♀ केंद्रक (23) पास आते हैं",
+          "4. संलयन पूर्ण: 23 + 23 = 46 गुणसूत्र → द्विगुणित युग्मनज (ZYGOTE)!",
         ],
         foetusHud: [
           "चरण 1 (दिन 1): एक-कोशिकीय द्विगुणित युग्मनज (46 गुणसूत्र) बना!",
-          "चरण 2 (दिन 2–7): तीव्र समसूत्री विभाजन → कोशिका गोला (ब्लास्टोसिस्ट)",
+          "चरण 2 (दिन 2–7): विदलन: 1 → 2 → 4 → 8 मोरुला → ब्लास्टोसिस्ट",
           "चरण 3 (सप्ताह 2–8): गर्भाशय में रोपण → एम्ब्रियो + प्लेसेंटा + धड़कन",
           "चरण 4 (सप्ताह 9–38): एम्नियोटिक थैली में पूर्ण भ्रूण (Foetus) व नाभि रज्जु!",
         ],
@@ -744,7 +754,7 @@
           en: "23 + 23 = 46 Chromosomes",
           role: "निषेचन पूर्ण",
           analogy: "दो आधे ब्लूप्रिंट मिलकर एक नए इंसान का पूरा 46-गुणसूत्र नक्शा बनाते हैं!",
-          summary: "दोनों केंद्रक जुड़कर 46 गुणसूत्रों वाला युग्मनज (Zygote) बनाते हैं और बाहरी झिल्ली अन्य शुक्राणुओं को रोक देती है।",
+          summary: "दोनों केंद्रक पास आकर जुड़ते हैं और 46 गुणसूत्रों वाला युग्मनज (Zygote) बनाते हैं।",
         },
       },
       foetusSteps: {
@@ -758,9 +768,9 @@
         stage2: {
           name: "2. विदलन व ब्लास्टोसिस्ट",
           en: "दिन 2–7 • समसूत्री विभाजन",
-          role: "1 → 2 → 4 → 8 → कोशिका गोला",
+          role: "1 → 2 → 4 → 8 मोरुला → ब्लास्टोसिस्ट",
           analogy: "एक ईंट तेजी से विभाजित होकर सुंदर खोखला गोला बनाती हुई गर्भाशय की ओर बढ़ती है।",
-          summary: "युग्मनज बार-बार विभाजित होकर ब्लास्टोसिस्ट (कोशिकाओं की गेंद) बनाता है।",
+          summary: "युग्मनज बार-बार विभाजित होकर (2 → 4 → 8 मोरुला) खोखला ब्लास्टोसिस्ट बनाता है।",
         },
         stage3: {
           name: "3. रोपण व एम्ब्रियो",
@@ -782,7 +792,7 @@
         sections: [
           {
             title: "1. युग्मक से शिशु तक का क्रम",
-            html: `<div class="detail-fact" style="margin-top:4px"><strong>शुक्राणु (23) + अंडाणु (23) → युग्मनज (46) → ब्लास्टोसिस्ट → रोपण (गर्भाशय) → एम्ब्रियो → भ्रूण / Foetus (~9 महीने)</strong></div>`,
+            html: `<div class="detail-fact" style="margin-top:4px"><strong>शुक्राणु (23) + अंडाणु (23) → युग्मनज (46) → मोरुला → ब्लास्टोसिस्ट → रोपण (गर्भाशय) → एम्ब्रियो → भ्रूण / Foetus (~9 महीने)</strong></div>`,
           },
           {
             title: "2. प्लेसेंटा (अपरा) की भूमिका",
@@ -882,6 +892,10 @@
       },
       selectPrompt:
         "সঠিক গঠনগত সংযোগ ও কাজ জানতে চিত্রের যেকোনো জ্বলন্ত পিনে ট্যাপ করুন।",
+      femaleCycleHud: {
+        ovulating: "♀ ডিম্বপাত: ফিম্ব্রি ডিম্বাণুকে ফ্যালোপিয়ান নালীতে টেনে নিচ্ছে",
+        inUterus: "♀ ডিম্বাণু জরায়ুতে অবস্থান করছে (এন্ডোমেট্রিয়াম প্রস্তুত)",
+      },
       maleHotspots: {
         testis: {
           name: "শুক্রাশয় (Testes) ও স্ক্রোটাম",
@@ -930,7 +944,7 @@
           name: "গ্ল্যান্স পেনিস (শিশ্ন মুণ্ড)",
           en: "Glans Penis",
           role: "সংবেদী প্রান্তভাগ",
-          summary: "শিশ্নের মসৃণ, গোলাকার ও অত্যন্ত সংবেদী অগ্রভাগ যেখানে মূত্রনালী বাইরে উন্মুক্ত হয়।",
+          summary: "শিশ্নের মসৃণ, গম্বুজাকৃতি ও অত্যন্ত সংবেদী অগ্রভাগ যেখানে মূত্রনালী বাইরে উন্মুক্ত হয়।",
           keyFact: "অসংখ্য সংবেদী স্নায়ুপ্রান্তে সমৃদ্ধ।",
         },
       },
@@ -945,8 +959,8 @@
         fimbriae: {
           name: "ফিম্ব্রি (Fimbriae)",
           en: "Fimbriae",
-          role: "ডিম্বাণু সংগ্রহকারী প্রান্ত",
-          summary: "ফ্যালোপিয়ান নালীর খোলা মুখে আঙুলের মতো প্রবর্ধক যা ডিম্বপাতের পর ডিম্বাণুকে নালীর ভেতর টেনে নেয়।",
+          role: "ডিম্বাশয়কে ঘিরে ডিম্বাণু সংগ্রহ",
+          summary: "ফ্যালোপিয়ান নালীর ফানেল-মুখের আঙুলের মতো প্রবর্ধক যা ডিম্বাশয়কে ঘিরে রেখে ডিম্বপাতের পর ডিম্বাণুকে নালীর ভেতর টেনে নেয়।",
           keyFact: "নিশ্চল ডিম্বাণুকে ফ্যালোপিয়ান নালীতে প্রবেশে সাহায্য করে।",
         },
         fallopian: {
@@ -1090,13 +1104,14 @@
         quizTab: "নিষেক ও ভ্রূণ কুইজ",
         analogyLabel: "সহজ উদাহরণ",
         fusionHud: [
-          "ধাপ ১: সচল শুক্রাণু (23) লেজ নেড়ে ডিম্বাণুর (23) দিকে এগিয়ে আসে",
-          "ধাপ ২: অ্যাক্রোজোম উৎসেচক পর্দা খোলে → কেবল ১টি শুক্রাণু ঢোকে!",
-          "নিষেক সম্পূর্ণ: 23 + 23 = 46 ক্রোমোজোম → ডিপ্লয়েড জাইগোট (ZYGOTE)!",
+          "১. আগমন: শুক্রাণু (23) ডিম্বাণুর জোনা পেলুসিডা স্তরে পৌঁছায়",
+          "২. প্রবেশ ও লক: অ্যাক্রোজোম পথ খোলে; পর্দা বাকি শুক্রাণু আটকে দেয়!",
+          "৩. নিউক্লিয়াস মিলন: ♂ নিউক্লিয়াস (23) ও ♀ নিউক্লিয়াস (23) কাছে আসে",
+          "৪. নিষেক সম্পূর্ণ: 23 + 23 = 46 ক্রোমোজোম → ডিপ্লয়েড জাইগোট!",
         ],
         foetusHud: [
           "ধাপ ১ (দিন ১): এককোষী ডিপ্লয়েড জাইগোট (46 ক্রোমোজোম) তৈরি হলো!",
-          "ধাপ ২ (দিন ২–৭): দ্রুত মাইটোসিস বিভাজন → কোষগুচ্ছ (ব্লাস্টোসিস্ট)",
+          "ধাপ ২ (দিন ২–৭): বিভাজন: ১ → ২ → ৪ → ৮ মোরুলা → ব্লাস্টোসিস্ট",
           "ধাপ ৩ (সপ্তাহ ২–৮): জরায়ুতে রোপণ → এমব্রায়ো + অমরা + হৃদস্পন্দন",
           "ধাপ ৪ (সপ্তাহ ৯–৩৮): অ্যামনিওটিক থলিতে পূর্ণ ভ্রূণ (Foetus) ও নাভিরজ্জু!",
         ],
@@ -1128,7 +1143,7 @@
           en: "23 + 23 = 46 Chromosomes",
           role: "নিষেক সম্পূর্ণ",
           analogy: "দুটি অর্ধেক নকশা মিলে একজন নতুন মানুষের সম্পূর্ণ ৪৬-ক্রোমোজোম ব্লুপ্রিন্ট তৈরি করে!",
-          summary: "উভয় নিউক্লিয়াস মিলে ৪৬ ক্রোমোজোমযুক্ত জাইগোট তৈরি করে এবং পর্দা শক্ত হয়ে বাকি শুক্রাণু আটকে দেয়।",
+          summary: "উভয় নিউক্লিয়াস কাছে এসে মিলে ৪৬ ক্রোমোজোমযুক্ত জাইগোট তৈরি করে।",
         },
       },
       foetusSteps: {
@@ -1142,9 +1157,9 @@
         stage2: {
           name: "২. বিভাজন ও ব্লাস্টোসিস্ট",
           en: "দিন ২–৭ • মাইটোসিস",
-          role: "১ → ২ → ৪ → ৮ → কোষের গোলক",
+          role: "১ → ২ → ৪ → ৮ মোরুলা → ব্লাস্টোসিস্ট",
           analogy: "একটি কোষ দ্রুত বিভাজিত হয়ে সুন্দর ফাঁপা গোলক গড়ে জরায়ুর দিকে এগিয়ে চলে।",
-          summary: "জাইগোট বারবার মাইটোসিস বিভাজনে বিভক্ত হয়ে ব্লাস্টোসিস্ট তৈরি করে।",
+          summary: "জাইগোট বারবার মাইটোসিস বিভাজনে বিভক্ত হয়ে মোরুলা ও ব্লাস্টোসিস্ট তৈরি করে।",
         },
         stage3: {
           name: "৩. রোপণ ও এমব্রায়ো",
@@ -1166,7 +1181,7 @@
         sections: [
           {
             title: "১. গ্যামেট থেকে শিশু গঠনের ধাপ",
-            html: `<div class="detail-fact" style="margin-top:4px"><strong>শুক্রাণু (23) + ডিম্বাণু (23) → জাইগোট (46) → ব্লাস্টোসিস্ট → রোপণ (জরায়ু) → এমব্রায়ো → ফিটাস / Foetus (~৯ মাস)</strong></div>`,
+            html: `<div class="detail-fact" style="margin-top:4px"><strong>শুক্রাণু (23) + ডিম্বাণু (23) → জাইগোট (46) → মোরুলা → ব্লাস্টোসিস্ট → রোপণ (জরায়ু) → এমব্রায়ো → ফিটাস / Foetus (~৯ মাস)</strong></div>`,
           },
           {
             title: "২. অমরার (Placenta) কাজ",
@@ -1215,65 +1230,77 @@
     },
   };
 
-  // Hotspot Pins (percentages on 420x440 stage)
+  // Hotspot Pins aligned 1:1 with the upgraded anatomical drawings (420x440)
   const MALE_PINS = [
-    { id: "vasDeferens", x: 34.0, y: 22.0, tone: "venous" },
-    { id: "seminal", x: 64.0, y: 31.0, tone: "electric" },
-    { id: "prostate", x: 52.0, y: 46.0, tone: "electric" },
-    { id: "epididymis", x: 25.0, y: 63.0, tone: "venous" },
-    { id: "testis", x: 35.0, y: 74.0, tone: "arterial" },
-    { id: "urethra", x: 62.0, y: 60.0, tone: "venous" },
-    { id: "glans", x: 82.0, y: 68.0, tone: "arterial" },
+    { id: "vasDeferens", x: 35.2, y: 21.4, tone: "venous" },
+    { id: "seminal", x: 58.6, y: 33.6, tone: "electric" },
+    { id: "prostate", x: 45.7, y: 42.3, tone: "electric" },
+    { id: "epididymis", x: 28.1, y: 69.1, tone: "venous" },
+    { id: "testis", x: 35.7, y: 73.2, tone: "arterial" },
+    { id: "urethra", x: 61.4, y: 57.3, tone: "venous" },
+    { id: "glans", x: 79.5, y: 65.5, tone: "arterial" },
   ];
 
   const FEMALE_PINS = [
-    { id: "fallopian", x: 74.0, y: 21.0, tone: "electric" },
-    { id: "fimbriae", x: 84.0, y: 34.0, tone: "venous" },
-    { id: "ovary", x: 75.0, y: 42.0, tone: "arterial" },
-    { id: "uterus", x: 50.0, y: 27.0, tone: "arterial" },
-    { id: "endometrium", x: 50.0, y: 44.0, tone: "arterial" },
-    { id: "cervix", x: 50.0, y: 60.0, tone: "electric" },
-    { id: "vagina", x: 50.0, y: 76.0, tone: "venous" },
+    { id: "fallopian", x: 70.5, y: 25.0, tone: "electric" },
+    { id: "fimbriae", x: 80.5, y: 34.5, tone: "venous" },
+    { id: "ovary", x: 74.3, y: 40.5, tone: "arterial" },
+    { id: "uterus", x: 50.0, y: 28.6, tone: "arterial" },
+    { id: "endometrium", x: 50.0, y: 43.6, tone: "arterial" },
+    { id: "cervix", x: 50.0, y: 59.5, tone: "electric" },
+    { id: "vagina", x: 50.0, y: 73.6, tone: "venous" },
   ];
 
   const FERT_PINS = [
-    { id: "entry", x: 50.0, y: 76.0, tone: "venous" },
+    { id: "entry", x: 50.0, y: 74.0, tone: "venous" },
     { id: "uterusSwim", x: 50.0, y: 44.0, tone: "electric" },
-    { id: "meet", x: 72.0, y: 21.0, tone: "arterial" },
-    { id: "fusion", x: 62.0, y: 24.0, tone: "electric" },
+    { id: "meet", x: 74.0, y: 25.5, tone: "arterial" },
+    { id: "fusion", x: 62.5, y: 28.0, tone: "electric" },
   ];
 
-  // Male Connected Sperm Duct Path (Testis -> Epididymis -> Vas Deferens -> Prostate -> Urethra -> Glans)
+  // Connected Male Sperm Pathway (Testis -> Epididymis -> Vas Deferens -> Prostate -> Urethra -> Glans)
   const MALE_DUCT_PATH = [
-    [146, 326], // Testis
-    [114, 304], // Epididymis lower
-    [112, 268], // Epididymis upper
-    [118, 178], // Vas Deferens rising
-    [146, 98],  // Vas Deferens looping over bladder
-    [224, 96],
-    [254, 152], // Joining Seminal Vesicle duct
-    [222, 200], // Through Prostate Gland
-    [244, 248], // Urethra entering Penis shaft
-    [304, 282], // Penis shaft
-    [346, 298], // Glans Penis tip
+    [150, 316],
+    [122, 306],
+    [126, 284],
+    [118, 200],
+    [146, 94],
+    [216, 94],
+    [236, 148],
+    [196, 188],
+    [208, 226],
+    [256, 252],
+    [312, 280],
+    [348, 294],
   ];
 
-  // Female / Fertilization Sperm Swim Path (Vagina -> Cervix -> Uterus -> Right Fallopian Tube Ampulla)
+  // Female Ovulation Path (Right Ovary -> Cupped Fimbriae -> Fallopian Tube -> Uterine Cavity)
+  const FEMALE_EGG_PATH = [
+    [312, 178], // Released from Ovary
+    [338, 152], // Caught by cupped Fimbriae
+    [332, 118], // Entering Infundibulum / Ampulla
+    [292, 108], // Fallopian Tube arch
+    [254, 138], // Uterine Horn
+    [224, 166], // Entering Uterus
+    [210, 188], // Resting inside Uterus cavity
+  ];
+
+  // Fertilization Sperm Swim Path (Vagina -> Cervix -> Uterus -> Right Fallopian Tube Ampulla)
   const SPERM_SWIM_PATH = [
-    [210, 358], // Vagina entrance
-    [210, 310], // Vagina upper
-    [210, 264], // Cervix
-    [210, 204], // Uterus cavity
-    [232, 156], // Uterine horn
-    [268, 108], // Fallopian tube isthmus
-    [306, 94],  // Ampulla (Fertilization site!)
+    [210, 356],
+    [210, 308],
+    [210, 262],
+    [210, 200],
+    [246, 146],
+    [284, 114],
+    [312, 114],
   ];
 
   const ui = {
     view: "male", // "male" | "female" | "fert"
     paused: false,
     showPins: true,
-    pathPct: 25, // 0..100 for Fertilization journey
+    pathPct: 25,
     autoPath: true,
     selectedMaleHotspot: "testis",
     selectedFemaleHotspot: "fallopian",
@@ -1288,7 +1315,7 @@
     isFlipped: false,
     ffPaused: false,
     selectedFusionPart: "spermHead",
-    fusionProgress: 0, // 0..1 continuous cycle
+    fusionProgress: 0, // 0..1 continuous 4-phase cycle
     foetusStage: 0, // 0..3
     foetusAutoTimer: 0,
     ffTab: "lesson",
@@ -1336,7 +1363,6 @@
     ctx.rotate(angle);
     ctx.scale(scale, scale);
 
-    // Wiggling flagellum tail
     ctx.strokeStyle = color;
     ctx.lineWidth = 1.6;
     ctx.lineCap = "round";
@@ -1347,7 +1373,6 @@
     }
     ctx.stroke();
 
-    // Oval sperm head
     ctx.fillStyle = color;
     ctx.beginPath();
     ctx.ellipse(1, 0, 5.2, 3.1, 0, 0, Math.PI * 2);
@@ -1851,6 +1876,9 @@
     let elapsed = 0;
     let lastTick = 0;
 
+    // ---------------------------------------------------------
+    // 1. PROFESSIONAL MEDICAL-ATLAS MALE SAGITTAL ANATOMY
+    // ---------------------------------------------------------
     function drawMaleSystem(ctx, isLight) {
       const sel = ui.selectedMaleHotspot;
       const cyan = isLight ? "#2b7eb3" : "#68b8e6";
@@ -1863,112 +1891,179 @@
       ctx.lineJoin = "round";
 
       // 1. Urinary Bladder (Reference organ sitting above Prostate)
-      ctx.fillStyle = isLight ? "rgba(43,126,179,0.12)" : "rgba(104,184,230,0.14)";
+      ctx.fillStyle = isLight ? "rgba(43,126,179,0.11)" : "rgba(104,184,230,0.13)";
       ctx.strokeStyle = isLight ? "rgba(43,126,179,0.45)" : "rgba(104,184,230,0.45)";
       ctx.lineWidth = 1.6;
       ctx.setLineDash([4, 4]);
       ctx.beginPath();
-      ctx.ellipse(202, 146, 44, 34, 0, 0, Math.PI * 2);
+      ctx.ellipse(188, 138, 44, 32, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
       ctx.setLineDash([]);
       ctx.font = "700 9px 'Plus Jakarta Sans', sans-serif";
       ctx.fillStyle = isLight ? "#556982" : "#8ca4c0";
       ctx.textAlign = "center";
-      ctx.fillText("BLADDER", 202, 149);
+      ctx.fillText("BLADDER", 188, 141);
 
-      // 2. Scrotum Outer Pouch
-      ctx.fillStyle = isLight ? "rgba(194,75,101,0.10)" : "rgba(224,99,125,0.12)";
-      ctx.strokeStyle = sel === "testis" ? gold : isLight ? "rgba(194,75,101,0.45)" : "rgba(224,99,125,0.45)";
+      // 2. Scrotum Outer Pouch (Smoothly cradling the Testis & Epididymis)
+      ctx.fillStyle = isLight ? "rgba(194,75,101,0.09)" : "rgba(224,99,125,0.11)";
+      ctx.strokeStyle =
+        sel === "testis"
+          ? gold
+          : isLight
+          ? "rgba(194,75,101,0.48)"
+          : "rgba(224,99,125,0.48)";
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.ellipse(142, 326, 46, 52, 0.1, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
-
-      // 3. Penis Shaft & Connected Glans Penis
-      ctx.fillStyle = isLight ? "rgba(43,126,179,0.16)" : "rgba(104,184,230,0.18)";
-      ctx.strokeStyle = sel === "urethra" ? gold : cyan;
-      ctx.lineWidth = 2.2;
-      ctx.beginPath();
-      ctx.moveTo(212, 224);
-      ctx.lineTo(324, 272);
-      ctx.quadraticCurveTo(334, 294, 310, 310);
-      ctx.lineTo(196, 260);
+      ctx.moveTo(116, 266);
+      ctx.bezierCurveTo(96, 306, 108, 362, 148, 364);
+      ctx.bezierCurveTo(184, 364, 198, 316, 182, 268);
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
 
-      // Glans Penis (Smooth rounded cap at tip)
-      ctx.fillStyle = sel === "glans" ? "rgba(251,191,36,0.35)" : isLight ? "rgba(194,75,101,0.28)" : "rgba(224,99,125,0.34)";
+      // 3. Anatomically Contoured Penis Shaft (Sagittal Cross-Section)
+      // Outer skin contour emerging smoothly from pelvic root to coronal sulcus
+      ctx.fillStyle = isLight ? "rgba(43,126,179,0.12)" : "rgba(104,184,230,0.14)";
+      ctx.strokeStyle = sel === "urethra" ? gold : cyan;
+      ctx.lineWidth = 2.1;
+      ctx.beginPath();
+      ctx.moveTo(194, 206);
+      ctx.bezierCurveTo(234, 212, 276, 232, 312, 256); // Dorsal curve
+      ctx.lineTo(294, 294); // Coronal sulcus base
+      ctx.bezierCurveTo(256, 274, 214, 254, 178, 244); // Ventral curve
+      ctx.quadraticCurveTo(176, 224, 194, 206);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Internal Erectile Chamber 1: Corpus Cavernosum (Upper dorsal erectile body)
+      ctx.fillStyle = isLight ? "rgba(194,75,101,0.18)" : "rgba(224,99,125,0.20)";
+      ctx.strokeStyle = isLight ? "rgba(194,75,101,0.38)" : "rgba(224,99,125,0.40)";
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(202, 214);
+      ctx.bezierCurveTo(238, 220, 274, 238, 308, 260);
+      ctx.quadraticCurveTo(312, 268, 302, 272);
+      ctx.bezierCurveTo(268, 252, 232, 236, 198, 226);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Internal Erectile Chamber 2: Corpus Spongiosum (Surrounding Urethra)
+      ctx.fillStyle = isLight ? "rgba(43,126,179,0.20)" : "rgba(104,184,230,0.22)";
+      ctx.beginPath();
+      ctx.moveTo(194, 228);
+      ctx.bezierCurveTo(230, 238, 268, 254, 302, 274);
+      ctx.lineTo(294, 288);
+      ctx.bezierCurveTo(258, 268, 220, 252, 184, 240);
+      ctx.closePath();
+      ctx.fill();
+
+      // 4. Anatomically Shaped Glans Penis (Coronal Ridge + Smooth Tapered Dome + Meatus)
+      ctx.fillStyle =
+        sel === "glans"
+          ? "rgba(251,191,36,0.36)"
+          : isLight
+          ? "rgba(194,75,101,0.28)"
+          : "rgba(224,99,125,0.34)";
       ctx.strokeStyle = sel === "glans" ? gold : rose;
       ctx.lineWidth = sel === "glans" ? 3 : 2.2;
       ctx.beginPath();
-      ctx.ellipse(336, 295, 22, 18, 0.42, 0, Math.PI * 2);
+      // Start at dorsal coronal ridge (slightly flared)
+      ctx.moveTo(314, 252);
+      // Smooth rounded dorsal curve to rounded tip
+      ctx.bezierCurveTo(334, 258, 356, 276, 354, 294);
+      // Smooth ventral underside back to frenulum/sulcus
+      ctx.bezierCurveTo(350, 308, 322, 308, 292, 294);
+      // Coronal ridge contour separating glans from shaft
+      ctx.quadraticCurveTo(304, 276, 314, 252);
+      ctx.closePath();
       ctx.fill();
       ctx.stroke();
 
-      // 4. Testis (Oval Testicle inside Scrotum)
-      ctx.fillStyle = sel === "testis" ? "rgba(251,191,36,0.32)" : isLight ? "rgba(194,75,101,0.32)" : "rgba(224,99,125,0.38)";
+      // 5. Testis (Oval Testicle inside Scrotum)
+      ctx.fillStyle =
+        sel === "testis"
+          ? "rgba(251,191,36,0.32)"
+          : isLight
+          ? "rgba(194,75,101,0.32)"
+          : "rgba(224,99,125,0.38)";
       ctx.strokeStyle = sel === "testis" ? gold : rose;
       ctx.lineWidth = sel === "testis" ? 3 : 2.2;
       ctx.beginPath();
-      ctx.ellipse(148, 326, 24, 32, 0.12, 0, Math.PI * 2);
+      ctx.ellipse(150, 316, 21, 28, 0.1, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
 
-      // 5. Epididymis (Comma-shaped coil hugging back/top of Testis)
+      // Subtle internal lobule lines inside Testis
+      ctx.strokeStyle = isLight ? "rgba(194,75,101,0.35)" : "rgba(255,228,235,0.30)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(142, 302);
+      ctx.lineTo(156, 314);
+      ctx.moveTo(140, 318);
+      ctx.lineTo(158, 326);
+      ctx.stroke();
+
+      // 6. Epididymis (Comma-shaped coil hugging back & top of Testis)
       ctx.strokeStyle = sel === "epididymis" ? gold : cyan;
-      ctx.lineWidth = sel === "epididymis" ? 9 : 7.5;
+      ctx.lineWidth = sel === "epididymis" ? 8.5 : 7;
       ctx.beginPath();
-      ctx.moveTo(128, 344);
-      ctx.bezierCurveTo(104, 328, 104, 286, 126, 274);
+      ctx.moveTo(132, 336);
+      ctx.bezierCurveTo(114, 320, 114, 288, 134, 282);
       ctx.stroke();
 
-      // 6. Vas Deferens (Connected loop rising UP and OVER the Bladder!)
+      // 7. Vas Deferens (Connected loop rising UP and OVER the Bladder!)
       ctx.strokeStyle = sel === "vasDeferens" ? gold : cyan;
-      ctx.lineWidth = sel === "vasDeferens" ? 5.5 : 4.2;
+      ctx.lineWidth = sel === "vasDeferens" ? 5 : 3.8;
       ctx.beginPath();
-      ctx.moveTo(122, 274);
-      ctx.bezierCurveTo(106, 188, 122, 92, 184, 92);
-      ctx.bezierCurveTo(234, 92, 266, 126, 250, 166);
-      ctx.lineTo(222, 198);
+      ctx.moveTo(132, 282);
+      ctx.bezierCurveTo(112, 200, 120, 94, 178, 94);
+      ctx.bezierCurveTo(222, 94, 246, 118, 236, 152);
+      ctx.lineTo(196, 186);
       ctx.stroke();
 
-      // 7. Seminal Vesicle (Connected pouch behind Bladder)
+      // 8. Seminal Vesicle (Connected glandular pouch behind Bladder)
       ctx.fillStyle = sel === "seminal" ? "rgba(251,191,36,0.42)" : "rgba(223,176,82,0.32)";
       ctx.strokeStyle = sel === "seminal" ? "#ffffff" : gold;
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.ellipse(268, 138, 14, 24, 0.45, 0, Math.PI * 2);
+      ctx.ellipse(246, 148, 12, 22, 0.42, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
 
-      // 8. Prostate Gland (Walnut-shaped gland wrapped around upper Urethra)
+      // 9. Prostate Gland (Walnut-shaped gland wrapped around upper Urethra)
       ctx.fillStyle = sel === "prostate" ? "rgba(251,191,36,0.42)" : "rgba(167,139,250,0.36)";
       ctx.strokeStyle = sel === "prostate" ? gold : "#c084fc";
       ctx.lineWidth = sel === "prostate" ? 3 : 2;
       ctx.beginPath();
-      ctx.ellipse(218, 200, 24, 19, 0, 0, Math.PI * 2);
+      ctx.ellipse(192, 186, 22, 18, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
 
-      // 9. Continuous Urethra running from Bladder -> Prostate -> Penis -> Glans Tip
+      // 10. Continuous Smooth Urethra (Bladder -> Prostate -> Corpus Spongiosum -> Glans Tip)
       ctx.strokeStyle = sel === "urethra" ? gold : "#7dd3fc";
-      ctx.lineWidth = 4.5;
+      ctx.lineWidth = 4.2;
       ctx.beginPath();
-      ctx.moveTo(208, 180);
-      ctx.quadraticCurveTo(222, 212, 238, 244);
-      ctx.lineTo(354, 302);
+      ctx.moveTo(188, 168);
+      ctx.bezierCurveTo(194, 194, 198, 222, 214, 232);
+      ctx.bezierCurveTo(248, 248, 294, 270, 350, 294);
       ctx.stroke();
 
-      // 10. Animated Sperm Flowing Continuously Along the Connected Male Tract!
+      // Urethral Meatus (Tip Opening)
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.arc(351, 294, 2.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 11. Animated Sperm Flowing Continuously Along the Connected Male Tract!
       for (let i = 0; i < 6; i++) {
         const t = (elapsed * 0.14 + i / 6) % 1;
         const p1 = samplePolyline(MALE_DUCT_PATH, t);
         const p2 = samplePolyline(MALE_DUCT_PATH, Math.min(0.999, t + 0.02));
         const ang = Math.atan2(p2[1] - p1[1], p2[0] - p1[0]);
-        drawSpermSprite(ctx, p1[0], p1[1], ang, elapsed * 14 + i, 0.9, "#fef08a");
+        drawSpermSprite(ctx, p1[0], p1[1], ang, elapsed * 14 + i, 0.88, "#fef08a");
       }
 
       // Bottom Legend Strip
@@ -1987,9 +2082,12 @@
       ctx.restore();
     }
 
-    function drawFemaleAnatomyBase(ctx, isLight, highlightId) {
+    // ---------------------------------------------------------
+    // 2. CONNECTED FEMALE ANATOMY (CUPPED FIMBRIAE + LIGAMENTS)
+    // ---------------------------------------------------------
+    function drawFemaleAnatomyBase(ctx, isLight, highlightId, endoGlow) {
       const rose = isLight ? "#c24b65" : "#f472b6";
-      const softRose = isLight ? "rgba(194,75,101,0.24)" : "rgba(244,114,182,0.26)";
+      const softRose = isLight ? "rgba(194,75,101,0.22)" : "rgba(244,114,182,0.24)";
       const cyan = isLight ? "#2b7eb3" : "#68b8e6";
       const gold = isLight ? "#b58428" : "#fbbf24";
 
@@ -1997,58 +2095,82 @@
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
 
-      // 1. Left & Right Fallopian Tubes (Oviducts curving symmetrically out from Uterus)
+      // 1. Left & Right Fallopian Tubes (Curving INWARD to cup the Ovaries directly!)
       ctx.strokeStyle = highlightId === "fallopian" ? gold : rose;
       ctx.lineWidth = highlightId === "fallopian" ? 13 : 11;
       ctx.beginPath();
-      // Left tube
-      ctx.moveTo(166, 138);
-      ctx.bezierCurveTo(132, 84, 78, 86, 66, 144);
-      // Right tube
-      ctx.moveTo(254, 138);
-      ctx.bezierCurveTo(288, 84, 342, 86, 354, 144);
+      // Left Fallopian Tube curving down & inward to cup Left Ovary (108, 178)
+      ctx.moveTo(168, 142);
+      ctx.bezierCurveTo(132, 96, 82, 102, 78, 152);
+      // Right Fallopian Tube curving down & inward to cup Right Ovary (312, 178)
+      ctx.moveTo(252, 142);
+      ctx.bezierCurveTo(288, 96, 338, 102, 342, 152);
       ctx.stroke();
 
-      // Inner hollow canal of Fallopian tubes
+      // Inner hollow canal of Fallopian Tubes
       ctx.strokeStyle = isLight ? "#f1f5fa" : "#0b1422";
       ctx.lineWidth = 4.5;
       ctx.beginPath();
-      ctx.moveTo(166, 138);
-      ctx.bezierCurveTo(132, 84, 78, 86, 66, 144);
-      ctx.moveTo(254, 138);
-      ctx.bezierCurveTo(288, 84, 342, 86, 354, 144);
+      ctx.moveTo(168, 142);
+      ctx.bezierCurveTo(132, 96, 82, 102, 78, 152);
+      ctx.moveTo(252, 142);
+      ctx.bezierCurveTo(288, 96, 338, 102, 342, 152);
       ctx.stroke();
 
-      // 2. Finger-like Fimbriae at both ends
+      // Flared Infundibulum + Finger-like Fimbriae directly cupping each Ovary!
       ctx.strokeStyle = highlightId === "fimbriae" ? gold : cyan;
       ctx.lineWidth = 2.4;
-      [66, 354].forEach((fx) => {
-        [-10, -4, 4, 10].forEach((off) => {
-          ctx.beginPath();
-          ctx.moveTo(fx, 142);
-          ctx.lineTo(fx + off, 162);
-          ctx.stroke();
-        });
+      // Left cupped fimbriae wrapping around (108, 178)
+      [
+        [78, 152, 86, 172],
+        [78, 152, 94, 166],
+        [78, 152, 102, 161],
+        [78, 152, 84, 184],
+      ].forEach(([x1, y1, x2, y2]) => {
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.quadraticCurveTo(x1 + 6, y2 - 4, x2, y2);
+        ctx.stroke();
+      });
+      // Right cupped fimbriae wrapping around (312, 178)
+      [
+        [342, 152, 334, 172],
+        [342, 152, 326, 166],
+        [342, 152, 318, 161],
+        [342, 152, 336, 184],
+      ].forEach(([x1, y1, x2, y2]) => {
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.quadraticCurveTo(x1 - 6, y2 - 4, x2, y2);
+        ctx.stroke();
       });
 
-      // 3. Left & Right Almond-Shaped Ovaries + Ovarian Ligaments
-      ctx.strokeStyle = isLight ? "rgba(194,75,101,0.45)" : "rgba(244,114,182,0.45)";
-      ctx.lineWidth = 2;
+      // 2. Ovarian Ligaments anchoring inner side of each Ovary cleanly to Uterus
+      ctx.strokeStyle = isLight ? "rgba(194,75,101,0.55)" : "rgba(244,114,182,0.55)";
+      ctx.lineWidth = 2.6;
       ctx.beginPath();
-      ctx.moveTo(126, 186);
-      ctx.lineTo(162, 186);
-      ctx.moveTo(294, 186);
-      ctx.lineTo(258, 186);
+      ctx.moveTo(130, 178);
+      ctx.lineTo(170, 176);
+      ctx.moveTo(290, 178);
+      ctx.lineTo(250, 176);
       ctx.stroke();
 
-      [104, 316].forEach((ox) => {
+      // 3. Left & Right Almond-Shaped Ovaries (Snugly nestled inside Fimbriae & Ligaments)
+      [108, 312].forEach((ox) => {
         ctx.fillStyle = highlightId === "ovary" ? "rgba(251,191,36,0.38)" : softRose;
         ctx.strokeStyle = highlightId === "ovary" ? gold : rose;
         ctx.lineWidth = highlightId === "ovary" ? 3 : 2.2;
         ctx.beginPath();
-        ctx.ellipse(ox, 186, 22, 15, ox < 200 ? -0.25 : 0.25, 0, Math.PI * 2);
+        ctx.ellipse(ox, 178, 22, 14, ox < 200 ? -0.18 : 0.18, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
+
+        // Developing ovarian follicles inside each ovary
+        ctx.fillStyle = isLight ? "rgba(251,191,36,0.55)" : "rgba(253,224,71,0.45)";
+        ctx.beginPath();
+        ctx.arc(ox + (ox < 200 ? -6 : 6), 175, 3.2, 0, Math.PI * 2);
+        ctx.arc(ox + (ox < 200 ? 4 : -4), 182, 2.2, 0, Math.PI * 2);
+        ctx.fill();
       });
 
       // 4. Pear-Shaped Muscular Uterus (Womb)
@@ -2056,26 +2178,29 @@
       ctx.strokeStyle = highlightId === "uterus" ? gold : rose;
       ctx.lineWidth = highlightId === "uterus" ? 3.2 : 2.4;
       ctx.beginPath();
-      ctx.moveTo(210, 106);
-      ctx.bezierCurveTo(268, 106, 272, 166, 244, 222);
+      ctx.moveTo(210, 110);
+      ctx.bezierCurveTo(268, 110, 272, 168, 244, 224);
       ctx.lineTo(232, 266);
       ctx.lineTo(188, 266);
-      ctx.lineTo(176, 222);
-      ctx.bezierCurveTo(148, 166, 152, 106, 210, 106);
+      ctx.lineTo(176, 224);
+      ctx.bezierCurveTo(148, 168, 152, 110, 210, 110);
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
 
-      // 5. Blood-Rich Inner Endometrium Cushion (Inverted Triangle Cavity)
+      // 5. Blood-Rich Inner Endometrium Cushion (Pulses softly when Egg rests inside Uterus!)
+      const endoAlpha = endoGlow ? 0.38 + endoGlow * 0.24 : 0.34;
       ctx.fillStyle =
         highlightId === "endometrium"
-          ? "rgba(251,191,36,0.35)"
-          : isLight ? "rgba(194,75,101,0.34)" : "rgba(224,99,125,0.36)";
+          ? "rgba(251,191,36,0.36)"
+          : isLight
+          ? `rgba(194,75,101,${endoAlpha})`
+          : `rgba(224,99,125,${endoAlpha})`;
       ctx.strokeStyle = highlightId === "endometrium" ? gold : "#e0637d";
-      ctx.lineWidth = 2;
+      ctx.lineWidth = endoGlow ? 2.6 : 2;
       ctx.beginPath();
-      ctx.moveTo(176, 144);
-      ctx.quadraticCurveTo(210, 134, 244, 144);
+      ctx.moveTo(176, 146);
+      ctx.quadraticCurveTo(210, 136, 244, 146);
       ctx.lineTo(220, 246);
       ctx.lineTo(200, 246);
       ctx.closePath();
@@ -2092,7 +2217,12 @@
       ctx.stroke();
 
       // 7. Vagina (Elastic Muscular Canal)
-      ctx.fillStyle = highlightId === "vagina" ? "rgba(251,191,36,0.26)" : isLight ? "rgba(43,126,179,0.16)" : "rgba(104,184,230,0.18)";
+      ctx.fillStyle =
+        highlightId === "vagina"
+          ? "rgba(251,191,36,0.26)"
+          : isLight
+          ? "rgba(43,126,179,0.16)"
+          : "rgba(104,184,230,0.18)";
       ctx.strokeStyle = highlightId === "vagina" ? gold : cyan;
       ctx.lineWidth = highlightId === "vagina" ? 3 : 2.2;
       ctx.beginPath();
@@ -2107,40 +2237,55 @@
       ctx.restore();
     }
 
-    function drawFemaleSystem(ctx, isLight) {
+    function drawFemaleSystem(ctx, isLight, rd) {
       const textCol = isLight ? "#162235" : "#e6effa";
-      drawFemaleAnatomyBase(ctx, isLight, ui.selectedFemaleHotspot);
 
-      // Live Ovulation: Egg released from Right Ovary -> swept by Fimbriae -> gliding down Fallopian Tube
-      const eggPath = [
-        [316, 186],
-        [346, 152],
-        [342, 108],
-        [306, 94],
-        [268, 114],
-        [232, 154],
-      ];
-      const t = (elapsed * 0.16) % 1;
-      const [ex, ey] = samplePolyline(eggPath, t);
+      // Full 10-second Ovulation + Uterine Stay Cycle:
+      // 0.00 -> 0.52: Ovary -> Fimbriae -> Fallopian Tube -> Uterus center
+      // 0.52 -> 0.90: Egg STAYS inside Uterus cavity clearly (pulsing Endometrium)
+      // 0.90 -> 1.00: Smooth fade out before next ovulation
+      const cycle = (elapsed * 0.1) % 1;
+      const inUterus = cycle >= 0.52;
+      const endoPulse = inUterus ? (Math.sin(elapsed * 4.5) + 1) / 2 : 0;
+
+      drawFemaleAnatomyBase(ctx, isLight, ui.selectedFemaleHotspot, endoPulse);
+
+      let ex = 210;
+      let ey = 188;
+      let eggAlpha = 1;
+      if (cycle < 0.52) {
+        [ex, ey] = samplePolyline(FEMALE_EGG_PATH, cycle / 0.52);
+      } else if (cycle < 0.9) {
+        ex = 210 + Math.sin(elapsed * 2.2) * 2;
+        ey = 188 + Math.cos(elapsed * 2.6) * 2.5;
+      } else {
+        ex = 210;
+        ey = 188;
+        eggAlpha = Math.max(0, 1 - (cycle - 0.9) / 0.1);
+      }
 
       ctx.save();
-      const eg = ctx.createRadialGradient(ex, ey, 2, ex, ey, 14);
+      ctx.globalAlpha = eggAlpha;
+      const glowR = inUterus ? 18 + endoPulse * 6 : 14;
+      const eg = ctx.createRadialGradient(ex, ey, 2, ex, ey, glowR);
       eg.addColorStop(0, "#fef08a");
       eg.addColorStop(1, "rgba(251,191,36,0)");
       ctx.fillStyle = eg;
       ctx.beginPath();
-      ctx.arc(ex, ey, 14, 0, Math.PI * 2);
+      ctx.arc(ex, ey, glowR, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.fillStyle = "#fde047";
       ctx.strokeStyle = "#ffffff";
-      ctx.lineWidth = 1.4;
+      ctx.lineWidth = 1.6;
       ctx.beginPath();
-      ctx.arc(ex, ey, 6, 0, Math.PI * 2);
+      ctx.arc(ex, ey, inUterus ? 7.2 : 6, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
+      ctx.restore();
 
-      // Bottom Legend Strip
+      // Bottom Status Strip
+      ctx.save();
       ctx.fillStyle = isLight ? "rgba(15,23,42,0.05)" : "rgba(4,10,20,0.75)";
       ctx.strokeStyle = isLight ? "rgba(15,23,42,0.12)" : "rgba(104,184,230,0.22)";
       ctx.lineWidth = 1;
@@ -2150,20 +2295,23 @@
       ctx.stroke();
 
       ctx.font = "700 10px 'Plus Jakarta Sans', sans-serif";
-      ctx.fillStyle = textCol;
+      ctx.fillStyle = inUterus ? "#fbbf24" : textCol;
       ctx.textAlign = "center";
-      ctx.fillText("♀ Vagina → Cervix → Uterus (Endometrium) → Fallopian Tube ← Ovary", 210, 409);
+      ctx.fillText(
+        inUterus ? rd.femaleCycleHud.inUterus : rd.femaleCycleHud.ovulating,
+        210,
+        409
+      );
       ctx.restore();
     }
 
     function drawFertilizationSystem(ctx, isLight, rd) {
       const textCol = isLight ? "#162235" : "#e6effa";
-      drawFemaleAnatomyBase(ctx, isLight, "");
+      drawFemaleAnatomyBase(ctx, isLight, "", 0);
 
-      const p = ui.pathPct / 100; // 0..1
+      const p = ui.pathPct / 100;
       const isFused = p >= 0.82;
 
-      // Highlight glowing sperm pathway trail up to current position
       ctx.save();
       ctx.strokeStyle = "rgba(125,211,252,0.45)";
       ctx.lineWidth = 3;
@@ -2172,9 +2320,9 @@
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Waiting Ovulated Egg in Right Fallopian Tube Ampulla (306, 94)
-      const eggX = isFused ? 306 - ((p - 0.82) / 0.18) * 56 : 306;
-      const eggY = isFused ? 94 + ((p - 0.82) / 0.18) * 44 : 94;
+      // Waiting Ovulated Egg in Right Fallopian Tube Ampulla (312, 114) -> travels toward Uterus once fertilized
+      const eggX = isFused ? 312 - ((p - 0.82) / 0.18) * 68 : 312;
+      const eggY = isFused ? 114 + ((p - 0.82) / 0.18) * 44 : 114;
 
       const eg = ctx.createRadialGradient(eggX, eggY, 2, eggX, eggY, isFused ? 22 : 16);
       eg.addColorStop(0, isFused ? "rgba(86,201,155,0.95)" : "rgba(251,191,36,0.92)");
@@ -2199,7 +2347,6 @@
         ctx.fillText("46", eggX, eggY + 3);
       }
 
-      // Swimming Sperm Wave Following the Path (Vagina -> Cervix -> Uterus -> Fallopian Tube)
       if (!isFused) {
         const swimT = Math.min(0.98, p / 0.82);
         for (let i = 0; i < 7; i++) {
@@ -2270,7 +2417,7 @@
       if (ui.view === "male") {
         drawMaleSystem(ctx, isLight);
       } else if (ui.view === "female") {
-        drawFemaleSystem(ctx, isLight);
+        drawFemaleSystem(ctx, isLight, rd);
       } else {
         drawFertilizationSystem(ctx, isLight, rd);
       }
@@ -2283,7 +2430,7 @@
   }
 
   // =========================================================
-  // CANVAS 2: 60 FPS MICROSCOPIC SPERM & EGG FUSION (460x300)
+  // CANVAS 2: 60 FPS CLEAR 4-PHASE SPERM–EGG FUSION (460x300)
   // =========================================================
   function startFusionCanvas() {
     const canvas = document.getElementById("fusion-canvas");
@@ -2317,10 +2464,19 @@
 
       if (!ui.ffPaused) {
         elapsed += dt;
-        ui.fusionProgress = (ui.fusionProgress + dt * 0.14) % 1;
+        ui.fusionProgress = (ui.fusionProgress + dt * 0.11) % 1;
       }
 
-      const p = ui.fusionProgress; // 0..0.45 approach, 0.45..0.72 entry, 0.72..1.0 fused zygote
+      // 4 Clear Visual Phases:
+      // 0.00..0.28: Sperm Approach
+      // 0.28..0.52: Acrosome Enzyme Entry + Cortical Membrane Lock
+      // 0.52..0.78: Male Pronucleus (23) & Female Pronucleus (23) Glide Together
+      // 0.78..1.00: Unified Diploid Zygote (2n = 46) with Paired Chromosomes Flash!
+      const p = ui.fusionProgress;
+      const phaseIdx = p < 0.28 ? 0 : p < 0.52 ? 1 : p < 0.78 ? 2 : 3;
+      const isLocked = p >= 0.36;
+      const isFused = p >= 0.78;
+
       const isLight = BL.getState().theme === "light";
       const rd = getRD();
       const sel = ui.selectedFusionPart;
@@ -2334,81 +2490,166 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.setTransform((width / 460) * dpr, 0, 0, (height / 300) * dpr, 0, 0);
 
-      const eggCx = 310;
-      const eggCy = 132;
-      const isFused = p >= 0.72;
+      // Top 4-Phase Indicator Dots
+      for (let i = 0; i < 4; i++) {
+        ctx.fillStyle = i <= phaseIdx ? (i === 3 ? mint : cyan) : "rgba(148,163,184,0.28)";
+        ctx.beginPath();
+        ctx.roundRect(142 + i * 46, 16, 36, 5, 3);
+        ctx.fill();
+      }
 
-      // 1. Large Ovum (Egg Cell) + Zona Pellucida Outer Coat
+      const eggCx = 304;
+      const eggCy = 134;
+      const eggR = 72;
+
+      // 1. Large Ovum (Egg Cell) + Outer Zona Pellucida + Cortical Lock Ring
       ctx.save();
-      // Cortical hardened glow ring once fused
-      const zRing = ctx.createRadialGradient(eggCx, eggCy, 54, eggCx, eggCy, 86);
-      zRing.addColorStop(0, isFused ? "rgba(86,201,155,0.45)" : "rgba(244,114,182,0.28)");
-      zRing.addColorStop(1, "rgba(244,114,182,0)");
-      ctx.fillStyle = zRing;
+      const aura = ctx.createRadialGradient(eggCx, eggCy, 56, eggCx, eggCy, 92);
+      aura.addColorStop(0, isLocked ? "rgba(86,201,155,0.42)" : "rgba(244,114,182,0.28)");
+      aura.addColorStop(1, "rgba(244,114,182,0)");
+      ctx.fillStyle = aura;
       ctx.beginPath();
-      ctx.arc(eggCx, eggCy, 86, 0, Math.PI * 2);
+      ctx.arc(eggCx, eggCy, 92, 0, Math.PI * 2);
       ctx.fill();
 
-      ctx.fillStyle = isLight ? "rgba(244,114,182,0.18)" : "rgba(244,114,182,0.20)";
-      ctx.strokeStyle = sel === "ovum" ? gold : isFused ? mint : rose;
-      ctx.lineWidth = isFused ? 4 : 3;
+      // Zona Pellucida outer jelly halo
+      ctx.strokeStyle = isLocked ? mint : "rgba(244,114,182,0.55)";
+      ctx.lineWidth = isLocked ? 4.5 : 2.5;
+      ctx.setLineDash(isLocked ? [] : [5, 4]);
       ctx.beginPath();
-      ctx.arc(eggCx, eggCy, 68, 0, Math.PI * 2);
+      ctx.arc(eggCx, eggCy, eggR + 7, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Egg Cytoplasm
+      ctx.fillStyle = isLight ? "rgba(244,114,182,0.16)" : "rgba(244,114,182,0.18)";
+      ctx.strokeStyle = sel === "ovum" ? gold : rose;
+      ctx.lineWidth = 2.6;
+      ctx.beginPath();
+      ctx.arc(eggCx, eggCy, eggR, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
 
-      // Female Nucleus (23 chromosomes) -> merges into Diploid 46 Zygote Nucleus
-      const nucR = isFused ? 24 + Math.sin(elapsed * 5) * 2 : 18;
-      ctx.fillStyle = isFused ? "rgba(86,201,155,0.75)" : "rgba(244,114,182,0.65)";
-      ctx.strokeStyle = sel === "zygoteFusion" ? gold : "#ffffff";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(eggCx + (isFused ? 0 : 8), eggCy, nucR, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
+      // 2. Female Pronucleus (n=23) & Male Pronucleus (n=23) -> Visible Migration & Fusion!
+      if (!isFused) {
+        const migT = p < 0.52 ? 0 : Math.min(1, (p - 0.52) / 0.26);
+        const femX = eggCx + 24 - migT * 20;
+        const femY = eggCy;
 
-      ctx.font = "800 10.5px 'Plus Jakarta Sans', sans-serif";
-      ctx.fillStyle = "#ffffff";
-      ctx.textAlign = "center";
-      ctx.fillText(isFused ? "2n = 46" : "n = 23", eggCx + (isFused ? 0 : 8), eggCy + 4);
+        // Female Pronucleus (Pink)
+        ctx.fillStyle = "rgba(244,114,182,0.72)";
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ctx.arc(femX, femY, 17, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = "800 9.5px 'Plus Jakarta Sans', sans-serif";
+        ctx.fillStyle = "#ffffff";
+        ctx.textAlign = "center";
+        ctx.fillText("♀ 23", femX, femY + 3.5);
+
+        // Once sperm head enters (p >= 0.45), draw distinct Male Pronucleus gliding inward!
+        if (p >= 0.45) {
+          const malT = Math.min(1, (p - 0.45) / 0.33);
+          const malX = eggCx - 54 + malT * 46;
+          const malY = eggCy;
+
+          ctx.fillStyle = "rgba(104,184,230,0.82)";
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.arc(malX, malY, 15, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+          ctx.fillStyle = "#040811";
+          ctx.fillText("♂ 23", malX, malY + 3.5);
+        }
+      } else {
+        // Phase 4: Unified Diploid Zygote Nucleus (2n = 46) with Fusion Flash & Paired Chromosomes!
+        const flashT = (p - 0.78) / 0.22;
+        const ringR = 26 + flashT * 38;
+        ctx.strokeStyle = mint;
+        ctx.globalAlpha = Math.max(0, 1 - flashT);
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(eggCx, eggCy, ringR, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+
+        ctx.fillStyle = "rgba(86,201,155,0.82)";
+        ctx.strokeStyle = sel === "zygoteFusion" ? gold : "#ffffff";
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.arc(eggCx, eggCy, 25 + Math.sin(elapsed * 6) * 1.8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Paired X-shaped Chromosomes (Cyan + Pink) inside Zygote Nucleus
+        ctx.strokeStyle = "#040811";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(eggCx - 14, eggCy - 12);
+        ctx.lineTo(eggCx - 8, eggCy - 6);
+        ctx.moveTo(eggCx - 8, eggCy - 12);
+        ctx.lineTo(eggCx - 14, eggCy - 6);
+        ctx.moveTo(eggCx + 8, eggCy - 12);
+        ctx.lineTo(eggCx + 14, eggCy - 6);
+        ctx.moveTo(eggCx + 14, eggCy - 12);
+        ctx.lineTo(eggCx + 8, eggCy - 6);
+        ctx.stroke();
+
+        ctx.font = "800 10.5px 'Plus Jakarta Sans', sans-serif";
+        ctx.fillStyle = "#040811";
+        ctx.textAlign = "center";
+        ctx.fillText("2n = 46", eggCx, eggCy + 9);
+      }
       ctx.restore();
 
-      // 2. Detailed Winning Sperm Swimming In From Left
-      if (!isFused) {
-        const spermX = p < 0.45 ? 72 + (p / 0.45) * 164 : 236 + ((p - 0.45) / 0.27) * 66;
-        const spermY = eggCy + Math.sin(elapsed * 6) * (p < 0.45 ? 4 : 1);
+      // 3. Winning Sperm Approaching & Dissolving Zona Pellucida (p < 0.48)
+      if (p < 0.48) {
+        const spermX = p < 0.28 ? 64 + (p / 0.28) * 150 : 214 + ((p - 0.28) / 0.2) * 28;
+        const spermY = eggCy + Math.sin(elapsed * 7) * (p < 0.28 ? 4 : 1);
 
         ctx.save();
-        // Flagellum Tail (stays outside once head penetrates!)
-        if (p < 0.56) {
-          ctx.strokeStyle = sel === "spermTail" ? gold : cyan;
-          ctx.lineWidth = sel === "spermTail" ? 3.5 : 2.5;
-          ctx.lineCap = "round";
-          ctx.beginPath();
-          ctx.moveTo(spermX - 24, spermY);
-          for (let i = 1; i <= 10; i++) {
-            ctx.lineTo(spermX - 24 - i * 6.5, spermY + Math.sin(elapsed * 16 + i * 0.9) * (2 + i * 0.7));
-          }
-          ctx.stroke();
-
-          // Mitochondria Middle Piece
-          ctx.fillStyle = sel === "spermTail" ? gold : "#dfb052";
-          ctx.beginPath();
-          ctx.roundRect(spermX - 26, spermY - 4.5, 13, 9, 4);
-          ctx.fill();
+        // Flagellum Tail
+        ctx.strokeStyle = sel === "spermTail" ? gold : cyan;
+        ctx.lineWidth = sel === "spermTail" ? 3.5 : 2.5;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(spermX - 24, spermY);
+        for (let i = 1; i <= 10; i++) {
+          ctx.lineTo(spermX - 24 - i * 6, spermY + Math.sin(elapsed * 16 + i * 0.9) * (2 + i * 0.65));
         }
+        ctx.stroke();
 
-        // Sperm Head (n=23 Nucleus) + Acrosome Cap
+        // Mitochondria Middle Piece
+        ctx.fillStyle = sel === "spermTail" ? gold : "#dfb052";
+        ctx.beginPath();
+        ctx.roundRect(spermX - 26, spermY - 4.5, 13, 9, 4);
+        ctx.fill();
+
+        // Sperm Head (n=23) + Glowing Acrosome Cap
         ctx.fillStyle = sel === "spermHead" ? gold : cyan;
         ctx.beginPath();
         ctx.ellipse(spermX - 4, spermY, 12, 7.5, 0, 0, Math.PI * 2);
         ctx.fill();
 
-        // Acrosome Enzyme Tip
         ctx.fillStyle = "#fef08a";
         ctx.beginPath();
-        ctx.arc(spermX + 6, spermY, 4.5, -Math.PI / 2, Math.PI / 2);
+        ctx.arc(spermX + 6, spermY, 4.8, -Math.PI / 2, Math.PI / 2);
         ctx.fill();
+
+        // Acrosome Enzyme Sparkles when penetrating coat (0.28..0.48)
+        if (p >= 0.28) {
+          for (let s = 0; s < 5; s++) {
+            const ang = (s / 5) * Math.PI - Math.PI / 2;
+            ctx.fillStyle = "#fef08a";
+            ctx.beginPath();
+            ctx.arc(spermX + 12 + Math.cos(ang) * 8, spermY + Math.sin(ang) * 12, 2.2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
 
         ctx.font = "800 8px 'Plus Jakarta Sans', sans-serif";
         ctx.fillStyle = "#040811";
@@ -2417,17 +2658,17 @@
         ctx.restore();
       }
 
-      // Secondary competing sperm blocked outside once fertilized
+      // Blocked competing sperm bouncing away once cortical membrane locks
       [
-        [152, 68, 0.35],
-        [168, 198, -0.35],
+        [152, 66, 0.35],
+        [164, 198, -0.35],
       ].forEach(([sx, sy, ang], idx) => {
-        const wobble = Math.sin(elapsed * 4 + idx) * 6;
-        drawSpermSprite(ctx, sx + wobble, sy, ang, elapsed * 14 + idx * 2, 1.0, "rgba(125,211,252,0.55)");
+        const pushBack = isLocked ? -18 : 0;
+        const wobble = Math.sin(elapsed * 4 + idx) * 5;
+        drawSpermSprite(ctx, sx + pushBack + wobble, sy, ang, elapsed * 14 + idx * 2, 0.95, "rgba(125,211,252,0.5)");
       });
 
       // Bottom HUD
-      const hudIdx = p < 0.45 ? 0 : p < 0.72 ? 1 : 2;
       ctx.fillStyle = isLight ? "rgba(15,23,42,0.05)" : "rgba(4,10,20,0.78)";
       ctx.strokeStyle = isLight ? "rgba(15,23,42,0.12)" : "rgba(104,184,230,0.22)";
       ctx.lineWidth = 1;
@@ -2437,9 +2678,9 @@
       ctx.stroke();
 
       ctx.font = "700 10px 'Plus Jakarta Sans', sans-serif";
-      ctx.fillStyle = hudIdx === 2 ? mint : textCol;
+      ctx.fillStyle = phaseIdx === 3 ? mint : textCol;
       ctx.textAlign = "center";
-      ctx.fillText(rd.ffSec.fusionHud[hudIdx], 230, 271);
+      ctx.fillText(rd.ffSec.fusionHud[phaseIdx], 230, 271);
 
       requestAnimationFrame(frame);
     }
@@ -2449,7 +2690,7 @@
   }
 
   // =========================================================
-  // CANVAS 3: 60 FPS 4-STAGE FOETUS FORMATION (460x300)
+  // CANVAS 3: 60 FPS ZYGOTE STAGES + WELL-STRUCTURED FOETUS
   // =========================================================
   function startFoetusCanvas() {
     const canvas = document.getElementById("foetus-canvas");
@@ -2484,7 +2725,7 @@
       if (!ui.ffPaused && ui.isFlipped) {
         elapsed += dt;
         ui.foetusAutoTimer += dt;
-        if (ui.foetusAutoTimer > 4.5) {
+        if (ui.foetusAutoTimer > 5.4) {
           ui.foetusAutoTimer = 0;
           ui.foetusStage = (ui.foetusStage + 1) % 4;
           renderFlipDetails();
@@ -2493,8 +2734,8 @@
 
       const isLight = BL.getState().theme === "light";
       const rd = getRD();
-      const stage = ui.foetusStage; // 0..3
-      const pulse = (Math.sin(elapsed * 4.2) + 1) / 2;
+      const stage = ui.foetusStage;
+      const pulse = (Math.sin(elapsed * 4.5) + 1) / 2;
       const rose = isLight ? "#c24b65" : "#f472b6";
       const cyan = isLight ? "#2b7eb3" : "#7dd3fc";
       const mint = "#56c99b";
@@ -2504,35 +2745,35 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.setTransform((width / 460) * dpr, 0, 0, (height / 300) * dpr, 0, 0);
 
-      // Stage Progress Bar (Top)
+      // Top 4-Stage Progress Bar
       for (let i = 0; i < 4; i++) {
         ctx.fillStyle = i <= stage ? rose : "rgba(148,163,184,0.3)";
         ctx.beginPath();
-        ctx.roundRect(142 + i * 46, 22, 36, 6, 3);
+        ctx.roundRect(142 + i * 46, 16, 36, 5, 3);
         ctx.fill();
       }
 
       if (stage === 0) {
-        // STAGE 1: SINGLE-CELL DIPLOID ZYGOTE (46 Chromosomes)
-        const g = ctx.createRadialGradient(230, 134, 8, 230, 134, 62 + pulse * 6);
-        g.addColorStop(0, "rgba(86,201,155,0.45)");
+        // STAGE 1: SINGLE-CELL DIPLOID ZYGOTE (2n = 46)
+        const g = ctx.createRadialGradient(230, 134, 8, 230, 134, 66 + pulse * 6);
+        g.addColorStop(0, "rgba(86,201,155,0.42)");
         g.addColorStop(1, "rgba(86,201,155,0)");
         ctx.fillStyle = g;
         ctx.beginPath();
-        ctx.arc(230, 134, 68, 0, Math.PI * 2);
+        ctx.arc(230, 134, 72, 0, Math.PI * 2);
         ctx.fill();
 
-        ctx.fillStyle = "rgba(86,201,155,0.22)";
+        ctx.fillStyle = "rgba(86,201,155,0.20)";
         ctx.strokeStyle = mint;
         ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.arc(230, 134, 48, 0, Math.PI * 2);
+        ctx.arc(230, 134, 52, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
 
         ctx.fillStyle = mint;
         ctx.beginPath();
-        ctx.arc(230, 134, 18, 0, Math.PI * 2);
+        ctx.arc(230, 134, 20, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.font = "800 11px 'Plus Jakarta Sans', sans-serif";
@@ -2540,155 +2781,286 @@
         ctx.textAlign = "center";
         ctx.fillText("2n = 46", 230, 138);
       } else if (stage === 1) {
-        // STAGE 2: RAPID CLEAVAGE & BLASTOCYST (Cluster of Dividing Cells)
+        // STAGE 2: LIVE STEP-BY-STEP ZYGOTE CLEAVAGE PROGRESSION
+        // Cycles clearly through: 2-Cell -> 4-Cell -> 8-Cell Morula -> Hollow Blastocyst!
+        const sub = Math.floor((elapsed * 0.72) % 4);
+        const subNames = ["2-CELL STAGE", "4-CELL STAGE", "8-CELL MORULA", "HOLLOW BLASTOCYST"];
+
+        // Outer Zona Pellucida Boundary
         ctx.strokeStyle = cyan;
         ctx.lineWidth = 2.2;
         ctx.setLineDash([5, 4]);
         ctx.beginPath();
-        ctx.arc(230, 134, 58, 0, Math.PI * 2);
+        ctx.arc(230, 132, 60, 0, Math.PI * 2);
         ctx.stroke();
         ctx.setLineDash([]);
 
-        const offsets = [
-          [0, 0], [-24, -18], [24, -18], [-26, 18], [26, 18],
-          [0, -34], [0, 34], [-38, 0], [38, 0],
-        ];
-        offsets.forEach(([ox, oy], idx) => {
-          const b = Math.sin(elapsed * 4 + idx) * 2;
-          ctx.fillStyle = idx % 2 === 0 ? "rgba(104,184,230,0.45)" : "rgba(244,114,182,0.45)";
+        const drawCell = (cx, cy, r, fill) => {
+          ctx.fillStyle = fill;
           ctx.strokeStyle = "#ffffff";
           ctx.lineWidth = 1.4;
           ctx.beginPath();
-          ctx.arc(230 + ox + b, 134 + oy, 14, 0, Math.PI * 2);
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
           ctx.fill();
           ctx.stroke();
-        });
+          ctx.fillStyle = "#ffffff";
+          ctx.beginPath();
+          ctx.arc(cx, cy, Math.max(2.5, r * 0.25), 0, Math.PI * 2);
+          ctx.fill();
+        };
+
+        if (sub === 0) {
+          // 2-Cell
+          drawCell(202, 132, 26, "rgba(104,184,230,0.45)");
+          drawCell(258, 132, 26, "rgba(244,114,182,0.45)");
+        } else if (sub === 1) {
+          // 4-Cell
+          [
+            [208, 110], [252, 110], [208, 154], [252, 154],
+          ].forEach(([cx, cy], i) => {
+            drawCell(cx, cy, 21, i % 2 === 0 ? "rgba(104,184,230,0.48)" : "rgba(244,114,182,0.48)");
+          });
+        } else if (sub === 2) {
+          // 8-Cell Morula Berry Cluster
+          [
+            [230, 132], [202, 114], [258, 114], [202, 150],
+            [258, 150], [230, 98], [230, 166], [190, 132], [270, 132],
+          ].forEach(([cx, cy], i) => {
+            drawCell(cx, cy, 14, i % 2 === 0 ? "rgba(104,184,230,0.5)" : "rgba(244,114,182,0.5)");
+          });
+        } else {
+          // Hollow Blastocyst (Outer Trophoblast Ring + Inner Cell Mass)
+          for (let i = 0; i < 14; i++) {
+            const ang = (i / 14) * Math.PI * 2;
+            drawCell(230 + Math.cos(ang) * 46, 132 + Math.sin(ang) * 46, 8, "rgba(104,184,230,0.52)");
+          }
+          // Inner Cell Mass (forms the Embryo!)
+          [
+            [216, 114], [230, 108], [244, 114], [223, 124], [237, 124],
+          ].forEach(([cx, cy]) => {
+            drawCell(cx, cy, 9.5, "rgba(244,114,182,0.72)");
+          });
+        }
+
+        ctx.font = "800 10.5px 'Plus Jakarta Sans', sans-serif";
+        ctx.fillStyle = cyan;
+        ctx.textAlign = "center";
+        ctx.fillText(`⚡ ${subNames[sub]}`, 230, 214);
       } else if (stage === 2) {
-        // STAGE 3: IMPLANTATION, EMBRYO + DEVELOPING PLACENTA + HEARTBEAT
-        // Uterine Endometrium Wall (Left Side)
-        ctx.fillStyle = "rgba(224,99,125,0.28)";
+        // STAGE 3: IMPLANTATION, VASCULAR PLACENTA & C-SHAPED EMBRYO WITH HEARTBEAT
+        // Curved Uterine Endometrium Wall (Left)
+        ctx.fillStyle = "rgba(224,99,125,0.22)";
+        ctx.strokeStyle = rose;
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.moveTo(42, 42);
+        ctx.quadraticCurveTo(108, 132, 42, 224);
+        ctx.lineTo(106, 224);
+        ctx.quadraticCurveTo(156, 132, 106, 42);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Developing Placenta embedded in Endometrium
+        ctx.fillStyle = "rgba(224,99,125,0.72)";
+        ctx.beginPath();
+        ctx.ellipse(116, 132, 18, 48, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Umbilical Stalk connecting Placenta directly into Embryo abdomen
+        ctx.strokeStyle = "#fde047";
+        ctx.lineWidth = 5.5;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(128, 132);
+        ctx.quadraticCurveTo(186, 146, 240, 148);
+        ctx.stroke();
+
+        // Well-contoured C-Shaped Embryo
+        ctx.fillStyle = "rgba(244,114,182,0.38)";
         ctx.strokeStyle = rose;
         ctx.lineWidth = 2.5;
         ctx.beginPath();
-        ctx.roundRect(42, 54, 72, 166, 16);
+        ctx.moveTo(250, 96);
+        ctx.bezierCurveTo(298, 92, 314, 152, 286, 186);
+        ctx.bezierCurveTo(262, 206, 232, 196, 236, 174);
+        ctx.bezierCurveTo(246, 166, 256, 156, 244, 144);
+        ctx.bezierCurveTo(228, 130, 228, 100, 250, 96);
+        ctx.closePath();
         ctx.fill();
         ctx.stroke();
 
-        // Placenta Disc embedded in Uterine Wall
-        ctx.fillStyle = "rgba(224,99,125,0.68)";
+        // Embryo Eye Spot & Tiny Beating Heart
+        ctx.fillStyle = textCol;
         ctx.beginPath();
-        ctx.ellipse(116, 134, 16, 44, 0, 0, Math.PI * 2);
+        ctx.arc(246, 114, 3, 0, Math.PI * 2);
         ctx.fill();
 
-        // Umbilical Cord linking Placenta -> Embryo
-        ctx.strokeStyle = "#fde047";
-        ctx.lineWidth = 5;
-        ctx.lineCap = "round";
-        ctx.beginPath();
-        ctx.moveTo(126, 134);
-        ctx.quadraticCurveTo(176, 152, 224, 138);
-        ctx.stroke();
-
-        // C-Shaped Embryo
-        ctx.fillStyle = "rgba(244,114,182,0.42)";
-        ctx.strokeStyle = rose;
-        ctx.lineWidth = 2.6;
-        ctx.beginPath();
-        ctx.arc(256, 114, 24, 0, Math.PI * 2); // Embryo head
-        ctx.fill();
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.ellipse(252, 156, 20, 28, -0.35, 0, Math.PI * 2); // Embryo trunk
-        ctx.fill();
-        ctx.stroke();
-
-        // Tiny Beating Embryo Heart!
         ctx.fillStyle = "#e0637d";
         ctx.beginPath();
-        ctx.arc(244, 148, 5.5 + pulse * 3, 0, Math.PI * 2);
+        ctx.arc(254, 144, 5.5 + pulse * 3, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.font = "700 9.5px 'Plus Jakarta Sans', sans-serif";
         ctx.fillStyle = textCol;
         ctx.textAlign = "center";
-        ctx.fillText("PLACENTA", 116, 80);
-        ctx.fillText("EMBRYO + HEARTBEAT", 268, 204);
+        ctx.fillText("PLACENTA", 116, 72);
+        ctx.fillText("EMBRYO + HEARTBEAT", 274, 214);
       } else {
-        // STAGE 4: FULLY FORMED FOETUS IN AMNIOTIC SAC + PLACENTA NUTRIENT FLOW
-        // Amniotic Sac filled with warm Amniotic Fluid
-        const sacGrad = ctx.createRadialGradient(256, 132, 14, 256, 132, 86);
-        sacGrad.addColorStop(0, "rgba(104,184,230,0.26)");
+        // STAGE 4: WELL-STRUCTURED CURLED FOETUS CONNECTED TO PLACENTA VIA UMBILICAL CORD
+        ctx.save();
+        // 1. Curved Uterine Wall & Vascular Placenta (Left Side of Amniotic Sac)
+        ctx.fillStyle = "rgba(224,99,125,0.18)";
+        ctx.strokeStyle = rose;
+        ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        ctx.arc(254, 132, 108, Math.PI * 0.62, Math.PI * 1.38);
+        ctx.stroke();
+
+        // Disc-Shaped Vascular Placenta embedded in Uterine Wall
+        ctx.fillStyle = "rgba(224,99,125,0.74)";
+        ctx.strokeStyle = "#fda4af";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.ellipse(152, 132, 17, 52, 0.08, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Placental Villi blood vessels inside Placenta
+        ctx.strokeStyle = "rgba(255,255,255,0.45)";
+        ctx.lineWidth = 1.2;
+        for (let vy = 98; vy <= 166; vy += 17) {
+          ctx.beginPath();
+          ctx.moveTo(142, vy);
+          ctx.quadraticCurveTo(154, vy + 4, 162, vy);
+          ctx.stroke();
+        }
+
+        // 2. Translucent Amniotic Sac filled with Amniotic Fluid
+        const sacGrad = ctx.createRadialGradient(264, 132, 18, 264, 132, 92);
+        sacGrad.addColorStop(0, "rgba(104,184,230,0.24)");
         sacGrad.addColorStop(1, "rgba(104,184,230,0.08)");
         ctx.fillStyle = sacGrad;
         ctx.strokeStyle = cyan;
         ctx.lineWidth = 2.2;
         ctx.beginPath();
-        ctx.ellipse(256, 132, 92, 76, 0, 0, Math.PI * 2);
+        ctx.ellipse(264, 132, 98, 82, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
 
-        // Mother's Placenta Disc (Left side of sac)
-        ctx.fillStyle = "rgba(224,99,125,0.72)";
-        ctx.strokeStyle = rose;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.ellipse(164, 132, 16, 48, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
+        const floatY = Math.sin(elapsed * 2.0) * 2.5;
+        const navelX = 248;
+        const navelY = 152 + floatY;
 
-        // Flexible Umbilical Cord
+        // 3. Twisted Dual-Vessel Umbilical Cord (Directly from Placenta Center -> Foetus Navel!)
         ctx.strokeStyle = "#fde047";
-        ctx.lineWidth = 5.5;
-        ctx.lineCap = "round";
-        ctx.beginPath();
-        ctx.moveTo(174, 132);
-        ctx.bezierCurveTo(202, 168, 224, 158, 246, 144);
-        ctx.stroke();
-
-        // Flowing O2 & Glucose Nutrient Dots along Umbilical Cord
-        for (let i = 0; i < 4; i++) {
-          const nt = (elapsed * 0.65 + i * 0.25) % 1;
-          const nx = 176 + nt * 70;
-          const ny = 134 + Math.sin(nt * Math.PI) * 24;
-          ctx.fillStyle = mint;
-          ctx.beginPath();
-          ctx.arc(nx, ny, 3.2, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        // Curled Foetus Silhouette (Head, Torso, Tucked Arms & Legs)
-        const floatY = Math.sin(elapsed * 2) * 3;
-        ctx.save();
-        ctx.translate(0, floatY);
-        ctx.fillStyle = isLight ? "rgba(244,114,182,0.34)" : "rgba(253,164,175,0.36)";
-        ctx.strokeStyle = rose;
-        ctx.lineWidth = 2.4;
-        // Head
-        ctx.beginPath();
-        ctx.arc(266, 102, 23, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-        // Curved Back & Body
-        ctx.beginPath();
-        ctx.ellipse(274, 148, 24, 34, 0.22, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-        // Tucked Arm & Leg
         ctx.lineWidth = 7;
         ctx.lineCap = "round";
         ctx.beginPath();
-        ctx.moveTo(260, 128);
-        ctx.lineTo(240, 134);
-        ctx.moveTo(262, 166);
-        ctx.quadraticCurveTo(238, 174, 244, 154);
+        ctx.moveTo(164, 132);
+        ctx.bezierCurveTo(194, 176, 218, 174, navelX, navelY);
+        ctx.stroke();
+
+        // Inner twisted red (O2/Glucose) & blue (CO2/Waste) vessel flow along cord
+        for (let i = 0; i < 4; i++) {
+          const tIn = (elapsed * 0.55 + i * 0.25) % 1;
+          const tOut = 1 - tIn;
+          // Approximate bezier point along cord
+          const cordPt = (t) => {
+            const mt = 1 - t;
+            const x = mt * mt * mt * 164 + 3 * mt * mt * t * 194 + 3 * mt * t * t * 218 + t * t * t * navelX;
+            const y = mt * mt * mt * 132 + 3 * mt * mt * t * 176 + 3 * mt * t * t * 174 + t * t * t * navelY;
+            return [x, y];
+          };
+          const [rx, ry] = cordPt(tIn);
+          const [bx, by] = cordPt(tOut);
+          ctx.fillStyle = "#e0637d"; // O2 + Glucose to Foetus
+          ctx.beginPath();
+          ctx.arc(rx, ry - 2, 2.8, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = "#38bdf8"; // CO2 + Waste to Placenta
+          ctx.beginPath();
+          ctx.arc(bx, by + 2, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // 4. Anatomically Sculpted Curled Foetus (Head Profile, Curved Spine, Arm, Hand, Leg, Foot)
+        ctx.save();
+        ctx.translate(0, floatY);
+        ctx.fillStyle = isLight ? "rgba(244,114,182,0.34)" : "rgba(253,164,175,0.38)";
+        ctx.strokeStyle = rose;
+        ctx.lineWidth = 2.2;
+        ctx.lineJoin = "round";
+
+        // Foetus Head with recognizable Forehead, Nose & Chin Profile (facing left toward Placenta)
+        ctx.beginPath();
+        ctx.moveTo(266, 76); // Crown
+        ctx.bezierCurveTo(244, 76, 236, 92, 238, 102); // Forehead
+        ctx.lineTo(234, 108); // Tiny Nose
+        ctx.lineTo(239, 113); // Lips
+        ctx.quadraticCurveTo(240, 122, 250, 123); // Chin
+        ctx.bezierCurveTo(268, 126, 290, 114, 290, 96); // Back of head
+        ctx.bezierCurveTo(290, 82, 280, 76, 266, 76);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Closed Eye & Tiny Ear
+        ctx.strokeStyle = textCol;
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.arc(248, 101, 3.5, 0.15 * Math.PI, 0.85 * Math.PI); // Closed eye
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(266, 104, 3.5, -Math.PI * 0.4, Math.PI * 0.5); // Tiny ear
+        ctx.stroke();
+
+        // Curled Torso & Spine (Curved fetal position)
+        ctx.fillStyle = isLight ? "rgba(244,114,182,0.34)" : "rgba(253,164,175,0.38)";
+        ctx.strokeStyle = rose;
+        ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        ctx.moveTo(274, 118); // Neck back
+        ctx.bezierCurveTo(306, 124, 314, 168, 292, 188); // Curved back/rump
+        ctx.bezierCurveTo(272, 200, 252, 186, 246, 164); // Lower abdomen
+        ctx.quadraticCurveTo(244, 144, 254, 124); // Chest & neck front
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Gently Pulsing Foetal Heart
+        ctx.fillStyle = "#e0637d";
+        ctx.beginPath();
+        ctx.arc(266, 142, 4.5 + pulse * 2.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Bent Arm & Hand tucked near Chin
+        ctx.strokeStyle = rose;
+        ctx.lineWidth = 7.5;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(274, 132); // Shoulder
+        ctx.lineTo(260, 148); // Elbow
+        ctx.lineTo(244, 134); // Hand near face
+        ctx.stroke();
+
+        // Bent Leg, Knee & Foot tucked in fetal position
+        ctx.lineWidth = 8.5;
+        ctx.beginPath();
+        ctx.moveTo(286, 178); // Hip
+        ctx.lineTo(256, 182); // Knee
+        ctx.lineTo(268, 198); // Foot
         ctx.stroke();
         ctx.restore();
 
-        ctx.font = "700 9.5px 'Plus Jakarta Sans', sans-serif";
+        // Clear Labels
+        ctx.font = "700 9px 'Plus Jakarta Sans', sans-serif";
         ctx.fillStyle = textCol;
         ctx.textAlign = "center";
-        ctx.fillText("PLACENTA", 122, 136);
-        ctx.fillText("AMNIOTIC FLUID", 268, 224);
+        ctx.fillText("PLACENTA", 106, 134);
+        ctx.fillText("UMBILICAL CORD", 198, 196);
+        ctx.fillText("AMNIOTIC FLUID", 286, 226);
+        ctx.restore();
       }
 
       // Bottom HUD
@@ -2716,7 +3088,6 @@
   // BOOTSTRAP & EVENT WIRING
   // =========================================================
   document.addEventListener("DOMContentLoaded", () => {
-    // Match initial view to user's selected Male/Female body on index.html
     ui.view = BL.getState().sex === "female" ? "female" : "male";
 
     const btnMale = document.getElementById("btn-view-male");

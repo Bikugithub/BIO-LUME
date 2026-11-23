@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digestive System, Enzymes, Villi &amp; Bile — BioLume</title>
+  <meta name="description" content="Class 9-10 interactive human digestive system: live alimentary canal peristalsis, enzyme & pH chemistry lab, 3D flippable Intestinal Villi and Bile Emulsification lab, and trilingual lesson plan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="lab-grid-bg">
+  <!-- TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="btn-back">
+          <span aria-hidden="true">←</span>
+          <span data-i18n="nav.backToBody">Full Body View</span>
+        </a>
+
+        <a href="index.html" class="brand-btn">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span class="brand-dot"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-row">
+              <strong data-i18n="brand">BioLume</strong>
+              <span id="dig-chapter-badge" class="chapter-badge">Chapter 06 • Class 9–10 Lab</span>
+            </span>
+            <span class="brand-tagline" data-i18n="tagline">Living Human Biology Atlas</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-group" role="group" aria-label="Language Selector">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="hi">हिं</button>
+          <button class="lang-btn" type="button" data-lang-btn="bn">বাং</button>
+        </div>
+
+        <button id="btn-bilingual" class="pill-btn" type="button" aria-pressed="true">
+          <span aria-hidden="true">🌐</span>
+          <span class="hide-xs" data-i18n="nav.bilingual">EN Terms</span>
+        </button>
+
+        <button id="btn-theme" class="pill-btn" type="button">
+          <span id="theme-icon" aria-hidden="true">☀️</span>
+          <span id="theme-label" class="hide-sm">Atlas Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: ALIMENTARY CANAL & ENZYME CHEMISTRY LIVE LAB -->
+  <main class="heart-view">
+    <div class="heart-header">
+      <div>
+        <h1 id="dig-title" class="heart-title">Human Digestive System — Live Lab</h1>
+        <p id="dig-subtitle" class="heart-subtitle">Follow food along the alimentary canal with live pH changes, or switch to the Enzyme Chemistry Lab</p>
+      </div>
+
+      <div class="heart-toggles">
+        <button id="btn-view-tract" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">🍽️</span>
+          <span id="lbl-view-tract">Digestive Tract</span>
+        </button>
+        <button id="btn-view-enzymes" class="pill-btn" type="button" aria-pressed="false">
+          <span aria-hidden="true">🧪</span>
+          <span id="lbl-view-enzymes">Enzyme &amp; pH Lab</span>
+        </button>
+        <button id="btn-dig-auto" class="pill-btn active-electric" type="button" aria-pressed="true">
+          <span aria-hidden="true">🔁</span>
+          <span id="lbl-dig-auto">Auto Digest</span>
+        </button>
+        <button id="btn-dig-pins" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">📍</span>
+          <span id="lbl-dig-pins">Hotspot Pins</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="heart-grid">
+      <!-- LEFT: 60 FPS Digestive Tract / Enzyme Stage + Telemetry + Meal Journey Slider -->
+      <div class="heart-left">
+        <div id="dig-canvas-box" class="heart-stage glass-panel">
+          <canvas id="dig-canvas" class="heart-canvas" aria-label="Interactive Human Digestive System and Enzyme Simulation"></canvas>
+          <div id="dig-pins-layer" class="pins-layer"></div>
+        </div>
+
+        <!-- Live Digestive Telemetry -->
+        <div class="metrics-grid">
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-ph" class="metric-label">Local pH</span>
+            <div class="metric-val accent"><span id="metric-ph">6.8</span></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-organ" class="metric-label">Food Location</span>
+            <div id="metric-dig-organ" class="metric-phase">Mouth</div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-enzyme" class="metric-label">Active Juice</span>
+            <div id="metric-dig-enzyme" class="metric-phase systole">Salivary Amylase</div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-prog" class="metric-label">Digestion</span>
+            <div class="metric-val"><span id="metric-dig-prog">10</span><small>%</small></div>
+          </div>
+        </div>
+
+        <!-- Meal Journey Position Slider -->
+        <div class="glass-panel control-card">
+          <div class="control-head">
+            <span id="lbl-journey-control" class="control-title">Meal Journey Position</span>
+            <span id="journey-pill" class="accent-pill">Mouth • pH 6.8</span>
+          </div>
+          <input id="journey-slider" class="lab-slider" type="range" min="0" max="100" value="10" aria-label="Meal Journey Position" />
+          <div class="preset-grid">
+            <button class="preset-btn active" type="button" data-journey="6" id="preset-mouth">Mouth (pH 6.8)</button>
+            <button class="preset-btn" type="button" data-journey="36" id="preset-stomach">Stomach (pH 2.0)</button>
+            <button class="preset-btn" type="button" data-journey="68" id="preset-small">Small Int. (pH 8.0)</button>
+            <button class="preset-btn" type="button" data-journey="92" id="preset-large">Large Int. (Water)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Organ & Enzyme Inspector / Class 9–10 Lesson Plan / Quick Check -->
+      <div id="dig-reader-panel" class="glass-panel reader-panel">
+        <div class="reader-tabs" role="tablist">
+          <button id="tab-dig-inspect" class="tab-btn active" type="button" data-dig-tab="inspect">Organ Inspector</button>
+          <button id="tab-dig-lesson" class="tab-btn" type="button" data-dig-tab="lesson">Class 9–10 Lesson</button>
+          <button id="tab-dig-quiz" class="tab-btn" type="button" data-dig-tab="quiz">Quick Check</button>
+        </div>
+        <div id="dig-reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 2: 3D FLIPPABLE INTESTINAL VILLI <-> BILE EMULSIFICATION   -->
+    <!-- ================================================================== -->
+    <section id="villi-bile-section" style="margin-top:42px;padding-top:32px;border-top:1px solid var(--border);" aria-label="Flippable Intestinal Villi Absorption and Bile Emulsification Lab">
+      <div class="heart-header">
+        <div>
+          <h2 id="villi-sec-title" class="heart-title">Intestinal Villi &amp; Bile Action — 3D Flippable Lab</h2>
+          <p id="villi-sec-subtitle" class="heart-subtitle">Front side: Finger-like Villi absorbing Glucose &amp; Amino Acids into blood • Flip the card to see Bile Fat Emulsification</p>
+        </div>
+
+        <div class="heart-toggles">
+          <button id="btn-dig-flip-main" class="pill-btn active-electric" type="button" aria-pressed="false">
+            <span aria-hidden="true">🔄</span>
+            <span id="lbl-dig-flip-main">Flip Card: Villi Absorption ↔ Bile Action</span>
+          </button>
+          <button id="btn-villi-pause" class="pill-btn" type="button">⏸ <span>Pause</span></button>
+        </div>
+      </div>
+
+      <!-- 3D FLIPPABLE CARD SCENE -->
+      <div class="flip-scene">
+        <div id="dig-flip-card" class="flip-card">
+          <!-- FRONT FACE: INTESTINAL VILLI NUTRIENT ABSORPTION -->
+          <div class="flip-face flip-front glass-panel">
+            <div class="flip-face-bar">
+              <span id="lbl-villi-front-badge" class="accent-pill">FRONT • SMALL INTESTINE VILLI (ABSORPTION)</span>
+              <button id="btn-flip-to-bile" class="pill-btn active-electric" type="button">
+                <span id="lbl-flip-to-bile">Flip to Bile Fat Emulsification</span>
+                <span aria-hidden="true">↻</span>
+              </button>
+            </div>
+
+            <div class="flip-inner-grid">
+              <!-- Left: Live 60 FPS Villi Absorption Canvas + Trigger -->
+              <div class="flip-canvas-col">
+                <div id="villi-canvas-box" class="flip-stage glass-panel">
+                  <canvas id="villi-canvas" class="heart-canvas" aria-label="Live 60 FPS Intestinal Villi Nutrient Absorption Animation"></canvas>
+                </div>
+                <button id="btn-absorb-nutrients" class="primary-cta" type="button" style="margin-top:12px;">
+                  <span aria-hidden="true">🍎</span>
+                  <span id="lbl-absorb-nutrients">Absorb Digested Nutrients (Boost Wave!)</span>
+                </button>
+              </div>
+
+              <!-- Right: Interactive Villi Parts Selector -->
+              <div class="flip-info-col">
+                <p id="lbl-villi-prompt" class="heart-subtitle">Tap any part of an intestinal villus below to see how digested food enters your bloodstream:</p>
+                <div id="villi-parts-chips" class="part-pills"></div>
+                <div id="villi-part-detail" class="detail-box"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BACK FACE: BILE FAT EMULSIFICATION MECHANISM -->
+          <div class="flip-face flip-back glass-panel">
+            <div class="flip-face-bar">
+              <span id="lbl-villi-back-badge" class="arterial-pill">BACK • LIVER BILE &amp; FAT EMULSIFICATION</span>
+              <button id="btn-flip-to-villi" class="pill-btn active-accent" type="button">
+                <span aria-hidden="true">↺</span>
+                <span id="lbl-flip-to-villi">Flip Back to Intestinal Villi</span>
+              </button>
+            </div>
+
+            <div class="flip-inner-grid">
+              <!-- Left: Live 60 FPS Bile Emulsification Canvas + Trigger -->
+              <div class="flip-canvas-col">
+                <div id="bile-canvas-box" class="flip-stage glass-panel">
+                  <canvas id="bile-canvas" class="heart-canvas" aria-label="Live 60 FPS Bile Fat Emulsification and Lipase Digestion Animation"></canvas>
+                </div>
+                <button id="btn-release-bile" class="primary-cta" type="button" style="margin-top:12px;">
+                  <span aria-hidden="true">🧪</span>
+                  <span id="lbl-release-bile">Release Bile Salts (Emulsify Fat Globule!)</span>
+                </button>
+              </div>
+
+              <!-- Right: 4-Step Bile & Lipase Breakdown -->
+              <div class="flip-info-col">
+                <p id="lbl-bile-prompt" class="heart-subtitle">See why Bile has NO enzymes, yet fats cannot be digested efficiently without it:</p>
+                <div id="bile-steps-chips" class="part-pills"></div>
+                <div id="bile-step-detail" class="detail-box"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VILLI & BILE CLASS 9–10 MASTER NOTES + QUIZ -->
+      <div id="vb-reader-panel" class="glass-panel reader-panel" style="margin-top:22px;">
+        <div class="reader-tabs" role="tablist" style="grid-template-columns: repeat(2, 1fr);">
+          <button id="tab-vb-lesson" class="tab-btn active" type="button" data-vb-tab="lesson">Villi &amp; Bile Notes (Class 9–10)</button>
+          <button id="tab-vb-quiz" class="tab-btn" type="button" data-vb-tab="quiz">Villi &amp; Bile Quiz</button>
+        </div>
+        <div id="vb-reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="lang.js"></script>
+  <script src="digestive.js"></script>
+</body>
+</html>

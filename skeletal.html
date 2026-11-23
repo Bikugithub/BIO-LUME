@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skeletal System, 206 Bones, Joints &amp; Bone Marrow — BioLume</title>
+  <meta name="description" content="Class 9-10 interactive human skeletal system: 206 bones Axial vs Appendicular map, 4 movable joints live animation, 3D flippable Bone Marrow and Fracture Healing lab, and trilingual lesson plan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="lab-grid-bg">
+  <!-- TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="btn-back">
+          <span aria-hidden="true">←</span>
+          <span data-i18n="nav.backToBody">Full Body View</span>
+        </a>
+
+        <a href="index.html" class="brand-btn">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span class="brand-dot"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-row">
+              <strong data-i18n="brand">BioLume</strong>
+              <span id="skel-chapter-badge" class="chapter-badge">Chapter 05 • Class 9–10 Lab</span>
+            </span>
+            <span class="brand-tagline" data-i18n="tagline">Living Human Biology Atlas</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-group" role="group" aria-label="Language Selector">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="hi">हिं</button>
+          <button class="lang-btn" type="button" data-lang-btn="bn">বাং</button>
+        </div>
+
+        <button id="btn-bilingual" class="pill-btn" type="button" aria-pressed="true">
+          <span aria-hidden="true">🌐</span>
+          <span class="hide-xs" data-i18n="nav.bilingual">EN Terms</span>
+        </button>
+
+        <button id="btn-theme" class="pill-btn" type="button">
+          <span id="theme-icon" aria-hidden="true">☀️</span>
+          <span id="theme-label" class="hide-sm">Atlas Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: 206 BONES & MOVABLE JOINTS LIVE LAB -->
+  <main class="heart-view">
+    <div class="heart-header">
+      <div>
+        <h1 id="skel-title" class="heart-title">Human Skeletal System — Live Lab</h1>
+        <p id="skel-subtitle" class="heart-subtitle">Filter Axial (80) vs. Appendicular (126) bones, or switch to the 4 Movable Joints live simulator</p>
+      </div>
+
+      <div class="heart-toggles">
+        <button id="btn-view-bones" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">🦴</span>
+          <span id="lbl-view-bones">206 Bones Map</span>
+        </button>
+        <button id="btn-view-joints" class="pill-btn" type="button" aria-pressed="false">
+          <span aria-hidden="true">⚙️</span>
+          <span id="lbl-view-joints">4 Movable Joints</span>
+        </button>
+        <button id="btn-skel-pause" class="pill-btn" type="button">⏸ <span>Pause</span></button>
+        <button id="btn-skel-pins" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">📍</span>
+          <span id="lbl-skel-pins">Hotspot Pins</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="heart-grid">
+      <!-- LEFT: 60 FPS Skeleton / Joints Stage + Bone Count Telemetry + Division Filter -->
+      <div class="heart-left">
+        <div id="skel-canvas-box" class="heart-stage glass-panel">
+          <canvas id="skel-canvas" class="heart-canvas" aria-label="Interactive Human Skeleton and Movable Joints Simulation"></canvas>
+          <div id="skel-pins-layer" class="pins-layer"></div>
+        </div>
+
+        <!-- Live Skeletal Telemetry -->
+        <div class="metrics-grid">
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-total" class="metric-label">Adult Bones</span>
+            <div class="metric-val accent"><span id="metric-total">206</span></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-axial" class="metric-label">Axial</span>
+            <div class="metric-val"><span id="metric-axial">80</span></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-append" class="metric-label">Appendicular</span>
+            <div class="metric-val arterial"><span id="metric-append">126</span></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-focus" class="metric-label">Active Filter</span>
+            <div id="metric-skel-focus" class="metric-phase">All 206</div>
+          </div>
+        </div>
+
+        <!-- Skeleton Division Highlight Controls -->
+        <div class="glass-panel control-card">
+          <div class="control-head">
+            <span id="lbl-div-control" class="control-title">Skeleton Division Highlight</span>
+            <span id="div-pill" class="accent-pill">All 206 Bones</span>
+          </div>
+          <div class="preset-grid">
+            <button class="preset-btn active" type="button" data-div="all" id="preset-div-all">All (206)</button>
+            <button class="preset-btn" type="button" data-div="axial" id="preset-div-axial">Axial (80)</button>
+            <button class="preset-btn" type="button" data-div="appendicular" id="preset-div-append">Appendicular (126)</button>
+            <button class="preset-btn" type="button" data-div="joints" id="preset-div-joints">4 Joints Lab</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Bone & Joint Inspector / Class 9–10 Lesson Plan / Quick Check -->
+      <div id="skel-reader-panel" class="glass-panel reader-panel">
+        <div class="reader-tabs" role="tablist">
+          <button id="tab-skel-inspect" class="tab-btn active" type="button" data-skel-tab="inspect">Bone &amp; Joint Inspector</button>
+          <button id="tab-skel-lesson" class="tab-btn" type="button" data-skel-tab="lesson">Class 9–10 Lesson</button>
+          <button id="tab-skel-quiz" class="tab-btn" type="button" data-skel-tab="quiz">Quick Check</button>
+        </div>
+        <div id="skel-reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 2: 3D FLIPPABLE LIVING BONE <-> FRACTURE HEALING LAB       -->
+    <!-- ================================================================== -->
+    <section id="bone-marrow-section" style="margin-top:42px;padding-top:32px;border-top:1px solid var(--border);" aria-label="Flippable Living Bone Anatomy and Fracture Healing Lab">
+      <div class="heart-header">
+        <div>
+          <h2 id="bone-sec-title" class="heart-title">Inside a Living Bone &amp; Fracture Healing — 3D Flippable Lab</h2>
+          <p id="bone-sec-subtitle" class="heart-subtitle">Front side: Compact Bone, Spongy Bone &amp; Red Marrow blood factory • Flip the card to see how a broken bone heals</p>
+        </div>
+
+        <div class="heart-toggles">
+          <button id="btn-skel-flip-main" class="pill-btn active-electric" type="button" aria-pressed="false">
+            <span aria-hidden="true">🔄</span>
+            <span id="lbl-skel-flip-main">Flip Card: Bone Marrow ↔ Fracture Repair</span>
+          </button>
+          <button id="btn-bone-pause" class="pill-btn" type="button">⏸ <span>Pause</span></button>
+        </div>
+      </div>
+
+      <!-- 3D FLIPPABLE CARD SCENE -->
+      <div class="flip-scene">
+        <div id="skel-flip-card" class="flip-card">
+          <!-- FRONT FACE: INSIDE A LIVING LONG BONE (BONE MARROW FACTORY) -->
+          <div class="flip-face flip-front glass-panel">
+            <div class="flip-face-bar">
+              <span id="lbl-bone-front-badge" class="accent-pill">FRONT • LIVING BONE &amp; MARROW FACTORY</span>
+              <button id="btn-flip-to-heal" class="pill-btn active-electric" type="button">
+                <span id="lbl-flip-to-heal">Flip to Fracture Healing</span>
+                <span aria-hidden="true">↻</span>
+              </button>
+            </div>
+
+            <div class="flip-inner-grid">
+              <!-- Left: Live 60 FPS Living Bone Cross-Section + Produce Blood Cells Button -->
+              <div class="flip-canvas-col">
+                <div id="marrow-canvas-box" class="flip-stage glass-panel">
+                  <canvas id="marrow-canvas" class="heart-canvas" aria-label="Live 60 FPS Living Bone Marrow Blood Cell Production Animation"></canvas>
+                </div>
+                <button id="btn-produce-cells" class="primary-cta" type="button" style="margin-top:12px;">
+                  <span aria-hidden="true">🩸</span>
+                  <span id="lbl-produce-cells">Produce Fresh Blood Cells (Red Marrow!)</span>
+                </button>
+              </div>
+
+              <!-- Right: Interactive Bone Layers Selector -->
+              <div class="flip-info-col">
+                <p id="lbl-marrow-prompt" class="heart-subtitle">Tap any layer of a living bone below to highlight it and see why bones are strong yet lightweight:</p>
+                <div id="marrow-parts-chips" class="part-pills"></div>
+                <div id="marrow-part-detail" class="detail-box"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BACK FACE: 4 STAGES OF FRACTURE HEALING -->
+          <div class="flip-face flip-back glass-panel">
+            <div class="flip-face-bar">
+              <span id="lbl-bone-back-badge" class="arterial-pill">BACK • 4 STAGES OF BONE FRACTURE HEALING</span>
+              <button id="btn-flip-to-marrow" class="pill-btn active-accent" type="button">
+                <span aria-hidden="true">↺</span>
+                <span id="lbl-flip-to-marrow">Flip Back to Bone Anatomy</span>
+              </button>
+            </div>
+
+            <div class="flip-inner-grid">
+              <!-- Left: Live 60 FPS Fracture Repair Canvas + Next Stage Trigger -->
+              <div class="flip-canvas-col">
+                <div id="heal-canvas-box" class="flip-stage glass-panel">
+                  <canvas id="heal-canvas" class="heart-canvas" aria-label="Live 60 FPS Bone Fracture Healing Stages Animation"></canvas>
+                </div>
+                <button id="btn-next-heal-stage" class="primary-cta" type="button" style="margin-top:12px;">
+                  <span aria-hidden="true">🩹</span>
+                  <span id="lbl-next-heal-stage">Advance Healing Stage (Step 1 → 4)</span>
+                </button>
+              </div>
+
+              <!-- Right: 4-Stage Fracture Repair Selector -->
+              <div class="flip-info-col">
+                <p id="lbl-heal-prompt" class="heart-subtitle">Follow the 4 biological stages of how living bone cells (Osteoblasts) rebuild a fracture:</p>
+                <div id="heal-steps-chips" class="part-pills"></div>
+                <div id="heal-step-detail" class="detail-box"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BONE MARROW & HEALING CLASS 9–10 MASTER NOTES + QUIZ -->
+      <div id="bm-reader-panel" class="glass-panel reader-panel" style="margin-top:22px;">
+        <div class="reader-tabs" role="tablist" style="grid-template-columns: repeat(2, 1fr);">
+          <button id="tab-bm-lesson" class="tab-btn active" type="button" data-bm-tab="lesson">Bone Structure &amp; Health Notes (Class 9–10)</button>
+          <button id="tab-bm-quiz" class="tab-btn" type="button" data-bm-tab="quiz">Bone Marrow &amp; Healing Quiz</button>
+        </div>
+        <div id="bm-reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="lang.js"></script>
+  <script src="skeletal.js"></script>
+</body>
+</html>

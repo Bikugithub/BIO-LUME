@@ -31,6 +31,7 @@
     muscular: "muscular.html",
     skeletal: "skeletal.html",
     digestive: "digestive.html",
+    reproductive: "reproductive.html",
   };
 
   const DICT = {
@@ -51,13 +52,14 @@
         layers: ["Surface", "Muscular", "Skeletal", "Internal"],
         fpsBadge: "LIVE",
         activeSystem: "Active System",
-        diveHint: "Tap any LIVE system (Heart, Lungs, Brain, Digestive, Muscles, Skeleton) to open its deep-dive page",
+        diveHint: "Tap any LIVE system to open its interactive deep-dive page",
         openDeepDive: "Open Heart & Blood Cells Page",
         openRespiratory: "Open Respiratory & Gas Exchange Page",
         openNervous: "Open Brain, Neuron & Synapse Page",
         openMuscular: "Open Muscular System & Sarcomere Page",
         openSkeletal: "Open Skeletal System & 206 Bones Page",
         openDigestive: "Open Digestive System, Enzymes & Villi Page",
+        openReproductive: "Open Reproductive, Fertilization & Foetus Page",
         comingSoonTitle: "Dedicated Organ Page Coming Next",
         comingSoonDesc:
           "This organ is illuminated on the live body stage. Its dedicated deep-dive page with detailed diagrams and real-time physiology animation will be added in the next update.",
@@ -116,7 +118,7 @@
         reproductive: {
           name: "Reproductive System",
           en: "Reproductive System",
-          shortDesc: "Adapts automatically to Male & Female body view",
+          shortDesc: "Male & Female anatomy, live sperm path, fusion & foetus lab",
         },
       },
       heartLab: {
@@ -442,13 +444,14 @@
         layers: ["बाहरी", "पेशी", "कंकाल", "आंतरिक"],
         fpsBadge: "लाइव",
         activeSystem: "सक्रिय तंत्र",
-        diveHint: "लाइव लैब पेज खोलने के लिए किसी भी सक्रिय तंत्र (हृदय, फेफड़े, मस्तिष्क, पाचन, पेशी, कंकाल) को चुनें",
+        diveHint: "विस्तृत लाइव लैब पेज खोलने के लिए किसी भी सक्रिय (LIVE) तंत्र को चुनें",
         openDeepDive: "हृदय और रक्त कोशिका पेज खोलें",
         openRespiratory: "श्वसन और गैस विनिमय पेज खोलें",
         openNervous: "मस्तिष्क, न्यूरॉन व सिनैप्स पेज खोलें",
         openMuscular: "पेशी तंत्र और सार्कोमियर पेज खोलें",
         openSkeletal: "कंकाल तंत्र और 206 अस्थियाँ पेज खोलें",
         openDigestive: "पाचन तंत्र, एंजाइम और दीर्घरोम पेज खोलें",
+        openReproductive: "प्रजनन, निषेचन और भ्रूण विकास पेज खोलें",
         comingSoonTitle: "अगला अंग पेज शीघ्र आ रहा है",
         comingSoonDesc:
           "यह अंग शरीर मानचित्र पर सक्रिय दिख रहा है। विस्तृत चित्र और लाइव एनीमेशन वाला इसका अलग पेज अगले अपडेट में जोड़ा जाएगा।",
@@ -507,7 +510,7 @@
         reproductive: {
           name: "प्रजनन तंत्र",
           en: "Reproductive System",
-          shortDesc: "पुरुष और महिला शरीर के अनुसार स्वतः बदलता है",
+          shortDesc: "नर व मादा संरचना, शुक्राणु पथ, निषेचन और भ्रूण निर्माण लैब",
         },
       },
       heartLab: {
@@ -821,13 +824,14 @@
         layers: ["বাহ্যিক", "পেশী", "কঙ্কাল", "অভ্যন্তরীণ"],
         fpsBadge: "লাইভ",
         activeSystem: "সক্রিয় তন্ত্র",
-        diveHint: "লাইভ ল্যাব পেজ খুলতে যেকোনো সক্রিয় তন্ত্র (হৃৎপিণ্ড, ফুসফুস, মস্তিষ্ক, পরিপাক, পেশী, কঙ্কাল) বেছে নিন",
+        diveHint: "বিস্তারিত লাইভ ল্যাব পেজ খুলতে যেকোনো সক্রিয় (LIVE) তন্ত্র বেছে নিন",
         openDeepDive: "হৃৎপিণ্ড ও রক্তকণিকা পেজ খুলুন",
         openRespiratory: "শ্বসন ও গ্যাসীয় বিনিময় পেজ খুলুন",
         openNervous: "মস্তিষ্ক, নিউরন ও সাইন্যাপস পেজ খুলুন",
         openMuscular: "পেশী তন্ত্র ও সার্কোমিয়ার পেজ খুলুন",
         openSkeletal: "কঙ্কাল তন্ত্র ও ২০৬ অস্থি পেজ খুলুন",
         openDigestive: "পরিপাক তন্ত্র, উৎসেচক ও ভিলাই পেজ খুলুন",
+        openReproductive: "প্রজনন, নিষেক ও ভ্রূণ গঠন পেজ খুলুন",
         comingSoonTitle: "আলাদা অঙ্গ পেজ শীঘ্রই আসছে",
         comingSoonDesc:
           "এই অঙ্গটি দেহ মানচিত্রে সক্রিয়ভাবে দেখানো হচ্ছে। বিস্তারিত চিত্র ও লাইভ অ্যানিমেশনসহ এর আলাদা পেজ পরবর্তী আপডেটে যুক্ত হবে।",
@@ -886,7 +890,7 @@
         reproductive: {
           name: "প্রজনন তন্ত্র",
           en: "Reproductive System",
-          shortDesc: "পুরুষ ও নারী দেহ অনুযায়ী স্বয়ংক্রিয়ভাবে পরিবর্তিত হয়",
+          shortDesc: "পুরুষ ও নারী অঙ্গসংস্থান, শুক্রাণু পথ, নিষেক ও ভ্রূণ গঠন ল্যাব",
         },
       },
       heartLab: {

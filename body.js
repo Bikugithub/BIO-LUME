@@ -368,6 +368,7 @@
         if (span) {
           if (st.system === "respiratory") span.textContent = d.stage.openRespiratory;
           else if (st.system === "nervous") span.textContent = d.stage.openNervous;
+          else if (st.system === "muscular") span.textContent = d.stage.openMuscular;
           else span.textContent = d.stage.openDeepDive;
         }
       }

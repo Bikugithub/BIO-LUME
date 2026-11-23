@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reproductive System, Fertilization &amp; Foetus Formation — BioLume</title>
+  <meta name="description" content="Class 9-10 interactive human reproductive system: complete Male & Female anatomy diagrams, live sperm journey & fertilization, 3D flippable Sperm-Egg Fusion and Foetus Formation lab, and trilingual lesson plan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="lab-grid-bg">
+  <!-- TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html" class="btn-back">
+          <span aria-hidden="true">←</span>
+          <span data-i18n="nav.backToBody">Full Body View</span>
+        </a>
+
+        <a href="index.html" class="brand-btn">
+          <span class="brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span class="brand-dot"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-row">
+              <strong data-i18n="brand">BioLume</strong>
+              <span id="rep-chapter-badge" class="chapter-badge">Chapter 07 • Class 9–10 Lab</span>
+            </span>
+            <span class="brand-tagline" data-i18n="tagline">Living Human Biology Atlas</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-group" role="group" aria-label="Language Selector">
+          <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+          <button class="lang-btn" type="button" data-lang-btn="hi">हिं</button>
+          <button class="lang-btn" type="button" data-lang-btn="bn">বাং</button>
+        </div>
+
+        <button id="btn-bilingual" class="pill-btn" type="button" aria-pressed="true">
+          <span aria-hidden="true">🌐</span>
+          <span class="hide-xs" data-i18n="nav.bilingual">EN Terms</span>
+        </button>
+
+        <button id="btn-theme" class="pill-btn" type="button">
+          <span id="theme-icon" aria-hidden="true">☀️</span>
+          <span id="theme-label" class="hide-sm">Atlas Light</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: MALE, FEMALE & FERTILIZATION PATHWAY LIVE LAB -->
+  <main class="heart-view">
+    <div class="heart-header">
+      <div>
+        <h1 id="rep-title" class="heart-title">Human Reproductive System — Live Lab</h1>
+        <p id="rep-subtitle" class="heart-subtitle">Explore complete Male &amp; Female connected anatomy, or trace the live Sperm Journey to Fertilization</p>
+      </div>
+
+      <div class="heart-toggles">
+        <button id="btn-view-male" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">♂</span>
+          <span id="lbl-view-male">Male System</span>
+        </button>
+        <button id="btn-view-female" class="pill-btn" type="button" aria-pressed="false">
+          <span aria-hidden="true">♀</span>
+          <span id="lbl-view-female">Female System</span>
+        </button>
+        <button id="btn-view-fert" class="pill-btn" type="button" aria-pressed="false">
+          <span aria-hidden="true">🧬</span>
+          <span id="lbl-view-fert">Sperm Path &amp; Fusion</span>
+        </button>
+        <button id="btn-rep-pause" class="pill-btn" type="button">⏸ <span>Pause</span></button>
+        <button id="btn-rep-pins" class="pill-btn active-accent" type="button" aria-pressed="true">
+          <span aria-hidden="true">📍</span>
+          <span id="lbl-rep-pins">Hotspot Pins</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="heart-grid">
+      <!-- LEFT: 60 FPS Male / Female / Fertilization Stage + Telemetry + Journey Controls -->
+      <div class="heart-left">
+        <div id="rep-canvas-box" class="heart-stage glass-panel">
+          <canvas id="rep-canvas" class="heart-canvas" aria-label="Interactive Human Male, Female, and Fertilization Pathway Simulation"></canvas>
+          <div id="rep-pins-layer" class="pins-layer"></div>
+        </div>
+
+        <!-- Live Reproductive Telemetry -->
+        <div class="metrics-grid">
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-gamete" class="metric-label">Gamete</span>
+            <div id="metric-gamete" class="metric-phase">Sperm (n = 23)</div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-chromo" class="metric-label">Chromosomes</span>
+            <div class="metric-val accent"><span id="metric-chromo">23</span></div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-hormone" class="metric-label">Key Hormone</span>
+            <div id="metric-hormone" class="metric-phase systole">Testosterone</div>
+          </div>
+          <div class="glass-panel metric-card">
+            <span id="lbl-m-site" class="metric-label">Active Site</span>
+            <div id="metric-site" class="metric-phase">Testes → Urethra</div>
+          </div>
+        </div>
+
+        <!-- Fertilization Journey & Pathway Control -->
+        <div class="glass-panel control-card">
+          <div class="control-head">
+            <span id="lbl-path-control" class="control-title">Sperm Journey &amp; Fertilization Progress</span>
+            <span id="path-pill" class="accent-pill">Male Pathway • Live</span>
+          </div>
+          <input id="path-slider" class="lab-slider" type="range" min="0" max="100" value="25" aria-label="Sperm Journey Progress" />
+          <div class="preset-grid">
+            <button class="preset-btn" type="button" data-path="10" id="preset-entry">1. Vagina Entry</button>
+            <button class="preset-btn" type="button" data-path="40" id="preset-uterus">2. Uterus Swim</button>
+            <button class="preset-btn" type="button" data-path="72" id="preset-tube">3. Fallopian Meet</button>
+            <button class="preset-btn" type="button" data-path="96" id="preset-zygote">4. Zygote (46)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Anatomy Inspector / Class 9–10 Lesson Plan / Quick Check -->
+      <div id="rep-reader-panel" class="glass-panel reader-panel">
+        <div class="reader-tabs" role="tablist">
+          <button id="tab-rep-inspect" class="tab-btn active" type="button" data-rep-tab="inspect">Anatomy Inspector</button>
+          <button id="tab-rep-lesson" class="tab-btn" type="button" data-rep-tab="lesson">Class 9–10 Lesson</button>
+          <button id="tab-rep-quiz" class="tab-btn" type="button" data-rep-tab="quiz">Quick Check</button>
+        </div>
+        <div id="rep-reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 2: 3D FLIPPABLE SPERM-EGG FUSION <-> FOETUS FORMATION LAB  -->
+    <!-- ================================================================== -->
+    <section id="fusion-foetus-section" style="margin-top:42px;padding-top:32px;border-top:1px solid var(--border);" aria-label="Flippable Sperm-Egg Fusion and Foetus Formation Lab">
+      <div class="heart-header">
+        <div>
+          <h2 id="ff-sec-title" class="heart-title">Sperm–Egg Fusion &amp; Foetus Formation — 3D Flippable Lab</h2>
+          <p id="ff-sec-subtitle" class="heart-subtitle">Front side: Microscopic fusion of Sperm (23) + Egg (23) = Zygote (46) • Flip the card to follow Zygote → Embryo → Foetus</p>
+        </div>
+
+        <div class="heart-toggles">
+          <button id="btn-rep-flip-main" class="pill-btn active-electric" type="button" aria-pressed="false">
+            <span aria-hidden="true">🔄</span>
+            <span id="lbl-rep-flip-main">Flip Card: Sperm–Egg Fusion ↔ Foetus Formation</span>
+          </button>
+          <button id="btn-ff-pause" class="pill-btn" type="button">⏸ <span>Pause</span></button>
+        </div>
+      </div>
+
+      <!-- 3D FLIPPABLE CARD SCENE -->
+      <div class="flip-scene">
+        <div id="rep-flip-card" class="flip-card">
+          <!-- FRONT FACE: MICROSCOPIC SPERM & EGG FUSION -->
+          <div class="flip-face flip-front glass-panel">
+            <div class="flip-face-bar">
+              <span id="lbl-ff-front-badge" class="accent-pill">FRONT • SPERM + EGG FUSION (23 + 23 = 46)</span>
+              <button id="btn-flip-to-foetus" class="pill-btn active-electric" type="button">
+                <span id="lbl-flip-to-foetus">Flip to Foetus Formation</span>
+                <span aria-hidden="true">↻</span>
+              </button>
+            </div>
+
+            <div class="flip-inner-grid">
+              <!-- Left: Live 60 FPS Sperm-Egg Fusion Canvas + Trigger -->
+              <div class="flip-canvas-col">
+                <div id="fusion-canvas-box" class="flip-stage glass-panel">
+                  <canvas id="fusion-canvas" class="heart-canvas" aria-label="Live 60 FPS Sperm and Egg Fusion Animation"></canvas>
+                </div>
+                <button id="btn-trigger-fusion" class="primary-cta" type="button" style="margin-top:12px;">
+                  <span aria-hidden="true">⚡</span>
+                  <span id="lbl-trigger-fusion">Trigger Sperm–Egg Fusion (Form Zygote!)</span>
+                </button>
+              </div>
+
+              <!-- Right: Interactive Gamete & Fusion Parts Selector -->
+              <div class="flip-info-col">
+                <p id="lbl-fusion-prompt" class="heart-subtitle">Tap any part of the Sperm, Egg, or Fusion process below to see how a new life begins:</p>
+                <div id="fusion-parts-chips" class="part-pills"></div>
+                <div id="fusion-part-detail" class="detail-box"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BACK FACE: FOETUS FORMATION (ZYGOTE -> BLASTOCYST -> EMBRYO -> FOETUS) -->
+          <div class="flip-face flip-back glass-panel">
+            <div class="flip-face-bar">
+              <span id="lbl-ff-back-badge" class="arterial-pill">BACK • FOETUS FORMATION (ZYGOTE TO 9 MONTHS)</span>
+              <button id="btn-flip-to-fusion" class="pill-btn active-accent" type="button">
+                <span aria-hidden="true">↺</span>
+                <span id="lbl-flip-to-fusion">Flip Back to Sperm–Egg Fusion</span>
+              </button>
+            </div>
+
+            <div class="flip-inner-grid">
+              <!-- Left: Live 60 FPS Embryo & Foetus Growth Canvas + Advance Button -->
+              <div class="flip-canvas-col">
+                <div id="foetus-canvas-box" class="flip-stage glass-panel">
+                  <canvas id="foetus-canvas" class="heart-canvas" aria-label="Live 60 FPS Zygote to Foetus Formation Animation"></canvas>
+                </div>
+                <button id="btn-next-foetus-stage" class="primary-cta" type="button" style="margin-top:12px;">
+                  <span aria-hidden="true">👶</span>
+                  <span id="lbl-next-foetus-stage">Advance Foetus Stage (1 → 4)</span>
+                </button>
+              </div>
+
+              <!-- Right: 4-Stage Foetus Development Breakdown -->
+              <div class="flip-info-col">
+                <p id="lbl-foetus-prompt" class="heart-subtitle">Follow the 4 clear stages from a single-cell Zygote to a fully formed Foetus nourished by the Placenta:</p>
+                <div id="foetus-steps-chips" class="part-pills"></div>
+                <div id="foetus-step-detail" class="detail-box"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FERTILIZATION & FOETUS FORMATION CLASS 9–10 MASTER NOTES + QUIZ -->
+      <div id="ff-reader-panel" class="glass-panel reader-panel" style="margin-top:22px;">
+        <div class="reader-tabs" role="tablist" style="grid-template-columns: repeat(2, 1fr);">
+          <button id="tab-ff-lesson" class="tab-btn active" type="button" data-ff-tab="lesson">Fertilization, Placenta &amp; Foetus Notes (Class 9–10)</button>
+          <button id="tab-ff-quiz" class="tab-btn" type="button" data-ff-tab="quiz">Fertilization &amp; Foetus Quiz</button>
+        </div>
+        <div id="ff-reader-body" class="reader-body atlas-scroll"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="lang.js"></script>
+  <script src="reproductive.js"></script>
+</body>
+</html>

@@ -30,6 +30,7 @@
     nervous: "nervous.html",
     muscular: "muscular.html",
     skeletal: "skeletal.html",
+    digestive: "digestive.html",
   };
 
   const DICT = {
@@ -50,12 +51,13 @@
         layers: ["Surface", "Muscular", "Skeletal", "Internal"],
         fpsBadge: "LIVE",
         activeSystem: "Active System",
-        diveHint: "Tap any LIVE system (Heart, Lungs, Brain, Muscles, Skeleton) to open its deep-dive page",
+        diveHint: "Tap any LIVE system (Heart, Lungs, Brain, Digestive, Muscles, Skeleton) to open its deep-dive page",
         openDeepDive: "Open Heart & Blood Cells Page",
         openRespiratory: "Open Respiratory & Gas Exchange Page",
         openNervous: "Open Brain, Neuron & Synapse Page",
         openMuscular: "Open Muscular System & Sarcomere Page",
         openSkeletal: "Open Skeletal System & 206 Bones Page",
+        openDigestive: "Open Digestive System, Enzymes & Villi Page",
         comingSoonTitle: "Dedicated Organ Page Coming Next",
         comingSoonDesc:
           "This organ is illuminated on the live body stage. Its dedicated deep-dive page with detailed diagrams and real-time physiology animation will be added in the next update.",
@@ -89,7 +91,7 @@
         digestive: {
           name: "Digestive System",
           en: "Digestive System",
-          shortDesc: "Stomach, liver, intestines & digestive wave motion",
+          shortDesc: "Alimentary canal, pH & enzymes, flippable Villi & Bile lab",
         },
         skeletal: {
           name: "Skeletal System",
@@ -440,12 +442,13 @@
         layers: ["बाहरी", "पेशी", "कंकाल", "आंतरिक"],
         fpsBadge: "लाइव",
         activeSystem: "सक्रिय तंत्र",
-        diveHint: "लाइव लैब पेज खोलने के लिए किसी भी सक्रिय तंत्र (हृदय, फेफड़े, मस्तिष्क, पेशी, कंकाल) को चुनें",
+        diveHint: "लाइव लैब पेज खोलने के लिए किसी भी सक्रिय तंत्र (हृदय, फेफड़े, मस्तिष्क, पाचन, पेशी, कंकाल) को चुनें",
         openDeepDive: "हृदय और रक्त कोशिका पेज खोलें",
         openRespiratory: "श्वसन और गैस विनिमय पेज खोलें",
         openNervous: "मस्तिष्क, न्यूरॉन व सिनैप्स पेज खोलें",
         openMuscular: "पेशी तंत्र और सार्कोमियर पेज खोलें",
         openSkeletal: "कंकाल तंत्र और 206 अस्थियाँ पेज खोलें",
+        openDigestive: "पाचन तंत्र, एंजाइम और दीर्घरोम पेज खोलें",
         comingSoonTitle: "अगला अंग पेज शीघ्र आ रहा है",
         comingSoonDesc:
           "यह अंग शरीर मानचित्र पर सक्रिय दिख रहा है। विस्तृत चित्र और लाइव एनीमेशन वाला इसका अलग पेज अगले अपडेट में जोड़ा जाएगा।",
@@ -479,7 +482,7 @@
         digestive: {
           name: "पाचन तंत्र",
           en: "Digestive System",
-          shortDesc: "आमाशय, यकृत, आँतें और पाचन तरंग गति",
+          shortDesc: "आहारनाल, pH व एंजाइम, 3D दीर्घरोम व पित्त लैब",
         },
         skeletal: {
           name: "कंकाल तंत्र",
@@ -818,12 +821,13 @@
         layers: ["বাহ্যিক", "পেশী", "কঙ্কাল", "অভ্যন্তরীণ"],
         fpsBadge: "লাইভ",
         activeSystem: "সক্রিয় তন্ত্র",
-        diveHint: "লাইভ ল্যাব পেজ খুলতে যেকোনো সক্রিয় তন্ত্র (হৃৎপিণ্ড, ফুসফুস, মস্তিষ্ক, পেশী, কঙ্কাল) বেছে নিন",
+        diveHint: "লাইভ ল্যাব পেজ খুলতে যেকোনো সক্রিয় তন্ত্র (হৃৎপিণ্ড, ফুসফুস, মস্তিষ্ক, পরিপাক, পেশী, কঙ্কাল) বেছে নিন",
         openDeepDive: "হৃৎপিণ্ড ও রক্তকণিকা পেজ খুলুন",
         openRespiratory: "শ্বসন ও গ্যাসীয় বিনিময় পেজ খুলুন",
         openNervous: "মস্তিষ্ক, নিউরন ও সাইন্যাপস পেজ খুলুন",
         openMuscular: "পেশী তন্ত্র ও সার্কোমিয়ার পেজ খুলুন",
         openSkeletal: "কঙ্কাল তন্ত্র ও ২০৬ অস্থি পেজ খুলুন",
+        openDigestive: "পরিপাক তন্ত্র, উৎসেচক ও ভিলাই পেজ খুলুন",
         comingSoonTitle: "আলাদা অঙ্গ পেজ শীঘ্রই আসছে",
         comingSoonDesc:
           "এই অঙ্গটি দেহ মানচিত্রে সক্রিয়ভাবে দেখানো হচ্ছে। বিস্তারিত চিত্র ও লাইভ অ্যানিমেশনসহ এর আলাদা পেজ পরবর্তী আপডেটে যুক্ত হবে।",
@@ -857,7 +861,7 @@
         digestive: {
           name: "পরিপাক তন্ত্র",
           en: "Digestive System",
-          shortDesc: "পাকস্থলী, যকৃত, অন্ত্র ও পরিপাক তরঙ্গ গতি",
+          shortDesc: "পৌষ্টিকনালী, pH ও উৎসেচক, 3D ভিলাই ও পিত্ত ল্যাব",
         },
         skeletal: {
           name: "কঙ্কাল তন্ত্র",

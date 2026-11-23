@@ -28,6 +28,7 @@
     circulatory: "circulatory.html",
     respiratory: "respiratory.html",
     nervous: "nervous.html",
+    muscular: "muscular.html",
   };
 
   const DICT = {
@@ -48,10 +49,11 @@
         layers: ["Surface", "Muscular", "Skeletal", "Internal"],
         fpsBadge: "LIVE",
         activeSystem: "Active System",
-        diveHint: "Tap the Heart, Lungs, or Brain to open their live deep-dive pages",
+        diveHint: "Tap any LIVE system (Heart, Lungs, Brain, Muscles) to open its deep-dive page",
         openDeepDive: "Open Heart & Blood Cells Page",
         openRespiratory: "Open Respiratory & Gas Exchange Page",
         openNervous: "Open Brain, Neuron & Synapse Page",
+        openMuscular: "Open Muscular System & Sarcomere Page",
         comingSoonTitle: "Dedicated Organ Page Coming Next",
         comingSoonDesc:
           "This organ is illuminated on the live body stage. Its dedicated deep-dive page with detailed diagrams and real-time physiology animation will be added in the next update.",
@@ -95,7 +97,7 @@
         muscular: {
           name: "Muscular System",
           en: "Muscular System",
-          shortDesc: "Skeletal, smooth & cardiac muscle layers",
+          shortDesc: "Biceps/Triceps arm lab, 3 muscle types, Sarcomere & cramps",
         },
         urinary: {
           name: "Urinary System",
@@ -436,10 +438,11 @@
         layers: ["बाहरी", "पेशी", "कंकाल", "आंतरिक"],
         fpsBadge: "लाइव",
         activeSystem: "सक्रिय तंत्र",
-        diveHint: "विस्तृत लाइव लैब पेज खोलने के लिए हृदय, फेफड़े या मस्तिष्क पर टैप करें",
+        diveHint: "लाइव लैब पेज खोलने के लिए किसी भी सक्रिय तंत्र (हृदय, फेफड़े, मस्तिष्क, पेशी) को चुनें",
         openDeepDive: "हृदय और रक्त कोशिका पेज खोलें",
         openRespiratory: "श्वसन और गैस विनिमय पेज खोलें",
         openNervous: "मस्तिष्क, न्यूरॉन व सिनैप्स पेज खोलें",
+        openMuscular: "पेशी तंत्र और सार्कोमियर पेज खोलें",
         comingSoonTitle: "अगला अंग पेज शीघ्र आ रहा है",
         comingSoonDesc:
           "यह अंग शरीर मानचित्र पर सक्रिय दिख रहा है। विस्तृत चित्र और लाइव एनीमेशन वाला इसका अलग पेज अगले अपडेट में जोड़ा जाएगा।",
@@ -483,7 +486,7 @@
         muscular: {
           name: "पेशी तंत्र",
           en: "Muscular System",
-          shortDesc: "कंकाल, चिकनी और हृदय पेशी परतें",
+          shortDesc: "बाइसेप्स/ट्राइसेप्स लैब, 3 पेशी प्रकार, सार्कोमियर व ऐंठन",
         },
         urinary: {
           name: "मूत्र तंत्र",
@@ -812,10 +815,11 @@
         layers: ["বাহ্যিক", "পেশী", "কঙ্কাল", "অভ্যন্তরীণ"],
         fpsBadge: "লাইভ",
         activeSystem: "সক্রিয় তন্ত্র",
-        diveHint: "লাইভ ল্যাব পেজ খুলতে হৃৎপিণ্ড, ফুসফুস বা মস্তিষ্কে ট্যাপ করুন",
+        diveHint: "লাইভ ল্যাব পেজ খুলতে যেকোনো সক্রিয় তন্ত্র (হৃৎপিণ্ড, ফুসফুস, মস্তিষ্ক, পেশী) বেছে নিন",
         openDeepDive: "হৃৎপিণ্ড ও রক্তকণিকা পেজ খুলুন",
         openRespiratory: "শ্বসন ও গ্যাসীয় বিনিময় পেজ খুলুন",
         openNervous: "মস্তিষ্ক, নিউরন ও সাইন্যাপস পেজ খুলুন",
+        openMuscular: "পেশী তন্ত্র ও সার্কোমিয়ার পেজ খুলুন",
         comingSoonTitle: "আলাদা অঙ্গ পেজ শীঘ্রই আসছে",
         comingSoonDesc:
           "এই অঙ্গটি দেহ মানচিত্রে সক্রিয়ভাবে দেখানো হচ্ছে। বিস্তারিত চিত্র ও লাইভ অ্যানিমেশনসহ এর আলাদা পেজ পরবর্তী আপডেটে যুক্ত হবে।",
@@ -859,7 +863,7 @@
         muscular: {
           name: "পেশী তন্ত্র",
           en: "Muscular System",
-          shortDesc: "ঐচ্ছিক, অনৈচ্ছিক ও হৃৎপেশীর স্তর",
+          shortDesc: "বাইসেপস/ট্রাইসেপস ল্যাব, ৩ প্রকার পেশী, সার্কোমিয়ার ও টান",
         },
         urinary: {
           name: "রেচন তন্ত্র",

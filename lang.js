@@ -32,6 +32,7 @@
     skeletal: "skeletal.html",
     digestive: "digestive.html",
     reproductive: "reproductive.html",
+    endocrine: "endocrine.html",
   };
 
   const DICT = {
@@ -60,6 +61,7 @@
         openSkeletal: "Open Skeletal System & 206 Bones Page",
         openDigestive: "Open Digestive System, Enzymes & Villi Page",
         openReproductive: "Open Reproductive, Fertilization & Foetus Page",
+        openEndocrine: "Open Endocrine, 9 Glands & Pancreas Page",
         comingSoonTitle: "Dedicated Organ Page Coming Next",
         comingSoonDesc:
           "This organ is illuminated on the live body stage. Its dedicated deep-dive page with detailed diagrams and real-time physiology animation will be added in the next update.",
@@ -113,7 +115,7 @@
         endocrine: {
           name: "Endocrine System",
           en: "Endocrine System",
-          shortDesc: "Hormone-secreting glands & signaling waves",
+          shortDesc: "9 glands, Adrenaline fight-or-flight, Pancreas & Thyroid feedback",
         },
         reproductive: {
           name: "Reproductive System",
@@ -452,6 +454,7 @@
         openSkeletal: "कंकाल तंत्र और 206 अस्थियाँ पेज खोलें",
         openDigestive: "पाचन तंत्र, एंजाइम और दीर्घरोम पेज खोलें",
         openReproductive: "प्रजनन, निषेचन और भ्रूण विकास पेज खोलें",
+        openEndocrine: "अंतःस्रावी, 9 ग्रंथियाँ व अग्न्याशय पेज खोलें",
         comingSoonTitle: "अगला अंग पेज शीघ्र आ रहा है",
         comingSoonDesc:
           "यह अंग शरीर मानचित्र पर सक्रिय दिख रहा है। विस्तृत चित्र और लाइव एनीमेशन वाला इसका अलग पेज अगले अपडेट में जोड़ा जाएगा।",
@@ -505,7 +508,7 @@
         endocrine: {
           name: "अंतःस्रावी तंत्र",
           en: "Endocrine System",
-          shortDesc: "हार्मोन ग्रंथियाँ और रासायनिक संकेत",
+          shortDesc: "9 ग्रंथियाँ, एड्रेनालिन, अग्न्याशय (इंसुलिन) व थायरॉइड घेंघा लैब",
         },
         reproductive: {
           name: "प्रजनन तंत्र",
@@ -832,6 +835,7 @@
         openSkeletal: "কঙ্কাল তন্ত্র ও ২০৬ অস্থি পেজ খুলুন",
         openDigestive: "পরিপাক তন্ত্র, উৎসেচক ও ভিলাই পেজ খুলুন",
         openReproductive: "প্রজনন, নিষেক ও ভ্রূণ গঠন পেজ খুলুন",
+        openEndocrine: "অন্তঃক্ষরা, ৯ গ্রন্থি ও অগ্ন্যাশয় পেজ খুলুন",
         comingSoonTitle: "আলাদা অঙ্গ পেজ শীঘ্রই আসছে",
         comingSoonDesc:
           "এই অঙ্গটি দেহ মানচিত্রে সক্রিয়ভাবে দেখানো হচ্ছে। বিস্তারিত চিত্র ও লাইভ অ্যানিমেশনসহ এর আলাদা পেজ পরবর্তী আপডেটে যুক্ত হবে।",
@@ -885,7 +889,7 @@
         endocrine: {
           name: "অন্তঃক্ষরা তন্ত্র",
           en: "Endocrine System",
-          shortDesc: "হরমোন গ্রন্থি ও রাসায়নিক সংকেত প্রবাহ",
+          shortDesc: "৯টি গ্রন্থি, অ্যাড্রেনালিন, অগ্ন্যাশয় (ইনসুলিন) ও থাইরয়েড গলগণ্ড ল্যাব",
         },
         reproductive: {
           name: "প্রজনন তন্ত্র",

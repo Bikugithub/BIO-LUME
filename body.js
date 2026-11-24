@@ -372,6 +372,7 @@
           else if (st.system === "skeletal") span.textContent = d.stage.openSkeletal;
           else if (st.system === "digestive") span.textContent = d.stage.openDigestive;
           else if (st.system === "reproductive") span.textContent = d.stage.openReproductive;
+          else if (st.system === "endocrine") span.textContent = d.stage.openEndocrine;
           else span.textContent = d.stage.openDeepDive;
         }
       }
